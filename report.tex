@@ -1,7 +1,9 @@
-\documentclass{heig-tb}
+\documentclass[
+    iai, % Saisir le nom de l'institut rattaché
+    eai  % Saisir le nom de l'orientation
+]{heig-tb}
 
-
-\usepackage[europeanresistors,americaninductors]{circuitikz}
+\usepackage[european,americaninductors]{circuitikz}
 
 \makenomenclature
 \makeglossaries
@@ -9,59 +11,16 @@
 
 \addbibresource{bibliography.bib}
 
-%% Défini le style pour les extraits de code
-\lstset{%
-language=C, % Vous pouvez choisir le langage de votre choix
-breaklines=true,
-breakatwhitespace=false,
-basicstyle=\footnotesize\sffamily}
+\input{nomenclature}
+\input{acronyms}
+\input{glossary}
+\input{meta}
 
-%% Quelques entrées de nomenclature
-\usepackage{etoolbox}
-\renewcommand\nomgroup[1]{%
-  \item[\bfseries
-  \ifstrequal{#1}{A}{Constantes physiques}{%
-  \ifstrequal{#1}{B}{Groupes}{%
-  \ifstrequal{#1}{C}{Autres Symboles}{}}}%
-]}
-
-\newcommand{\nomunit}[1]{%
-\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
-
-\nomenclature[A, 02]{\(c\)}{\href{https://physics.nist.gov/cgi-bin/cuu/Value?c}
-{Vitesse de la lumière dans le vide}
-\nomunit{\SI{299792458}{\meter\per\second}}}
-
-\nomenclature[A, 03]{\(h\)}{\href{https://physics.nist.gov/cgi-bin/cuu/Value?h}
-{Constante de Planck}
-\nomunit{\SI[group-digits=false]{6.62607015e-34}{\joule\per\hertz}}}
-
-\nomenclature[A, 01]{\(G\)}{\href{https://physics.nist.gov/cgi-bin/cuu/Value?bg}
-{Constante de gravitation universelle}
-\nomunit{\SI[group-digits=false]{6.67430e-11}{\meter\cubed\per\kilogram\per\second\squared}}}
-
-\nomenclature[B, 03]{\(\mathbb{R}\)}{Nombres réels}
-\nomenclature[B, 02]{\(\mathbb{C}\)}{Nombres complexes}
-\nomenclature[B, 01]{\(\mathbb{H}\)}{Quaternions}
-
-\nomenclature[C]{\(V\)}{Volume constant}
-\nomenclature[C]{\(\rho\)}{Indice de frottement sec}
-
-%% Quelques acronymes
-\newacronym{gcd}{GCD}{Plus grand diviseur commun}
-\newacronym{lcm}{LCM}{Plus petit multiple commun}
-
-%% Quelques entrées de glossaire
-\newglossaryentry{heig-vd}{
-    name=HEIG-VD,
-    description={Haute École d'Ingénierie et de Gestion du canton de Vaud}}
-\newglossaryentry{hes-so}{
-    name=HES-SO,
-    description={Haute École Supérieure de Suisse Occidentale}}
-
-\date{\today} % Mettre à jour avec la date de rendu du travail
-
-\input{meta.tex}
+%}[bgcolor=bg]
+%\definecolor{bg}{rgb}{0.95,0.95,0.95}
+% \BeforeBeginEnvironment{minted}{\begin{mdframed}}
+% \AfterEndEnvironment{minted}{\end{mdframed}}
+\surroundwithmdframed{minted}
 
 %% Début du document
 \begin{document}
@@ -70,119 +29,114 @@ basicstyle=\footnotesize\sffamily}
 \frontmatter
 \clearemptydoublepage
 
-%% Requis par les dispositions générales
+%% Requis par les dispositions générales des travaux de Bachelor
 \preamble
 \authentification
 
-%% Résumé / Abstract
+%% Résumé / Version abbrégée
 \begin{abstract}
-\input{abstract.tex}
+\input{abstract}
 \end{abstract}
 
-%% Table des matières
+%% Sommaire et tables
 \clearemptydoublepage
-
-\tableofcontents
-
-\listoffigures
-\listoftables
+{
+    \tableofcontents
+    \let\cleardoublepage\clearpage
+    \listoffigures
+    \let\cleardoublepage\clearpage
+    \listoftables
+    \let\cleardoublepage\clearpage
+    \listoflistings
+}
 
 \printnomenclature
-
 \clearemptydoublepage
 \pagenumbering{arabic}
 
-%% Contenu - Content
+%% Contenu
 \mainmatter
 \chapter{Introduction}
-\lipsum[3-4]
+
+L'introduction est une section requise dans un rapport technique. Introduisez votre travail, l'idée de départ et l'objectif attendu. Une personne qui découvrirait votre projet au travers de cette introduction devrait être capable d'en comprendre le cadre, l'idée générale et ses aboutissants.
 
 \section{Contexte}
-\lipsum[5]
 
-\section{But du projet}
-\lipsum[7]
-
-\begin{enumerate}
-\item \lipsum[6][1]
-\item \lipsum[6][2]
-\item \lipsum[6][3]
-\end{enumerate}
-
-\chapter{Analyse}
-\section{Introduction}
-
-\lipsum[8]
+Cette section n'est pas obligatoire mais elle est souvent présente dans un rapport technique pour compléter l'introduction et définir le contexte du travail \cad le cadre formel dans lequel le travail est mené.
 
 \section{Citations et bibliographie}
 
-L'utilisation de \texttt{biblatex} permet de regrouper les références citées en fin de document. Citons par exemple l'article d'Einstein
-\cite{einstein} et le livre de Dirac \cite{dirac}. Tous deux sont liés à la physique. Ensuite, mentionnons le \textit{The \LaTeX\ Companion}
- \cite{latexcompanion}, et le site internet de Donald Knuth's \cite{knuthwebsite}. N'oublions pas le
-\textit{The Comprehensive Tex Archive Network} (CTAN)
-\cite{ctan}.
+Vous le savez maintenant, citez vos sources est essentiel. La gestion d'une bibliographie n'est pas aisée mais l'utilisation de \texttt{biblatex} permet de facilement citer des article, des livres, des sites internet. Toutes les références citées seront automatiement regroupées en fin de document. Par exemple, citons un article d'Einstein \cite{einstein} ou le livre de Dirac \cite{dirac}.
+
+Parfois il peut être utile d'utiliser un gestionnaire de bibliographie. La communauté scientifique affectionne particulièrement l'outil Zotero (\url{https://www.zotero.org/}) qui permet de gérer une bibliothèque numérique d'ouvrages et de références numériques. L'outil permet de générer une bibliographie compatible avec \LaTeX.
 
 \section{Exemple d'équation}
-L'équation \ref{eq:1} représente la transformation de phase d'une lentille biconvexe.
+L'une des principales force de \LaTeX est sa facilité d'écrire des équation. L'équation \ref{eq:1}, citée à titre d'exemple, représente la transformation de phase d'une lentille biconvexe. Pour rédiger une équation \LaTeX vous pouvez utiliser des outils en ligne tel que \url{https://www.latex4technics.com/}.
 
 \begin{equation} \label{eq:1}
 \begin{split}
 L(x,y) &= \exp\left( - i\frac{{2\pi }}{\lambda }\left( {n\Delta \varphi (x,y) + \Delta {\varphi _0} - \Delta \varphi (x,y)} \right)\right)\\
- &= \exp\left({{i\frac{{2\pi }}{\lambda }\Delta {\varphi _0}}}\right)\exp\left({{ - i\frac{{2\pi }}{\lambda }(n - 1)\Delta \varphi (x,y)}}\right)\\
  &= {\exp\left({i\frac{{2\pi }}{\lambda }\Delta {\varphi _0}}\right)}{\exp\left({ - i\frac{{2\pi }}{{\lambda f}}({x^2} + {y^2})}\right)}
 \end{split}
 \end{equation}
 
-Pour rédiger une équation \LaTeX vous pouvez utiliser des outils en ligne tel que \url{https://www.latex4technics.com/}.
+\section{Exemple de diagramme}
 
-\clearpage
-\section{Exemple de diagramme de flux}
+Les diagrammes de flux peuvent être réalisés en utilsant l'outil \url{draw.io}. Une exportation en \texttt{.xml} permet de garder les sources de la figure. Le rendu en \texttt{.pdf} sera réalisé à la volée à la compilation. L'intérêt est double : n'avoir qu'une source de vérité \cad pas d'image intermédiaire à stocker, et réduire la quantité d'information stockée.
 
-Les diagrammes de flux peuvent être réalisés en utilsant l'outil \url{draw.io}. Une exportation en \texttt{.xml} permet de garder les sources de la figure. Le rendu en \texttt{.pdf} sera réalisé à la volée à la compilation.
+Comme l'image est au format XML, les textes sont accessibles au correcteur orthographique et il vous est possible de facilement les modifier sans avoir à éditer l'image.
 
-\figi{euclide.xml}{10cm}{Algorithme d'Euclide}
+\figi{euclide.xml}{9cm}{Algorithme d'Euclide}
 
-Inutile d'insérer des images coloriées là ou la couleur n'offre aucune valeur ajoutée.
+Notons qu'il est inutile d'insérer des images coloriées, là ou la couleur n'offre aucune valeur ajoutée ; évitez également les ombres. Enfin, préférez toujours des représentations vectorielles là ou c'est possible.
 
-Préférez toujours des représentations vectorielles là ou c'est possible.
+Voici un autre type de diagramme utile (figure \ref{sequence.xml}), celui d'une séquence UML.
+
+\figi{sequence.xml}{8cm}{Diagramme de séquence}
+
 
 \clearpage
 \section{Exemple de figure}
 
-Vous avez le choix de dessiner des graphiques manuellement en utilisant des outils de dessins comme Inkscape ou Adobe Illustrator comme illustré à la figure \ref{plot}.
+Vous avez le choix de dessiner des graphiques manuellement en utilisant des outils de dessin vectoriel comme Inkscape ou Adobe Illustrator comme illustré à la figure \ref{plot.svg} ou alors, si vous disposez de Python ou Matlab, vous pouvez générer vos figures à la volée. Le code source \ref{python} permet de générer la figure \ref{bode.py}.
+
 
 \fig{plot.svg}{Exemple de graphique plan}
 
-Alternativement, si vous disposez de Python ou Matlab, vous pouvez générer vos figures à la volée. À titre d'exemple, le code suivant permet de générer la figure \ref{bode}.
 
-\lstinputlisting[language=Python]{assets/bode.py.pdf}
+\begin{listing}[h]
+\inputminted[frame=single]{python}{assets/figures/bode.py}
+\caption{Génération d'un diagramme de Bode \label{python}}
+\end{listing}
 
-\fig{bode}{Diagramme de Bode}
+\figi{bode.py}{12cm}{Diagramme de Bode}
 
-Vous pouvez également utiliser TikZ pour créez vos propres schémas électriques et électroniques comme l'exemple \ref{circuit}
+Vous pouvez également utiliser TikZ pour créez vos propres schémas électriques et électroniques comme l'exemple \ref{circuit}.
 
 \begin{figure}
 \begin{center}
-\begin{circuitikz}[american voltages]
+\begin{circuitikz}
     \draw
-        (0,0) to [short, *-] (6,0)
-        to [V, l_=$\mathrm{j}{\omega}_m \underline{\psi}^s_R$] (6,2)
-        to [R, l_=$R_R$] (6,4)
-        to [short, i_=$\underline{i}^s_R$] (5,4)
-        (0,0) to [open, v^>=$\underline{u}^s_s$] (0,4)
-        to [short, *- ,i=$\underline{i}^s_s$] (1,4)
-        to [R, l=$R_s$] (3,4)
-        to [L, l=$L_{\sigma}$] (5,4)
-        to [short, i_=$\underline{i}^s_M$] (5,3)
-        to [L, l_=$L_M$] (5,0);
-        \end{circuitikz}
+    (0,0) to [short, *-] (6,0)
+    to [V, l_=$\mathrm{j}{\omega}_m \underline{\phi}^s_R$] (6,2)
+    to [R, l_=$R_R$] (6,4)
+    to [short, i_=$\underline{i}^s_R$] (5,4)
+    (0,0) to [open, v^>=$\underline{u}^s_s$] (0,4)
+    to [short, *- ,i=$\underline{i}^s_s$] (1,4)
+    to [R, l=$R_s$] (3,4)
+    to [L, l=$L_{\sigma}$] (5,4)
+    to [short, i_=$\underline{i}^s_M$] (5,3)
+    to [L, l_=$L_M$] (5,0);
+\end{circuitikz}
 \caption{Circuit électrique \label{circuit}}
 \end{center}
 \end{figure}
 
 \section{Tableaux}
 
-\begin{table}
+Pour les tableaux, restez simple et minimaliste, n'ajoutez des séparateurs que là ou c'est nécessaire pour améliorer la lisibilité. Une liste de quelques cantons suisse est donné à titre d'exemple dans la table \ref{cantons}.
+
+\begin{table}[h]
 \begin{center}
 \caption{Liste des cantons \label{cantons}}
 \begin{tabular}{|c|l|r|}
@@ -199,46 +153,44 @@ GE & Genève & 19 mai 1815
 \end{table}
 
 \section{Index}
-\LaTeX dispose d'un index automatique des termes \index{termes} que vous souhaitez. Il suffit de placer le terme dans la commande \texttt{\textbackslash index\{terme\}}. Il apparaîtra automatiquement à la fin de ce rapport dans l'index du document.
+\LaTeX~ permet d'indexer les mots \index{mots} importants. Il suffit de placer les termes importants d'un paragraphe dans la commande \texttt{\textbackslash index\{terme\}} et ils apparaîtront automatiquement à la fin de ce rapport dans l'index du document.
 
-Imaginons que dans cette section nous parlions du cheval blanc \index{cheval blanc} de Napoléon \index{Napoléon}. Il se pourrait que le lecteur recherche ce passage dans la version imprimée du rapport. Avec l'index, rien de plus facile. Allez jeter un oeil à la page \pageref{index}.
+\index{Napoléon}
+
+Imaginons que dans cette section nous parlions du cheval blanc \index{cheval blanc} de Napoléon. Il se pourrait que le lecteur recherche ce passage dans la version imprimée du rapport. Avec l'index, rien de plus facile. Allez jeter un oeil à la page \pageref{index}.
 
 \section{Notes de bas de page}
 
-Parfois, il est plus élégant d'annoter une définition en utilisant une note de bas de page \footnotemark.
-
-Alternativement il est possible d'anoter le paragraphe courant avec une note marginale. \maraja{Note marginale}
-
-\footnotetext{La note en bas de page (ou note de bas de page) est une forme littéraire, consistant en une ou plusieurs lignes ne figurant pas dans le texte.}
+Parfois, il est plus élégant d'annoter une définition en utilisant une note de bas de page \footnote{La note en bas de page (ou note de bas de page) est une forme littéraire, consistant en une ou plusieurs lignes ne figurant pas dans le texte.}. Alternativement il est possible d'anoter le paragraphe courant avec une note marginale. \maraja{Note marginale}
 
 \section{Glossaire et acronymes}
 
-Le format \Gls{latex} est particulièrement adapté pour les documents qui contiennent des expressions \gls{maths}. Les \Glspl{formula} sont affichées élégament. Pour plus de détail sur l'utilisation d'un glossaire, se référer à \url{https://www.overleaf.com/learn/latex/Glossaries}.
+La \Gls{heig-vd} membre de la \Gls{hes-so} propose ce modèle de document. Le format \Gls{latex} est particulièrement adapté pour les documents qui contiennent des expressions \gls{maths}. Pour plus de détail sur l'utilisation d'un glossaire, se référer à \url{https://www.overleaf.com/learn/latex/Glossaries}.
 
 \chapter{Discussion}
 \section{Résultats}
-
 \lipsum[10]
 
 \section{Conclusion}
-
 \lipsum[11]
 
-\hspace{7cm}John Doe\par
-\hspace{7cm}\begin{minipage}{5cm}
-
+\vfil
+\hspace{8cm}John Doe\par
+\hspace{8cm}\begin{minipage}{5cm}
+% Place pour signature numérique
 \end{minipage}
-
 \clearpage
 
 \appendix
 \appendixpage
 \addappheadtotoc
 
-\input{appendix.tex}
+\chapter{Première annexe}
+\section{Sous section}
+\lipsum[1]
 
+\let\cleardoublepage\clearpage
 \backmatter
-
 
 \printglossary
 \printbibliography

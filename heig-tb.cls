@@ -3,42 +3,232 @@
 
 \LoadClass[11pt,a4paper,twoside,final]{book}
 
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[french,english]{babel}
-\usepackage[fleqn]{amsmath}
-\usepackage[small,bf,textfont=it]{caption}
-\usepackage{appendix}
-\usepackage{cellspace}
-\usepackage{color}
-\usepackage{fancyhdr}
-\usepackage{nomencl}
-\usepackage{float}
-\usepackage{fmtcount}
-\usepackage{framed}
-\usepackage{glossaries}
-\usepackage{graphicx}
-\usepackage{lastpage}
-\usepackage{lipsum}
-\usepackage{listings}
-\usepackage{lmodern}
-\usepackage{makeidx}
-\usepackage{morefloats}
-\usepackage{multicol}
-\usepackage{parskip}
-\usepackage{rotating}
-\usepackage{siunitx}
-\usepackage{tabularx}
-\usepackage{tikz}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[french,english]{babel}
 
-\usepackage[
+%% Instituts
+\DeclareOption{iide}{
+  \def\instituteacronym{IIDE}
+  \def\institutename{Institut Interdisciplinaire du Développement de l'Entreprise}
+}
+
+\DeclareOption{reds}{
+  \def\instituteacronym{REDS}
+  \def\institutename{Reconfigurable & Embedded Digital Systems}
+}
+
+\DeclareOption{iai}{
+  \def\instituteacronym{IAI}
+  \def\institutename{Institut d'Automatisation Industrielle}
+}
+
+\DeclareOption{igt}{
+  \def\instituteacronym{IGT}
+  \def\institutename{Institut de Génie Thermique}
+}
+
+\DeclareOption{mei}{
+  \def\instituteacronym{MEI}
+  \def\institutename{Media Engineering Institute}
+}
+
+\DeclareOption{iict}{
+  \def\instituteacronym{IICT}
+  \def\institutename{Institut des Technologies de l'information et de la Communication}
+}
+
+\DeclareOption{insit}{
+  \def\instituteacronym{INSIT}
+  \def\institutename{Institut d'ingénierie du territoire}
+}
+
+\DeclareOption{iese}{
+  \def\instituteacronym{IESE}
+  \def\institutename{Institut d'Énergie et Systèmes Électroniques}
+}
+
+\DeclareOption{comatec}{
+  \def\instituteacronym{COMATEC}
+  \def\institutename{Institut de conception mécanique et technologie des matériaux}
+}
+
+\DeclareOption{comatec}{
+  \def\instituteacronym{COMATEC}
+  \def\institutename{Institut de conception mécanique et technologie des matériaux}
+}
+
+%% Orientations
+\DeclareOption{eai}{
+  \def\@orientation{Électronique et Automatisation industrielle}
+  \def\@department{TIN}
+  \def\@faculty{Génie Électrique}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{eem}{
+  \def\@orientation{Électronique embarquée et Mécatronique}
+  \def\@department{TIN}
+  \def\@faculty{Génie Électrique}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{en}{
+  \def\@orientation{Systèmes énergétiques}
+  \def\@department{TIN}
+  \def\@faculty{Génie Électrique}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{eba}{
+  \def\@orientation{Energétique du bâtiment}
+  \def\@department{TIN}
+  \def\@faculty{Energie et techniques environnementales}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{thi}{
+  \def\@orientation{Thermique industrielle}
+  \def\@department{TIN}
+  \def\@faculty{Energie et techniques environnementales}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{tho}{
+  \def\@orientation{Thermotronique}
+  \def\@department{TIN}
+  \def\@faculty{Energie et techniques environnementales}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{mi}{
+  \def\@orientation{Mécatronique}
+  \def\@department{TIN}
+  \def\@faculty{Microtechniques}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{mi}{
+  \def\@orientation{Mécatronique}
+  \def\@department{TIN}
+  \def\@faculty{Microtechniques}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{mi}{
+  \def\@orientation{Mécatronique}
+  \def\@department{TIN}
+  \def\@faculty{Microtechniques}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{gen}{
+  \def\@orientation{Génie de l'environnement}
+  \def\@department{EC+G}
+  \def\@faculty{Géomatique}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{ggt}{
+  \def\@orientation{Géomatique et gestion du territoire}
+  \def\@department{EC+G}
+  \def\@faculty{Géomatique}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{gci}{
+  \def\@orientation{Construction et infrastructures}
+  \def\@department{EC+G}
+  \def\@faculty{Géomatique}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{ie}{
+  \def\@orientation{Systèmes informatiques embarqués}
+  \def\@department{TIC}
+  \def\@faculty{Informatique et systèmes de communication}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{il}{
+  \def\@orientation{Informatique logicielle}
+  \def\@department{TIC}
+  \def\@faculty{Informatique et systèmes de communication}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{tr}{
+  \def\@orientation{Réseaux et systèmes}
+  \def\@department{TIC}
+  \def\@faculty{Informatique et systèmes de communication}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{id}{
+  \def\@orientation{Ingénierie des données}
+  \def\@department{TIC}
+  \def\@faculty{Informatique et systèmes de communication}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{ts}{
+  \def\@orientation{Sécurité informatique}
+  \def\@department{TIC}
+  \def\@faculty{Informatique et systèmes de communication}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{ee}{
+  \def\@orientation{}
+  \def\@department{HEG}
+  \def\@faculty{Économie d'entreprise}
+  \def\@field{Économie d'entreprise}
+}
+
+\DeclareOption{igi}{
+  \def\@orientation{Qualité et performance industrrielles}
+  \def\@department{TIN}
+  \def\@faculty{Ingénierie et gestion industrielles}
+  \def\@field{Ingénierie}
+}
+\ProcessOptions
+
+
+\RequirePackage[fleqn]{amsmath}
+\RequirePackage[small,bf,textfont=it]{caption}
+\RequirePackage{appendix}
+\RequirePackage{cellspace}
+\RequirePackage{color}
+\RequirePackage{fancyhdr}
+\RequirePackage{float}
+\RequirePackage{fmtcount}
+\RequirePackage{framed}
+\RequirePackage{glossaries}
+\RequirePackage{graphicx}
+\RequirePackage{lastpage}
+\RequirePackage{lipsum}
+\RequirePackage{listings}
+\RequirePackage{lmodern}
+\RequirePackage{makeidx}
+\RequirePackage{mdframed}
+\RequirePackage{morefloats}
+\RequirePackage{multicol}
+\RequirePackage{nomencl}
+\RequirePackage{parskip}
+\RequirePackage{rotating}
+\RequirePackage{siunitx}
+\RequirePackage{tabularx}
+\RequirePackage{tikz}
+\RequirePackage[chapter]{minted}
+
+\RequirePackage[
   backref=true,
   backend=biber,
   style=alphabetic,
   sorting=ynt
   ]{biblatex}
 
-\usepackage[pdftex,
+\RequirePackage[pdftex,
   a4paper,
   top=2.5cm,
   bottom=2.5cm,
@@ -51,7 +241,7 @@
   heightrounded,
   includehead]{geometry}
 
-\usepackage[pdftex,
+\RequirePackage[pdftex,
   colorlinks=true,
   plainpages=true,
   linkcolor=black,
@@ -59,6 +249,7 @@
   urlcolor=black]{hyperref}
 
 \usetikzlibrary{babel}
+\usemintedstyle{colorful}
 
 \newcommand{\clearemptydoublepage}{%
 	\newpage{\thispagestyle{empty}\cleardoublepage}}
@@ -69,6 +260,12 @@
 \setlength{\parindent}{0pt}
 \setlength\parskip{\medskipamount}
 
+%% Configuration de listings (minted est néanmoins préféré)
+\lstset{%
+language=C, % Vous pouvez choisir le langage de votre choix
+breaklines=true,
+breakatwhitespace=false,
+basicstyle=\footnotesize\sffamily}
 
 %% Settings
 \def\subtitle#1{\def\@subtitle{#1}}
@@ -78,12 +275,7 @@
 \def\genre#1{\def\@genre{#1}}
 \def\female{female}
 
-\def\department#1{\def\@department{#1}}
-\def\orientation#1{\def\@field{#1}}
-\def\faculty#1{\def\@faculty{#1}}
-\def\institute#1{\def\@institute{#1}}
 \def\thesis#1{\def\@thesis{#1}}
-
 \def\endyear#1{\def\@endyear{#1}}
 
 %% Première page de couverture
@@ -109,7 +301,8 @@
 \large{\@subtitle}\par}%
 \vskip 10em%
 Département \@department\par
-\@faculty
+\@faculty\par
+\@orientation
 {\large
 \vskip 5em%
 \begin{tabular}[t]{c}%
@@ -186,7 +379,7 @@ Yverdon-les-Bains, le \@date
 \addcontentsline{toc}{chapter}{\authenticiationname}
 Je soussigné\ifx\@genre\female e\fi, \@author, atteste par la présente avoir réalisé seul\ifx\@genre\female e\fi ce travail et n’avoir utilisé aucune autre source que celles expressément mentionnées.
 \vfil
-{\leftskip9cm\relax\@author}
+{\leftskip9cm\relax\@author\par}
 \vfil
 Yverdon-les-Bains, le \@date
 }
@@ -240,10 +433,12 @@ Yverdon-les-Bains, le \@date
 
 %% Figures macros
 \def\graphicsExt{pdf}
+\def\assetsdir{build/assets/figures}
+
 \newcommand{\figi}[3]{
    \begin{figure}[!h]
    \begin{center}
-   \includegraphics[width=#2]{build/figures/#1.\graphicsExt}
+   \includegraphics[width=#2]{\assetsdir/#1.\graphicsExt}
    \end{center}
    \caption{\label{#1}#3}
    \end{figure}
@@ -252,7 +447,7 @@ Yverdon-les-Bains, le \@date
 \newcommand{\figs}[2]{
    \begin{figure}[!ht]
    \begin{center}
-   \includegraphics{build/figures/#1.\graphicsExt}
+   \includegraphics{\assetsdir/#1.\graphicsExt}
    \end{center}
    \caption{\label{#1}#2}
    \end{figure}
@@ -261,7 +456,7 @@ Yverdon-les-Bains, le \@date
 \newcommand{\fig}[2]{
    \begin{figure}[!ht]
    \begin{center}
-   \includegraphics[width=\textwidth]{build/figures/#1.\graphicsExt}
+   \includegraphics[width=\textwidth]{\assetsdir/#1.\graphicsExt}
    \end{center}
    \caption{\label{#1}#2}
    \end{figure}
@@ -270,7 +465,7 @@ Yverdon-les-Bains, le \@date
 \newcommand{\figc}[3]{
    \begin{figure}[!ht]
    \begin{center}
-   \includegraphics[width=\textwidth]{build/figures/#1.\graphicsExt}
+   \includegraphics[width=\textwidth]{\assetsdir/#1.\graphicsExt}
    \end{center}
    \caption[#2]{\label{#1}#3}
    \end{figure}
@@ -279,12 +474,14 @@ Yverdon-les-Bains, le \@date
 \newcommand{\figh}[2]{
    \begin{figure}[H]
    \begin{center}
-   \includegraphics[width=\textwidth]{build/figures/#1.\graphicsExt}
+   \includegraphics[width=\textwidth]{\assetsdir/#1.\graphicsExt}
    \end{center}
    \caption{\label{#1}#2}
    \end{figure}
 }
 
 %% Locutions
-\def\pex{p.~ex.}
-\def\cad{c.-à-d.}
+\def\pex{p.~ex.~}
+\def\cad{c.-à-d.~}
+
+

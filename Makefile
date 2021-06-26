@@ -7,34 +7,35 @@ SVGS=$(wildcard $(FIGDIR)/*.svg)
 DIOS=$(wildcard $(FIGDIR)/*.xml)
 PDFS=$(wildcard $(FIGDIR)/*.pdf)
 PYFS=$(wildcard $(FIGDIR)/*.py)
-FIGS_SVG=$(patsubst $(FIGDIR)/%.svg, $(BUILDDIR)/figures/%.svg.pdf, $(SVGS))
-FIGS_XML=$(patsubst $(FIGDIR)/%.xml, $(BUILDDIR)/figures/%.xml.pdf, $(DIOS))
-FIGS_PDF=$(patsubst $(FIGDIR)/*.pdf, $(BUILDDIR)/figures/%.pdf, $(PDFS))
-FIGS_PY=$(patsubst $(FIGDIR)/*.py, $(BUILDDIR)/figures/%.py.pdf, $(PDFS))
+FIGS_SVG=$(patsubst %.svg, $(BUILDDIR)/%.svg.pdf, $(SVGS))
+FIGS_XML=$(patsubst %.xml, $(BUILDDIR)/%.xml.pdf, $(DIOS))
+FIGS_PDF=$(patsubst %.pdf, $(BUILDDIR)/%.pdf, $(PDFS))
+FIGS_PY=$(patsubst %.py, $(BUILDDIR)/%.py.pdf, $(PYFS))
 
 FIGS=$(FIGS_SVG) $(FIGS_XML) $(FIGS_PDF) $(FIGS_PY)
 
 all: report.tex $(FIGS) | $(BUILDDIR)
-	$(LATEXMK) -pdf -jobname=$(BUILDDIR)/report $<
+	$(LATEXMK) -pdf -shell-escape -jobname=$(BUILDDIR)/report $<
 
 figures: $(FIGS)
 
-$(FIGS_SVG): $(BUILDDIR)/figures/%.svg.pdf: $(FIGDIR)/%.svg | $(BUILDDIR)/figures
+$(FIGS_SVG): $(BUILDDIR)/%.svg.pdf: %.svg | dirs
 	inkscape --file=$< --export-area-drawing --without-gui --export-pdf=$@
 
-$(FIGS_PY): $(BUILDDIR)/figures/%.py.pdf: $(FIGDIR)/%.py | $(BUILDDIR)/figures
+$(FIGS_PY): $(BUILDDIR)/%.py.pdf: %.py | dirs
 	python3 $< > $@
 
-$(FIGS_XML): $(BUILDDIR)/figures/%.xml.pdf: $(FIGDIR)/%.xml | $(BUILDDIR)/figures
+$(FIGS_XML): $(BUILDDIR)/%.xml.pdf: %.xml | dirs
 	drawio -x -fpdf -t --crop $< -o $@
 
-$(FIGS_PDF): $(BUILDDIR)/figures/%.pdf: $(FIGDIR)/%.pdf | $(BUILDDIR)/figures
+$(FIGS_PDF): $(BUILDDIR)/%.pdf: %.pdf | dirs
 	cp $< $@
 
-$(BUILDDIR):
-	mkdir -p $@
+dirs: $(BUILDDIR)
 
-$(BUILDDIR)/figures:
+$(BUILDDIR): $(BUILDDIR)/$(FIGDIR)
+
+$(BUILDDIR)/$(FIGDIR):
 	mkdir -p $@
 
 clean:
@@ -42,3 +43,5 @@ clean:
 
 mrproper:
 	$(RM) -rf $(BUILDDIR)
+
+.PHONY: all figures dirs clean mrproper

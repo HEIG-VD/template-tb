@@ -23,7 +23,9 @@ La distribution LaTeX conseillée est [TeX Live](https://www.tug.org/texlive/). 
 
 ## Compilation
 
-Ce modèle de document est prévu pour fonctionner avec `xelatex` pour la production d'un fichier `.pdf`. L'outil `latexmk` est utilisé pour séquencer la production du document final. Un `Makefile` s'occupe du prétraitement des figures.
+Ce modèle de document est prévu pour fonctionner avec XeTeX pour la production d'un fichier `.pdf`. L'outil `latexmk` est utilisé pour séquencer la production du document final. Un `Makefile` s'occupe du prétraitement des figures.
+
+XeTeX permet de directement lire les documents encodés en UTF-8 et supporte par conséquent l'Unicode et les polices de caractères TrueType et OpenType nativement.
 
 ## Prétraitement des figures
 

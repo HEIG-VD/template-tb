@@ -1,2 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" modified="2021-06-25T17:33:36.933Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36" version="14.4.8" etag="iqViI2F1_6_wQcV3CQAq"><diagram id="nToFm5ItgJZCu753ka-0">7VnfU6MwEP5reNQhUPrjUVvrPXgzzngzdz6mECF3KemEYFv/+kvKpoECitqKzvjSyX5kw2Z3v2SXOv50ubkWeJX85BFhjudGG8efOZ43Rr761cC2AAItaSAWNCogZIE7+kQAdAHNaUSyykTJOZN0VQVDnqYklBUMC8HX1WkPnFXfusIxqQF3IWZ19DeNZALbClyL/yA0TsybkQtPlthMBiBLcMTXJci/cvyp4FwWo+VmSpj2nfFLoTdvebo3TJBUdlEAv2dya/ZGIrVVELmQCY95itmVRS8Fz9OI6AVcJdk5N5yvFIgU+JdIuYW44VxyBSVyyeAp2VD5R6ufByDdl57MNrDyTtgaIZViW1LS4n35mVXbSVYvutARV+KC8fDfr4SmBTynzBhUOEHvvOLGjOciBAgyVmIRE/BsUHc22odQpT7hS6JMUVMEYVjSx+rqGJIw3s+zcVIDCFVz2MCaR8xyWHTmTH3nYrLIZS2iNl56r+uESnK3wruNrRU9q7HBIoS4+ZO9Zx6JkGTTmmItuwYF3+Q6kB2NQV5b6iAfsKREm4H7fkcNvvO7W34H9fxGbudQHz3Bg1qC3yojIkH0rUHyjd5OKikRmRqlWObKAj10vCFTpl5SNYj1ABtEvXEPam3ZNHvRPLuVUO7LhDoBg7ygI4OGR2DQsE8GoRJ/LJvaGNSBCZZmFZJZzrXQrAODDF0qFPKOTyFQveU0lTZHBsNxJUf84CD2hVmgdRD+vRmdMmJU4ybPaWOW3OCFKvyq9wujsQrLLFT+IEIBmhlUlVYX8GBJo6hIIpLRJ7zYradDsNKm7zYTXDrB7DlqQd0HyrbaKodh+CzlztxzGz1w6Rms/tZIHSxjNPjDQ0beG5Px9z33Dpb2WMlNamRKefrlyDR+kUyjYPQ+9hyVLiYLSm7vWgu4RaEdY2bGai3d3ym3zuulQsKXizz7oDIhqF4BfkOZ4J2oTECotvfvE6j5BPIaTiC/vxPI2FPiwg0pFce5yf3b6+msxIm8XE1njeV0S/Hdczk9mFTL6UaenKqcRvXWfU7rB37PPfuhiwZdXXSMnh3127S/quWAowQ5r+omjnaUNHXtox6PknrbPsUszJkqThqOB9FywzKyMy6TRbevEaxH9JFmVFdHLslDRiNKVGVipnTu/JVjvm7rP/A+8qzqtfev3uluNyIe3Onoo4g4aiDipEci1nv0zvwQZFfVjjiVhnlqGZKLVqZ9TuqgYZ/U6bUhf91ns7d9ETsadSYN1OnxyzOqd+SdW8PXU6flCvxk1DllhaxE+3dn0crb/4z9q/8=</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-06-26T21:15:00.226Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36" version="14.8.1" etag="iELxP__TWOSnnqYhbP_u">
+  <diagram id="-CYsAJk0Sd8BBVPne9VW">
+    <mxGraphModel dx="948" dy="904" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=blockThin;endFill=1;" edge="1" source="3" target="5" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="Début" style="rounded=1;whiteSpace=wrap;html=1;arcSize=39;" vertex="1" parent="1">
+          <mxGeometry x="320" y="180" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=blockThin;endFill=1;" edge="1" source="5" target="10" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Prendre deux entiers naturels &lt;i&gt;a&lt;/i&gt; et &lt;i&gt;b&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="250" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;endArrow=blockThin;endFill=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="10" target="12" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="468" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7" value="oui" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="6">
+          <mxGeometry x="-0.2212" y="-1" relative="1" as="geometry">
+            <mxPoint y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=blockThin;endFill=1;" edge="1" source="10" target="15" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="non" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="8">
+          <mxGeometry x="-0.2757" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="&lt;i&gt;b&lt;/i&gt; égal à 0 ?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="325" y="330" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=blockThin;endFill=1;" edge="1" source="12" target="13" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="Le &lt;u&gt;PGCD&lt;/u&gt; est &lt;i&gt;a&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="330" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="Fin" style="rounded=1;whiteSpace=wrap;html=1;arcSize=39;" vertex="1" parent="1">
+          <mxGeometry x="490" y="430" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=blockThin;endFill=1;" edge="1" source="15" target="17" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="Calculer &lt;i&gt;r&lt;/i&gt; le reste de la division euclidienne de &lt;i&gt;a&lt;/i&gt; par &lt;i&gt;b&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="420" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=blockThin;endFill=1;" edge="1" source="17" target="19" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="&lt;i&gt;a&lt;/i&gt; reçoit la valeur de &lt;i&gt;b&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="420" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=blockThin;endFill=1;" edge="1" source="19" target="10" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="&lt;i&gt;b&lt;/i&gt; reçoit la valeur de &lt;i&gt;r&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="330" width="130" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
