@@ -3,8 +3,11 @@
 
 \usepackage[europeanresistors,americaninductors]{circuitikz}
 
+\makenomenclature
 \makeglossaries
 \makeindex
+
+\addbibresource{bibliography.bib}
 
 %% Défini le style pour les extraits de code
 \lstset{%
@@ -12,6 +15,41 @@ language=C, % Vous pouvez choisir le langage de votre choix
 breaklines=true,
 breakatwhitespace=false,
 basicstyle=\footnotesize\sffamily}
+
+%% Quelques entrées de nomenclature
+\usepackage{etoolbox}
+\renewcommand\nomgroup[1]{%
+  \item[\bfseries
+  \ifstrequal{#1}{A}{Constantes physiques}{%
+  \ifstrequal{#1}{B}{Groupes}{%
+  \ifstrequal{#1}{C}{Autres Symboles}{}}}%
+]}
+
+\newcommand{\nomunit}[1]{%
+\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
+
+\nomenclature[A, 02]{\(c\)}{\href{https://physics.nist.gov/cgi-bin/cuu/Value?c}
+{Vitesse de la lumière dans le vide}
+\nomunit{\SI{299792458}{\meter\per\second}}}
+
+\nomenclature[A, 03]{\(h\)}{\href{https://physics.nist.gov/cgi-bin/cuu/Value?h}
+{Constante de Planck}
+\nomunit{\SI[group-digits=false]{6.62607015e-34}{\joule\per\hertz}}}
+
+\nomenclature[A, 01]{\(G\)}{\href{https://physics.nist.gov/cgi-bin/cuu/Value?bg}
+{Constante de gravitation universelle}
+\nomunit{\SI[group-digits=false]{6.67430e-11}{\meter\cubed\per\kilogram\per\second\squared}}}
+
+\nomenclature[B, 03]{\(\mathbb{R}\)}{Nombres réels}
+\nomenclature[B, 02]{\(\mathbb{C}\)}{Nombres complexes}
+\nomenclature[B, 01]{\(\mathbb{H}\)}{Quaternions}
+
+\nomenclature[C]{\(V\)}{Volume constant}
+\nomenclature[C]{\(\rho\)}{Indice de frottement sec}
+
+%% Quelques acronymes
+\newacronym{gcd}{GCD}{Plus grand diviseur commun}
+\newacronym{lcm}{LCM}{Plus petit multiple commun}
 
 %% Quelques entrées de glossaire
 \newglossaryentry{heig-vd}{
@@ -23,26 +61,7 @@ basicstyle=\footnotesize\sffamily}
 
 \date{\today} % Mettre à jour avec la date de rendu du travail
 
-\author{Yves Chevallier} % Auteur du document
-\institute{IAI}
-\endyear{2021}
-\department{TIN}
-\faculty{Génie électrique avec orientation en Electronique embarquée et mécatronique}
-\thesis{7212}
-
-% Choisir l'option idoine (utilisé pour l'accord féminin)
-\genre{male}
-%\genre{female}
-
-% Choisir l'option idoine
-\field{Ingénierie}
-%\field{Economie d'entreprise}
-
-\title{Titre de projet de Bachelor}
-\subtitle{Travail de Bachelor}
-
-% Nom du professeur responsable
-\teacher {Prof. Y. Chevallier (HEIG-VD)}
+\input{meta.tex}
 
 %% Début du document
 \begin{document}
@@ -64,8 +83,12 @@ basicstyle=\footnotesize\sffamily}
 \clearemptydoublepage
 
 \tableofcontents
+
 \listoffigures
 \listoftables
+
+\printnomenclature
+
 \clearemptydoublepage
 \pagenumbering{arabic}
 
@@ -91,6 +114,14 @@ basicstyle=\footnotesize\sffamily}
 
 \lipsum[8]
 
+\section{Citations et bibliographie}
+
+L'utilisation de \texttt{biblatex} permet de regrouper les références citées en fin de document. Citons par exemple l'article d'Einstein
+\cite{einstein} et le livre de Dirac \cite{dirac}. Tous deux sont liés à la physique. Ensuite, mentionnons le \textit{The \LaTeX\ Companion}
+ \cite{latexcompanion}, et le site internet de Donald Knuth's \cite{knuthwebsite}. N'oublions pas le
+\textit{The Comprehensive Tex Archive Network} (CTAN)
+\cite{ctan}.
+
 \section{Exemple d'équation}
 L'équation \ref{eq:1} représente la transformation de phase d'une lentille biconvexe.
 
@@ -109,7 +140,7 @@ Pour rédiger une équation \LaTeX vous pouvez utiliser des outils en ligne tel 
 
 Les diagrammes de flux peuvent être réalisés en utilsant l'outil \url{draw.io}. Une exportation en \texttt{.xml} permet de garder les sources de la figure. Le rendu en \texttt{.pdf} sera réalisé à la volée à la compilation.
 
-\figi{euclide}{10cm}{Algorithme d'Euclide}
+\figi{euclide.xml}{10cm}{Algorithme d'Euclide}
 
 Inutile d'insérer des images coloriées là ou la couleur n'offre aucune valeur ajoutée.
 
@@ -120,7 +151,7 @@ Préférez toujours des représentations vectorielles là ou c'est possible.
 
 Vous avez le choix de dessiner des graphiques manuellement en utilisant des outils de dessins comme Inkscape ou Adobe Illustrator comme illustré à la figure \ref{plot}.
 
-\fig{plot}{Exemple de graphique plan}
+\fig{plot.svg}{Exemple de graphique plan}
 
 Alternativement, si vous disposez de Python ou Matlab, vous pouvez générer vos figures à la volée. À titre d'exemple, le code suivant permet de générer la figure \ref{bode}.
 
@@ -180,6 +211,10 @@ Alternativement il est possible d'anoter le paragraphe courant avec une note mar
 
 \footnotetext{La note en bas de page (ou note de bas de page) est une forme littéraire, consistant en une ou plusieurs lignes ne figurant pas dans le texte.}
 
+\section{Glossaire et acronymes}
+
+Le format \Gls{latex} est particulièrement adapté pour les documents qui contiennent des expressions \gls{maths}. Les \Glspl{formula} sont affichées élégament. Pour plus de détail sur l'utilisation d'un glossaire, se référer à \url{https://www.overleaf.com/learn/latex/Glossaries}.
+
 \chapter{Discussion}
 \section{Résultats}
 
@@ -205,11 +240,8 @@ Alternativement il est possible d'anoter le paragraphe courant avec une note mar
 \backmatter
 
 
-\printglossaries
-
-\bibliographystyle{plain}
-\bibliography{biblio}
-
+\printglossary
+\printbibliography
 \label{index}
 \printindex
 

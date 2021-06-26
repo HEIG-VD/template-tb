@@ -12,13 +12,14 @@
 \usepackage{cellspace}
 \usepackage{color}
 \usepackage{fancyhdr}
+\usepackage{nomencl}
 \usepackage{float}
 \usepackage{fmtcount}
 \usepackage{framed}
 \usepackage{glossaries}
 \usepackage{graphicx}
 \usepackage{lastpage}
-\usepackage{lipsum} % Peut être enlevé dans le document final
+\usepackage{lipsum}
 \usepackage{listings}
 \usepackage{lmodern}
 \usepackage{makeidx}
@@ -29,29 +30,35 @@
 \usepackage{siunitx}
 \usepackage{tabularx}
 \usepackage{tikz}
+
+\usepackage[
+  backref=true,
+  backend=biber,
+  style=alphabetic,
+  sorting=ynt
+  ]{biblatex}
+
+\usepackage[pdftex,
+  a4paper,
+  top=2.5cm,
+  bottom=2.5cm,
+  left=3cm,
+  right=4cm,
+  headheight=6mm,
+  headsep=5mm,
+  marginparwidth=3cm,
+  marginparsep=4mm,
+  heightrounded,
+  includehead]{geometry}
+
+\usepackage[pdftex,
+  colorlinks=true,
+  plainpages=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=black]{hyperref}
+
 \usetikzlibrary{babel}
-%\usepackage[nottoc]{tocbibind}
-
-\usepackage[pdftex,
-	    a4paper,
-	    top=2.5cm,
-	    bottom=2.5cm,
-	    left=3cm,
-	    right=4cm,
-	    headheight=6mm,
-	    headsep=5mm,
-	    marginparwidth=3cm,
-	    marginparsep=4mm,
-	    heightrounded,
-	    includehead]{geometry}
-
-\usepackage[pdftex,
-	    pagebackref=true,
-	    colorlinks=true,
-	    plainpages=true,
-	    linkcolor=black,
-	    citecolor=black,
-	    urlcolor=black]{hyperref}
 
 \newcommand{\clearemptydoublepage}{%
 	\newpage{\thispagestyle{empty}\cleardoublepage}}
@@ -63,27 +70,20 @@
 \setlength\parskip{\medskipamount}
 
 
-% Page title
+%% Settings
 \def\subtitle#1{\def\@subtitle{#1}}
 \def\teacher#1{\def\@teacher{#1}}
 \def\genre#1{\def\@genre{#1}}
 \def\field#1{\def\@field{#1}}
-\def\genre#1{\gdef\@genre{#1}}
+\def\genre#1{\def\@genre{#1}}
 \def\female{female}
 
-% Nom du département : TIC/TIN/COMEM/EC+G...
-\newcommand\department[1]{\def\@department{#1}}
-
-% Nom de la filière
+\def\department#1{\def\@department{#1}}
+\def\orientation#1{\def\@field{#1}}
 \def\faculty#1{\def\@faculty{#1}}
-
-% Nom de l'institut
 \def\institute#1{\def\@institute{#1}}
-
-% Numéro unique de thèse de Bachelor
 \def\thesis#1{\def\@thesis{#1}}
 
-% Année de passage
 \def\endyear#1{\def\@endyear{#1}}
 
 %% Première page de couverture
@@ -205,6 +205,7 @@ Yverdon-les-Bains, le \@date
 % Annexes
 \renewcommand\appendixpagename{Annexes}
 
+%\renewcommand{\nomname}{Liste des Symboles}
 
 \fancypagestyle{headings}{
 \fancyhf{}
@@ -242,7 +243,7 @@ Yverdon-les-Bains, le \@date
 \newcommand{\figi}[3]{
    \begin{figure}[!h]
    \begin{center}
-   \includegraphics[width=#2]{assets/#1.\graphicsExt}
+   \includegraphics[width=#2]{build/figures/#1.\graphicsExt}
    \end{center}
    \caption{\label{#1}#3}
    \end{figure}
@@ -251,7 +252,7 @@ Yverdon-les-Bains, le \@date
 \newcommand{\figs}[2]{
    \begin{figure}[!ht]
    \begin{center}
-   \includegraphics{assets/#1.\graphicsExt}
+   \includegraphics{build/figures/#1.\graphicsExt}
    \end{center}
    \caption{\label{#1}#2}
    \end{figure}
@@ -260,7 +261,7 @@ Yverdon-les-Bains, le \@date
 \newcommand{\fig}[2]{
    \begin{figure}[!ht]
    \begin{center}
-   \includegraphics[width=\textwidth]{assets/#1.\graphicsExt}
+   \includegraphics[width=\textwidth]{build/figures/#1.\graphicsExt}
    \end{center}
    \caption{\label{#1}#2}
    \end{figure}
@@ -269,7 +270,7 @@ Yverdon-les-Bains, le \@date
 \newcommand{\figc}[3]{
    \begin{figure}[!ht]
    \begin{center}
-   \includegraphics[width=\textwidth]{assets/#1.\graphicsExt}
+   \includegraphics[width=\textwidth]{build/figures/#1.\graphicsExt}
    \end{center}
    \caption[#2]{\label{#1}#3}
    \end{figure}
@@ -278,7 +279,7 @@ Yverdon-les-Bains, le \@date
 \newcommand{\figh}[2]{
    \begin{figure}[H]
    \begin{center}
-   \includegraphics[width=\textwidth]{assets/#1.\graphicsExt}
+   \includegraphics[width=\textwidth]{build/figures/#1.\graphicsExt}
    \end{center}
    \caption{\label{#1}#2}
    \end{figure}

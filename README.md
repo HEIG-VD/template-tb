@@ -1,6 +1,6 @@
 # Modèle HEIG-VD pour Rapport de Bachelor <!-- omit in toc -->
 
-Ce référentiel contient le modèle de document pour la production d'un rapport de Bachelor HEIG-VD.
+Ce référentiel contient le modèle de document LaTeX et Microsoft Word pour la production d'un rapport de Bachelor [HEIG-VD](http://heig-vd.ch).
 
 - [Utilisation](#utilisation)
 - [Compilation](#compilation)
