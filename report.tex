@@ -1,0 +1,216 @@
+\documentclass{heig-tb}
+
+
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+
+\makeglossaries
+\makeindex
+
+%% Défini le style pour les extraits de code
+\lstset{%
+language=C, % Vous pouvez choisir le langage de votre choix
+breaklines=true,
+breakatwhitespace=false,
+basicstyle=\footnotesize\sffamily}
+
+%% Quelques entrées de glossaire
+\newglossaryentry{heig-vd}{
+    name=HEIG-VD,
+    description={Haute École d'Ingénierie et de Gestion du canton de Vaud}}
+\newglossaryentry{hes-so}{
+    name=HES-SO,
+    description={Haute École Supérieure de Suisse Occidentale}}
+
+\date{\today} % Mettre à jour avec la date de rendu du travail
+
+\author{Yves Chevallier} % Auteur du document
+\institute{IAI}
+\endyear{2021}
+\department{TIN}
+\faculty{Génie électrique avec orientation en Electronique embarquée et mécatronique}
+\thesis{7212}
+
+% Choisir l'option idoine (utilisé pour l'accord féminin)
+\genre{male}
+%\genre{female}
+
+% Choisir l'option idoine
+\field{Ingénierie}
+%\field{Economie d'entreprise}
+
+\title{Titre de projet de Bachelor}
+\subtitle{Travail de Bachelor}
+
+% Nom du professeur responsable
+\teacher {Prof. Y. Chevallier (HEIG-VD)}
+
+%% Début du document
+\begin{document}
+\selectlanguage{french}
+\maketitle
+\frontmatter
+\clearemptydoublepage
+
+%% Requis par les dispositions générales
+\preamble
+\authentification
+
+%% Résumé / Abstract
+\begin{abstract}
+\input{abstract.tex}
+\end{abstract}
+
+%% Table des matières
+\clearemptydoublepage
+
+\tableofcontents
+\listoffigures
+\listoftables
+\clearemptydoublepage
+\pagenumbering{arabic}
+
+%% Contenu - Content
+\mainmatter
+\chapter{Introduction}
+\lipsum[3-4]
+
+\section{Contexte}
+\lipsum[5]
+
+\section{But du projet}
+\lipsum[7]
+
+\begin{enumerate}
+\item \lipsum[6][1]
+\item \lipsum[6][2]
+\item \lipsum[6][3]
+\end{enumerate}
+
+\chapter{Analyse}
+\section{Introduction}
+
+\lipsum[8]
+
+\section{Exemple d'équation}
+L'équation \ref{eq:1} représente la transformation de phase d'une lentille biconvexe.
+
+\begin{equation} \label{eq:1}
+\begin{split}
+L(x,y) &= \exp\left( - i\frac{{2\pi }}{\lambda }\left( {n\Delta \varphi (x,y) + \Delta {\varphi _0} - \Delta \varphi (x,y)} \right)\right)\\
+ &= \exp\left({{i\frac{{2\pi }}{\lambda }\Delta {\varphi _0}}}\right)\exp\left({{ - i\frac{{2\pi }}{\lambda }(n - 1)\Delta \varphi (x,y)}}\right)\\
+ &= {\exp\left({i\frac{{2\pi }}{\lambda }\Delta {\varphi _0}}\right)}{\exp\left({ - i\frac{{2\pi }}{{\lambda f}}({x^2} + {y^2})}\right)}
+\end{split}
+\end{equation}
+
+Pour rédiger une équation \LaTeX vous pouvez utiliser des outils en ligne tel que \url{https://www.latex4technics.com/}.
+
+\clearpage
+\section{Exemple de diagramme de flux}
+
+Les diagrammes de flux peuvent être réalisés en utilsant l'outil \url{draw.io}. Une exportation en \texttt{.xml} permet de garder les sources de la figure. Le rendu en \texttt{.pdf} sera réalisé à la volée à la compilation.
+
+\figi{euclide}{10cm}{Algorithme d'Euclide}
+
+Inutile d'insérer des images coloriées là ou la couleur n'offre aucune valeur ajoutée.
+
+Préférez toujours des représentations vectorielles là ou c'est possible.
+
+\clearpage
+\section{Exemple de figure}
+
+Vous avez le choix de dessiner des graphiques manuellement en utilisant des outils de dessins comme Inkscape ou Adobe Illustrator comme illustré à la figure \ref{plot}.
+
+\fig{plot}{Exemple de graphique plan}
+
+Alternativement, si vous disposez de Python ou Matlab, vous pouvez générer vos figures à la volée. À titre d'exemple, le code suivant permet de générer la figure \ref{bode}.
+
+\lstinputlisting[language=Python]{assets/bode.py}
+
+\fig{bode}{Diagramme de Bode}
+
+Vous pouvez également utiliser TikZ pour créez vos propres schémas électriques et électroniques comme l'exemple \ref{circuit}
+
+\begin{figure}
+\begin{center}
+\begin{circuitikz}[american voltages]
+    \draw
+        (0,0) to [short, *-] (6,0)
+        to [V, l_=$\mathrm{j}{\omega}_m \underline{\psi}^s_R$] (6,2)
+        to [R, l_=$R_R$] (6,4)
+        to [short, i_=$\underline{i}^s_R$] (5,4)
+        (0,0) to [open, v^>=$\underline{u}^s_s$] (0,4)
+        to [short, *- ,i=$\underline{i}^s_s$] (1,4)
+        to [R, l=$R_s$] (3,4)
+        to [L, l=$L_{\sigma}$] (5,4)
+        to [short, i_=$\underline{i}^s_M$] (5,3)
+        to [L, l_=$L_M$] (5,0);
+        \end{circuitikz}
+\caption{Circuit électrique \label{circuit}}
+\end{center}
+\end{figure}
+
+\section{Tableaux}
+
+\begin{table}
+\begin{center}
+\caption{Liste des cantons \label{cantons}}
+\begin{tabular}{|c|l|r|}
+Abréviation & Nom du canton & Depuis \\ \hline
+ZH & Zürich & \ordinalnum{1} mai 1351 \\
+BE & Berne & 6 mars 1353 \\
+FR & Fribourg & 22 décembre 1481 \\
+VD & Vaud & 19 février 1815 \\
+VS & Valais & 4 août 1815 \\
+NE & Neuchâtel & 19 mai 1815 \\
+GE & Genève & 19 mai 1815
+\end{tabular}
+\end{center}
+\end{table}
+
+\section{Index}
+\LaTeX dispose d'un index automatique des termes \index{termes} que vous souhaitez. Il suffit de placer le terme dans la commande \texttt{\textbackslash index\{terme\}}. Il apparaîtra automatiquement à la fin de ce rapport dans l'index du document.
+
+Imaginons que dans cette section nous parlions du cheval blanc \index{cheval blanc} de Napoléon \index{Napoléon}. Il se pourrait que le lecteur recherche ce passage dans la version imprimée du rapport. Avec l'index, rien de plus facile. Allez jeter un oeil à la page \pageref{index}.
+
+\section{Notes de bas de page}
+
+Parfois, il est plus élégant d'annoter une définition en utilisant une note de bas de page \footnotemark.
+
+Alternativement il est possible d'anoter le paragraphe courant avec une note marginale. \maraja{Note marginale}
+
+\footnotetext{La note en bas de page (ou note de bas de page) est une forme littéraire, consistant en une ou plusieurs lignes ne figurant pas dans le texte.}
+
+\chapter{Discussion}
+\section{Résultats}
+
+\lipsum[10]
+
+\section{Conclusion}
+
+\lipsum[11]
+
+\hspace{7cm}John Doe\par
+\hspace{7cm}\begin{minipage}{5cm}
+
+\end{minipage}
+
+\clearpage
+
+\appendix
+\appendixpage
+\addappheadtotoc
+
+\input{appendix.tex}
+
+\backmatter
+
+
+\printglossaries
+
+\bibliographystyle{plain}
+\bibliography{biblio}
+
+\label{index}
+\printindex
+
+\end{document}
