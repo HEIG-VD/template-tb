@@ -3,7 +3,7 @@ LATEXMK=latexmk
 INKSCAPE=inkscape
 
 all: report.tex
-	$(LATEXMK) -pdf -jobname=$(BUILD)/report.pdf $<
+	$(LATEXMK) -pdf -jobname=$(BUILDDIR)/report.pdf $<
 
 %.pdf: %.svg
 	inkscape --file=$< --export-area-drawing --without-gui --export-pdf=$@

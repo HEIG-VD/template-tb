@@ -86,8 +86,7 @@
 % Année de passage
 \def\endyear#1{\def\@endyear{#1}}
 
-
-
+%% Première page de couverture
 \renewcommand\maketitle{%
 \pagenumbering{empty}
 \thispagestyle{empty}
@@ -95,6 +94,11 @@
   \node[anchor=north west,yshift=-2cm,xshift=2cm]%
       at (current page.north west)
       {\includegraphics[height=2cm]{assets/logos/heig-vd-baseline.pdf}};
+\end{tikzpicture}
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=south east,yshift=1.5cm,xshift=-1.5cm]%
+      at (current page.south east)
+      {\includegraphics[height=1cm]{assets/logos/hes-so.pdf}};
 \end{tikzpicture}
 \vspace{4cm}
 \begin{center}%
@@ -122,7 +126,7 @@ Supervisé par :\\
 }
 
 % Preamble
-\newcommand{\preamblename}{Préabule}
+\newcommand{\preamblename}{Préambule}
 \newcommand\preamble{
 \chapter*{\preamblename}
 \addcontentsline{toc}{chapter}{\preamblename}
@@ -279,3 +283,7 @@ Yverdon-les-Bains, le \@date
    \caption{\label{#1}#2}
    \end{figure}
 }
+
+%% Locutions
+\def\pex{p.~ex.}
+\def\cad{c.-à-d.}
