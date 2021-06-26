@@ -1,6 +1,19 @@
-# Modèle HEIG-VD pour Rapport de Bachelor
+# Modèle HEIG-VD pour Rapport de Bachelor <!-- omit in toc -->
 
 Ce référentiel contient le modèle de document pour la production d'un rapport de Bachelor HEIG-VD.
+
+- [Utilisation](#utilisation)
+- [Compilation](#compilation)
+- [Prétraitement des figures](#prétraitement-des-figures)
+- [Bibliographie](#bibliographie)
+- [Conventions typographiques et de style](#conventions-typographiques-et-de-style)
+  - [Numérotation des pages](#numérotation-des-pages)
+  - [Numérotation des éléments](#numérotation-des-éléments)
+  - [Outils utiles](#outils-utiles)
+  - [Conventions typographiques](#conventions-typographiques)
+  - [Locutions](#locutions)
+- [Standards](#standards)
+- [Références](#références)
 
 ## Utilisation
 
@@ -106,12 +119,13 @@ Les conventions consensuelles d'usage sont les suivantes :
 
 Les locutions latines non francisées suivantes seront écrites en italique :
 *ad hoc*, *ad libitum*, *a fortiori*, *a posteriori*, *a posteriori*, *a priori*, *bis*, *grosso modo*, *ibidem*, *idem*, *in extenso*, *in extremis*, *in extenso*, *in extremis*, *in fine*, *infra*, *loc.cit.*, *modus vivendi*, *op.cit.*, *passim*, *quater*, *sic*, *statu quo*, *supra*, *ter*, *via*, *vice versa*.
-### Standards
 
-- Diagrammes BPMN 2.0 (*Business Process Model And Notation*) [specification](https://www.bpmn.org/)
-- Diagrammes UML 2.5.1 (*Unified Modelling Language*) [specification](https://www.omg.org/spec/UML/About-UML/)
+## Standards
 
-### Références
+- [Diagrammes BPMN 2.0](https://www.bpmn.org/) (*Business Process Model And Notation*)
+- [Diagrammes UML 2.5.1](https://www.omg.org/spec/UML/About-UML/) (*Unified Modelling Language*)
+
+## Références
 
 - [Petites leçons de typographie](https://jacques-andre.fr/faqtypo/lessons.pdf) de Jaques André
 - [Lexique des règles typographiques en usage à l’Imprimerie
