@@ -5,7 +5,12 @@
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
-\RequirePackage[french,english]{babel}
+\RequirePackage[main=french,english]{babel}
+
+%% Confidentiel
+\DeclareOption{confidential}{
+  \def\@confidential{Confidentiel}
+}
 
 %% Instituts
 \DeclareOption{iide}{
@@ -200,6 +205,7 @@
 \RequirePackage{cellspace}
 \RequirePackage{color}
 \RequirePackage{fancyhdr}
+\RequirePackage{booktabs}
 \RequirePackage{float}
 \RequirePackage{fmtcount}
 \RequirePackage{framed}
@@ -215,6 +221,7 @@
 \RequirePackage{multicol}
 \RequirePackage{nomencl}
 \RequirePackage{parskip}
+\RequirePackage{csquotes}
 \RequirePackage{rotating}
 \RequirePackage{siunitx}
 \RequirePackage{tabularx}
@@ -241,15 +248,17 @@
   heightrounded,
   includehead]{geometry}
 
+\definecolor{linkcolor}{RGB}{219, 48, 122}
 \RequirePackage[pdftex,
   colorlinks=true,
   plainpages=true,
   linkcolor=black,
   citecolor=black,
-  urlcolor=black]{hyperref}
+  urlcolor=linkcolor]{hyperref}
 
 \usetikzlibrary{babel}
 \usemintedstyle{colorful}
+\setminted{frame=single,fontsize=\footnotesize}
 
 \newcommand{\clearemptydoublepage}{%
 	\newpage{\thispagestyle{empty}\cleardoublepage}}
@@ -286,23 +295,26 @@ basicstyle=\footnotesize\sffamily}
   \node[anchor=north west,yshift=-2cm,xshift=2cm]%
       at (current page.north west)
       {\includegraphics[height=2cm]{assets/logos/heig-vd-baseline.pdf}};
-\end{tikzpicture}
-\begin{tikzpicture}[remember picture,overlay]
   \node[anchor=south east,yshift=1.5cm,xshift=-1.5cm]%
       at (current page.south east)
       {\includegraphics[height=1cm]{assets/logos/hes-so.pdf}};
 \end{tikzpicture}
 \vspace{4cm}
 \begin{center}%
-%\let \footnote \thanks
 \reset@font
 \sffamily
 {\usefont{T1}{lmss}{bx}{n}\huge\selectfont\@title\\\vspace{0.5em}
 \large{\@subtitle}\par}%
+\ifdefined\@confidential
+\vskip 5em%
+\textbf{\MakeUppercase{\@confidential}}
+\vskip 5em%
+\else
 \vskip 10em%
+\fi
 Département \@department\par
-\@faculty\par
-\@orientation
+Filière \@faculty\par
+Orientation \@orientation
 {\large
 \vskip 5em%
 \begin{tabular}[t]{c}%
@@ -339,32 +351,6 @@ Le Chef du Département\par
 Yverdon-les-Bains, le \@date
 }
 
-% Acknowledgements
-\newcommand\ackname{Remerciements}
-\if@titlepage
-  \newenvironment{acknowledgements}{%
-      \titlepage
-      \null\vfil
-      \@beginparpenalty\@lowpenalty
-      \begin{center}%
-        \bfseries \ackname
-        \@endparpenalty\@M
-      \end{center}}%
-     {\par\vfil\null\endtitlepage}
-\else
-  \newenvironment{acknowledgements}{%
-      \if@twocolumn
-        \section*{\abstractname}%
-      \else
-        \small
-        \begin{center}%
-          {\bfseries \ackname\vspace{-.5em}\vspace{\z@}}%
-        \end{center}%
-        \quotation
-      \fi}
-      {\if@twocolumn\else\endquotation\fi}
-\fi
-
 % Abstract
 \newcommand{\abstractname}{Version Abrégée}
 \newenvironment{abstract}{
@@ -377,33 +363,27 @@ Yverdon-les-Bains, le \@date
 \newcommand{\authentification}{
 \chapter*{\authenticiationname}
 \addcontentsline{toc}{chapter}{\authenticiationname}
-Je soussigné\ifx\@genre\female e\fi, \@author, atteste par la présente avoir réalisé seul\ifx\@genre\female e\fi ce travail et n’avoir utilisé aucune autre source que celles expressément mentionnées.
+Je soussigné\ifx\@genre\female e\fi, \@author, atteste par la présente avoir réalisé seul\ifx\@genre\female e\fi~ce travail et n’avoir utilisé aucune autre source que celles expressément mentionnées.
 \vfil
 {\leftskip9cm\relax\@author\par}
 \vfil
 Yverdon-les-Bains, le \@date
 }
 
-
-% Asterism
-\newcommand{\asterism}{\vspace{1em}
-\hfill\smash{%
-    \raisebox{-.5ex}{%
-      \setlength{\tabcolsep}{-.5pt}%
-      \begin{tabular}{@{}cc@{}}%
-        \multicolumn2c*\\[-2ex]*&*%
-      \end{tabular}}}\hfill\vspace{1em}}
-
-
 % Annexes
 \renewcommand\appendixpagename{Annexes}
 
-%\renewcommand{\nomname}{Liste des Symboles}
+\renewcommand\listoflistingscaption{Liste des codes sources}
+\renewcommand{\nomname}{Liste des Symboles}
 
 \fancypagestyle{headings}{
 \fancyhf{}
 \fancyhead[LO]{\textsl{\rightmark}}
 \fancyhead[RE]{\textsl{\leftmark}}
+\ifdefined\@confidential
+\fancyfoot[RO]{\MakeUppercase{\@confidential}}
+\fancyfoot[LE]{\MakeUppercase{\@confidential}}
+\fi
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}}
@@ -479,6 +459,16 @@ Yverdon-les-Bains, le \@date
    \caption{\label{#1}#2}
    \end{figure}
 }
+
+
+%% Asterism
+\newcommand{\asterism}{\vspace{1em}
+\hfill\smash{%
+    \raisebox{-.5ex}{%
+      \setlength{\tabcolsep}{-.5pt}%
+      \begin{tabular}{@{}cc@{}}%
+        \multicolumn2c*\\[-2ex]*&*%
+      \end{tabular}}}\hfill\vspace{1em}}
 
 %% Locutions
 \def\pex{p.~ex.~}

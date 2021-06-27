@@ -13,6 +13,7 @@ Ce référentiel contient le modèle de document LaTeX et Microsoft Word pour la
   - [Conventions typographiques](#conventions-typographiques)
   - [Locutions](#locutions)
 - [Standards](#standards)
+- [Modèle de document Microsoft Word](#modèle-de-document-microsoft-word)
 - [Références](#références)
 
 ## Utilisation
@@ -126,6 +127,16 @@ Les locutions latines non francisées suivantes seront écrites en italique :
 
 - [Diagrammes BPMN 2.0](https://www.bpmn.org/) (*Business Process Model And Notation*)
 - [Diagrammes UML 2.5.1](https://www.omg.org/spec/UML/About-UML/) (*Unified Modelling Language*)
+
+## Modèle de document Microsoft Word
+
+Un modèle Microsoft Word est également fourni. Ceci soulève la question du choix entre Word et LaTeX.
+
+Quels sont les avantages et inconvénients de ces deux technologies ?
+
+Word est de facto le standard utilisé couramment dans des domaines aussi bien techniques que non techniques. Il s'agit d'un éditeur WYSIWYG (*What You See Is What You Get*) qui ne différentie pas le contenu de la présentation. Son utilisation de base est à la portée de tous, mais de nombreux pièges et fonctionnalités cachées existent. Les figures, les tables et les équations sont insérées dans le corps du document et ne sont pas liées à lui. Il n'est dès lors pas évident de générer automatique une figure à partir d'un code source externe (Matlab, Python...). Les conventions typographiques usuelles ne sont pas toutes supportées. Les ligatures sont partielles et les césures parfois capricieuses. La correction orthographique et grammaticale est intégrée dans une certaine mesure. En revanche la saisie de texte est facile et l'insertion de tabeaux intuitive.
+
+LaTeX est un langage de composition de document qui nécessite une phase de compilation pour produire le document final. La phase de compilation permet de recalculer les numéros de références, les tables de références (figures, et tables) ainsi que l'index. En cas de problème de résolution de référence, une alerte utilisateur est générée si bien que le document produit est facilement vérifiable. L'éditeur d'équations est parmi le plus puissant, c'est cet atout qui rend LaTeX populaire dans les milieux scientifiques. La plupart des thèses de doctorat et des articles scientifiques utilisent cette technologie.
 
 ## Références
 
