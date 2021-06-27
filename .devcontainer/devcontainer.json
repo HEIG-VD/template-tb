@@ -1,5 +1,5 @@
 {
-    "name": "project-dev",
+    "name": "tb-report",
     "dockerComposeFile": ["docker-compose.yml"],
     "service": "vscode",
     "runServices": ["vscode"],
@@ -21,12 +21,6 @@
         "editor.formatOnSave": true,
         "files.associations": {
             "*.tex": "latex"
-        },
-        "latex-workshop.latexindent.args": [
-            "-c",
-            "%DIR%/",
-            "%TMPFILE%",
-            "-y=\"defaultIndent: '%INDENT%',onlyOneBackUp: 1\"",
-        ]
+        }
     }
 }
