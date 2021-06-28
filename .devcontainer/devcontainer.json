@@ -1,11 +1,8 @@
 {
     "name": "tb-report",
-    "dockerComposeFile": ["docker-compose.yml"],
-    "service": "vscode",
+    "image": "tb-report",
+    "context": "..",
     "runServices": ["vscode"],
-    "shutdownAction": "stopCompose",
-    "workspaceFolder": "/workspace",
-    "postCreateCommand": "",
     "extensions": [
         "james-yu.latex-workshop",
         "eamodio.gitlens",
@@ -13,6 +10,7 @@
         "stkb.rewrap",
         "vscode-icons-team.vscode-icons",
     ],
+    "postCreateCommand": "apt-get update && apt-get install -y git",
     "settings": {
         "files.eol": "\n",
         "latex-workshop.chktex.enabled": true,
