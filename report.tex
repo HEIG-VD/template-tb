@@ -4,7 +4,7 @@
     confidential, % Si le travail est confidentiel
 ]{heig-tb}
 
-\usepackage[european,americaninductors]{circuitikz}
+\usepackage[nooldvoltagedirection,european,americaninductors]{circuitikz}
 
 \makenomenclature
 \makeglossaries
@@ -80,6 +80,7 @@ Les diagrammes de flux peuvent être réalisés en utilisant l'outil \href{https
 
 Puisque la source est au format XML, les textes sont accessibles au correcteur orthographique et il vous est rendu possible les modifier sans avoir à éditer l'image. La figure \ref{euclide.xml} en est un exemple.
 
+
 \figi{euclide.xml}{9cm}{Algorithme d'Euclide}
 
 Notons qu'il est inutile d'insérer des images coloriées là où la couleur n'offre aucune valeur ajoutée ; évitez également les ombrages et autres effets de style. Enfin, préférez toujours des représentations vectorielles là où c'est possible.
@@ -132,7 +133,7 @@ L'intégration de dessins mécaniques est préférée en vue filaire. SolidWorks
 \begin{center}
 \includegraphics[width=10cm]{\assetsdir/assembly.svg.\graphicsExt}
 \end{center}
-\caption[Assemblage mécanique]{\label{assembly}Assemblage mécanique comportant 1. l'encoche latérale, 2. la plaque de base, 3. le bloc fonctionnel, 4. le système d'alignement, 5. l'obturateur, 6. le foyer et 7. l'alimentation}
+\caption[Assemblage mécanique]{\label{assembly}Assemblage mécanique comportant 10. l'axe principal, 2.3 les o-ring d'étanchéité et 24. la butée de limitation. D'autres informations liées à la figure elle-même peuvent aussi figurer dans la légende}
 \end{figure}
 
 Notez que la légende est longue, ce n'est pas la même légende que vous retrouvez dans la table des figures. La commande \mintinline{latex}{\caption[courte]{longue}} permet de saisir une légende courte, pour la table des figures et longue pour le corps du document.

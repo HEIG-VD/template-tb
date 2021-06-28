@@ -3,9 +3,14 @@
 Ce référentiel contient le modèle de document LaTeX et Microsoft Word pour la production d'un rapport de Bachelor [HEIG-VD](http://heig-vd.ch).
 
 - [Utilisation](#utilisation)
+  - [Fork et Clone du référentiel](#fork-et-clone-du-référentiel)
+  - [Demarrer vscode](#demarrer-vscode)
+  - [Compiler](#compiler)
+  - [Nettoyer la base de code](#nettoyer-la-base-de-code)
 - [Compilation](#compilation)
 - [Prétraitement des figures](#prétraitement-des-figures)
 - [Bibliographie](#bibliographie)
+- [Glossaire](#glossaire)
 - [Conventions typographiques et de style](#conventions-typographiques-et-de-style)
   - [Numérotation des pages](#numérotation-des-pages)
   - [Numérotation des éléments](#numérotation-des-éléments)
@@ -18,9 +23,29 @@ Ce référentiel contient le modèle de document LaTeX et Microsoft Word pour la
 
 ## Utilisation
 
-L'environnement d'édition conseillé est l'éditeur [Microsoft Visual Studio Code](https://code.visualstudio.com/) couplé à [Docker](https://www.docker.com/). Alternativement, il est possible de travailler dans [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+L'environnement d'édition conseillé est l'éditeur [Microsoft Visual Studio Code](https://code.visualstudio.com/) couplé à [Docker](https://www.docker.com/) et au [Dev Containers](https://code.visualstudio.com/docs/remote/containers). Ceci vous évite d'installer une distribution LaTeX. Alternativement, il est possible de travailler dans [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
 
 La distribution LaTeX conseillée est [TeX Live](https://www.tug.org/texlive/). L'alternative MiKTeX est déconseillée.
+
+### Fork et Clone du référentiel
+
+Commencez par faire un *fork* du référentiel en cliquant sur le bouton "Fork" depuis l'interface GitHub. Ceci vous crée une copie du modèle dans votre organisation GitHub. Clonez ensuite le référentiel avec `git clone`
+
+### Demarrer vscode
+
+Si vous n'avez pas installé vscode et Docker, vous devez les installer au préalable.
+
+Démarrez vscode et installez l'extension *Visual Studio Code Remote - Containers*.
+
+Ouvrez le dossier (`CTRL+K+O`), l'environnement de développement sera automatiquement démarré.
+
+### Compiler
+
+Pour compiler le rapport exécutez simplement la commande `make`.
+
+### Nettoyer la base de code
+
+Pour retirer tous les éléments informatifs du modèle exécutez `make fresh`. La commande va éditer `report.tex` pour y retirer les textes d'information.
 
 ## Compilation
 
@@ -30,11 +55,13 @@ XeTeX permet de directement lire les documents encodés en UTF-8 et supporte par
 
 ## Prétraitement des figures
 
-Les figures au format `.pdf.svg` sont converties en `.pdf` en utilisant `inkscape`.
+Les figures sont placées dans `assets/figures`.
 
-Les figures au format `.drawio.xml` sont converties en `.pdf` en utilisant la version desktop de `draw.io`.
+Les figures au format `.svg` sont converties en `.svg.pdf` en utilisant `inkscape`.
 
-Les figures au format `.pdf.py` sont générées à l'aide de Python.
+Les figures au format `.xml` sont converties en `.xml.pdf` en utilisant la version desktop de `drawio`.
+
+Les figures au format `.py` sont générées à l'aide de Python.
 
 Pour chacun de ces formats un exemple est donné. L'utilisateur final est libre de modifier la logique de production de ces fichiers et d'en ajouter selon ses besoins.
 
@@ -43,10 +70,16 @@ Les conventions de nommage des fichiers intermédiaires sont les suivantes :
 | Type | Source | Destination |
 |------|--------|-------------|
 | Figure vectorielle svg | `.svg` | `.svg.pdf` |
-| Diagramme draw.io | `.drawio.xml` | `.xml.pdf` |
+| Diagramme draw.io | `.xml` | `.xml.pdf` |
 | Figure Python | `.py` | `.py.pdf` |
 
 ## Bibliographie
+
+Les entrées de bibliographie sont directement éditées dans `bibliography.bib`.
+
+## Glossaire
+
+Le glossaire se trouve dans `glossary.tex`
 
 ## Conventions typographiques et de style
 
@@ -61,13 +94,16 @@ L'ordre conseillé pour le sommaire d'un rapport de Bachelor est le suivant:
 7. Liste des tables
 8. Liste des abbréviations *optionnel*
 9. Liste des symboles *optionnel*
-10. Introduction
-11. Conclusion
-12. Glossaire *optionnel*
-13. Bibliographie
-14. Annexes *optionnel*
-15. Index
-16. Colophon *optionnel*
+10. Liste des codes sources *optionnel*
+
+11. Introduction
+12. Conclusion
+13. Glossaire *optionnel*
+14. Bibliographie
+15. Annexes *optionnel*
+16. Index
+
+17. Colophon *optionnel*
 
 Les termes utilisés sont les suivants :
 
@@ -116,9 +152,9 @@ Les conventions consensuelles d'usage sont les suivantes :
 
 ### Locutions
 
-- La locution *confer* (voir ceci) est abrégée `cf.`
-- La locution *id est* (c'est à dire) est abrégée `c.-à-d.` et non `i.e.`
-- La locution *exempli gratia* (pour l'exemple) est abrégée `p. ex.` et non `e.g.`
+- La locution *confer* (voir ceci) est abrégée `cf.` (`\cf`)
+- La locution *id est* (c'est à dire) est abrégée `c.-à-d.` et non `i.e.` (`\cad`)
+- La locution *exempli gratia* (pour l'exemple) est abrégée `p. ex.` et non `e.g.` (`\pex`)
 
 Les locutions latines non francisées suivantes seront écrites en italique :
 *ad hoc*, *ad libitum*, *a fortiori*, *a posteriori*, *a posteriori*, *a priori*, *bis*, *grosso modo*, *ibidem*, *idem*, *in extenso*, *in extremis*, *in extenso*, *in extremis*, *in fine*, *infra*, *loc.cit.*, *modus vivendi*, *op.cit.*, *passim*, *quater*, *sic*, *statu quo*, *supra*, *ter*, *via*, *vice versa*.

@@ -1,0 +1,4 @@
+{
+    "latex-workshop.latex.external.build.command": "make",
+    "latex-workshop.latex.outDir": "./build"
+}

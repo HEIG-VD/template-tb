@@ -2,6 +2,7 @@ BUILDDIR=build
 LATEXMK=latexmk
 INKSCAPE=inkscape
 FIGDIR=assets/figures
+OUT=report
 
 SVGS=$(wildcard $(FIGDIR)/*.svg)
 DIOS=$(wildcard $(FIGDIR)/*.xml)
@@ -14,8 +15,8 @@ FIGS_PY=$(patsubst %.py, $(BUILDDIR)/%.py.pdf, $(PYFS))
 
 FIGS=$(FIGS_SVG) $(FIGS_XML) $(FIGS_PDF) $(FIGS_PY)
 
-all: report.tex $(FIGS) | $(BUILDDIR)
-	$(LATEXMK) -pdf -shell-escape -jobname=$(BUILDDIR)/report $<
+all: $(OUT).tex $(FIGS) | $(BUILDDIR)
+	$(LATEXMK) -quiet -pdf
 
 figures: $(FIGS)
 
@@ -39,6 +40,7 @@ $(BUILDDIR)/$(FIGDIR):
 	mkdir -p $@
 
 clean:
+	$(RM) $(BUILDDIR)/$(OUT).*
 	$(LATEXMK) -C
 
 mrproper:

@@ -1,9 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{kepfl}[2020/06/23 HEIG-VD Bachelor Thesis]
+\ProvidesClass{heig-tb}[2020/06/23 HEIG-VD Bachelor Thesis]
 
 \LoadClass[11pt,a4paper,twoside,final]{book}
 
-\RequirePackage[utf8]{inputenc}
+\def\builddir{build}
+
 \RequirePackage[T1]{fontenc}
 \RequirePackage[main=french,english]{babel}
 
@@ -221,12 +222,11 @@
 \RequirePackage{multicol}
 \RequirePackage{nomencl}
 \RequirePackage{parskip}
-\RequirePackage{csquotes}
 \RequirePackage{rotating}
 \RequirePackage{siunitx}
 \RequirePackage{tabularx}
 \RequirePackage{tikz}
-\RequirePackage[chapter]{minted}
+\RequirePackage[outputdir=build,chapter]{minted}
 
 \RequirePackage[
   backref=true,
@@ -235,7 +235,7 @@
   sorting=ynt
   ]{biblatex}
 
-\RequirePackage[pdftex,
+\RequirePackage[
   a4paper,
   top=2.5cm,
   bottom=2.5cm,
@@ -249,12 +249,15 @@
   includehead]{geometry}
 
 \definecolor{linkcolor}{RGB}{219, 48, 122}
-\RequirePackage[pdftex,
+\RequirePackage[
   colorlinks=true,
   plainpages=true,
   linkcolor=black,
   citecolor=black,
+  plainpages=false,
   urlcolor=linkcolor]{hyperref}
+
+\RequirePackage{csquotes}
 
 \usetikzlibrary{babel}
 \usemintedstyle{colorful}
@@ -413,10 +416,10 @@ Yverdon-les-Bains, le \@date
 
 %% Figures macros
 \def\graphicsExt{pdf}
-\def\assetsdir{build/assets/figures}
+\def\assetsdir{\builddir/assets/figures}
 
 \newcommand{\figi}[3]{
-   \begin{figure}[!h]
+   \begin{figure}[!ht]
    \begin{center}
    \includegraphics[width=#2]{\assetsdir/#1.\graphicsExt}
    \end{center}
@@ -473,5 +476,5 @@ Yverdon-les-Bains, le \@date
 %% Locutions
 \def\pex{p.~ex.~}
 \def\cad{c.-à-d.~}
-
+\def\cf{cf.~}
 
