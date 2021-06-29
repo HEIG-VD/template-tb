@@ -21,7 +21,7 @@
 
 \DeclareOption{reds}{
   \def\instituteacronym{REDS}
-  \def\institutename{Reconfigurable & Embedded Digital Systems}
+  \def\institutename{Reconfigurable \& Embedded Digital Systems}
 }
 
 \DeclareOption{iai}{
