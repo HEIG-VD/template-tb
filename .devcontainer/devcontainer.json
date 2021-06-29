@@ -1,7 +1,7 @@
 {
     "name": "tb-report",
     "dockerFile": "Dockerfile",
-    "remoteUser": "latex",
+    //"remoteUser": "latex",
     "extensions": [
         "james-yu.latex-workshop",
         "eamodio.gitlens",
