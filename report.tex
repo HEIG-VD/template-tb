@@ -32,7 +32,7 @@
 
 %% Résumé / Version abbrégée
 \begin{abstract}
-\input{abstract}
+    \input{abstract}
 \end{abstract}
 
 %% Sommaire et tables
@@ -68,10 +68,10 @@ Parfois il peut être utile d'utiliser un gestionnaire de bibliographie. La comm
 L'une des principales forces de \LaTeX est la saisie d'équations. L'équation \ref{eq:1}, citée à titre d'exemple, représente la transformation de phase d'une lentille biconvexe. Pour rédiger une équation \LaTeX vous pouvez utiliser des outils en ligne tels que \href{https://www.latex4technics.com/}{latex4technics}.
 
 \begin{equation} \label{eq:1}
-\begin{split}
-L(x,y) &= \exp\left( - i\frac{{2\pi }}{\lambda }\left( {n\Delta \varphi (x,y) + \Delta {\varphi _0} - \Delta \varphi (x,y)} \right)\right)\\
- &= {\exp\left({i\frac{{2\pi }}{\lambda }\Delta {\varphi _0}}\right)}{\exp\left({ - i\frac{{2\pi }}{{\lambda f}}({x^2} + {y^2})}\right)}
-\end{split}
+    \begin{split}
+        L(x,y) &= \exp\left( - i\frac{{2\pi }}{\lambda }\left( {n\Delta \varphi (x,y) + \Delta {\varphi _0} - \Delta \varphi (x,y)} \right)\right)\\
+        &= {\exp\left({i\frac{{2\pi }}{\lambda }\Delta {\varphi _0}}\right)}{\exp\left({ - i\frac{{2\pi }}{{\lambda f}}({x^2} + {y^2})}\right)}
+    \end{split}
 \end{equation}
 
 \section{Exemples de diagrammes}
@@ -96,8 +96,8 @@ Pour présenter des résultats d'expérience, vous pouvez soit dessiner des grap
 \fig{plot.svg}{Exemple de graphique plan}
 
 \begin{listing}[h]
-\inputminted{python}{assets/figures/bode.py}
-\caption{Génération d'un diagramme de Bode \label{python}}
+    \inputminted{python}{assets/figures/bode.py}
+    \caption{Génération d'un diagramme de Bode \label{python}}
 \end{listing}
 
 \figi{bode.py}{12cm}{Diagramme de Bode généré à la volée}
@@ -108,32 +108,32 @@ Pour présenter des résultats d'expérience, vous pouvez soit dessiner des grap
 Vous pouvez également utiliser TikZ pour créer vos propres schémas électriques et électroniques comme l'exemple \ref{circuit}.
 
 \begin{figure}[h]
-\begin{center}
-\begin{circuitikz}
-    \draw
-    (0,0) to [short, *-] (6,0)
-    to [V, l_=$\mathrm{j}{\omega}_m \underline{\phi}^s_R$] (6,2)
-    to [R, l_=$R_R$] (6,4)
-    to [short, i_=$\underline{i}^s_R$] (5,4)
-    (0,0) to [open, v^>=$\underline{u}^s_s$] (0,4)
-    to [short, *- ,i=$\underline{i}^s_s$] (1,4)
-    to [R, l=$R_s$] (3,4)
-    to [L, l=$L_{\sigma}$] (5,4)
-    to [short, i_=$\underline{i}^s_M$] (5,3)
-    to [L, l_=$L_M$] (5,0);
-\end{circuitikz}
-\caption{Circuit électrique \label{circuit}}
-\end{center}
+    \begin{center}
+        \begin{circuitikz}
+            \draw
+            (0,0) to [short, *-] (6,0)
+            to [V, l_=$\mathrm{j}{\omega}_m \underline{\phi}^s_R$] (6,2)
+            to [R, l_=$R_R$] (6,4)
+            to [short, i_=$\underline{i}^s_R$] (5,4)
+            (0,0) to [open, v^>=$\underline{u}^s_s$] (0,4)
+            to [short, *- ,i=$\underline{i}^s_s$] (1,4)
+            to [R, l=$R_s$] (3,4)
+            to [L, l=$L_{\sigma}$] (5,4)
+            to [short, i_=$\underline{i}^s_M$] (5,3)
+            to [L, l_=$L_M$] (5,0);
+        \end{circuitikz}
+        \caption{Circuit électrique \label{circuit}}
+    \end{center}
 \end{figure}
 
 \subsection{Dessins techniques}
 L'intégration de dessins mécaniques est préférée en vue filaire. SolidWorks conserve la représentation vectorielle à l'exportation. À partir du PDF généré, l'image peut être isolée et sauvegardée en format SVG.
 
 \begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=10cm]{\assetsdir/assembly.svg.\graphicsExt}
-\end{center}
-\caption[Assemblage mécanique]{\label{assembly}Assemblage mécanique comportant 10. l'axe principal, 2.3 les o-ring d'étanchéité et 24. la butée de limitation. D'autres informations liées à la figure elle-même peuvent aussi figurer dans la légende}
+    \begin{center}
+        \includegraphics[width=10cm]{\assetsdir/assembly.svg.\graphicsExt}
+    \end{center}
+    \caption[Assemblage mécanique]{\label{assembly}Assemblage mécanique comportant 10. l'axe principal, 2.3 les o-ring d'étanchéité et 24. la butée de limitation. D'autres informations liées à la figure elle-même peuvent aussi figurer dans la légende}
 \end{figure}
 
 Notez que la légende est longue, ce n'est pas la même légende que vous retrouvez dans la table des figures. La commande \mintinline{latex}{\caption[courte]{longue}} permet de saisir une légende courte, pour la table des figures et longue pour le corps du document.
@@ -143,34 +143,34 @@ Notez que la légende est longue, ce n'est pas la même légende que vous retrou
 Concernant les tableaux, restez simple et minimaliste, n'ajoutez des séparateurs que là ou c'est nécessaire pour améliorer la lisibilité. Une liste de quelques cantons suisses est donnée à titre d'exemple dans la table \ref{cantons}.
 
 \begin{table}[h]
-\begin{center}
-\caption{Liste des cantons \label{cantons}}
-\begin{tabular}{c|l|r}
-Abréviation & Nom du canton & Depuis \\ \hline
-ZH & Zürich & \ordinalnum{1} mai 1351 \\
-BE & Berne & 6 mars 1353 \\
-FR & Fribourg & 22 décembre 1481 \\
-VD & Vaud & 19 février 1815 \\
-VS & Valais & 4 août 1815 \\
-NE & Neuchâtel & 19 mai 1815 \\
-GE & Genève & 19 mai 1815
-\end{tabular}
-\end{center}
+    \begin{center}
+        \caption{Liste des cantons \label{cantons}}
+        \begin{tabular}{c|l|r}
+            Abréviation & Nom du canton & Depuis                  \\ \hline
+            ZH          & Zürich        & \ordinalnum{1} mai 1351 \\
+            BE          & Berne         & 6 mars 1353             \\
+            FR          & Fribourg      & 22 décembre 1481        \\
+            VD          & Vaud          & 19 février 1815         \\
+            VS          & Valais        & 4 août 1815             \\
+            NE          & Neuchâtel     & 19 mai 1815             \\
+            GE          & Genève        & 19 mai 1815
+        \end{tabular}
+    \end{center}
 \end{table}
 
 Si vous devez donner une spécification technique, n'oubliez pas de mentionner les valeurs minimales, maximales et nominales sans omettre l'unité de mesure.
 
 \begin{table}[h]
-\begin{center}
-    \caption{Exigences techniques \label{specification}}
-    \begin{tabularx}{\textwidth}{cXcccc}
-    No. & Exigence & Min. & Nom. & Max. & Unité \\ \toprule
-    E1 & Tension d'alimentation & 12 & 24 & 48 & \si{\volt} \\ \midrule
-    E2 & Fréquence & 50 &  & 60 & \si{\hertz} \\ \midrule
-    E3 & Concentration & & 300 & 1200 & \si{\nano\gram\per\milli\litre} \\ \midrule
-    E4 & \multicolumn{5}{l}{Doit pouvoir être stoppé à l'aide d'un arrêt d'urgence}
-    \end{tabularx}
-\end{center}
+    \begin{center}
+        \caption{Exigences techniques \label{specification}}
+        \begin{tabularx}{\textwidth}{cXcccc}
+            No. & Exigence                                                                   & Min. & Nom. & Max. & Unité                           \\ \toprule
+            E1  & Tension d'alimentation                                                     & 12   & 24   & 48   & \si{\volt}                      \\ \midrule
+            E2  & Fréquence                                                                  & 50   &      & 60   & \si{\hertz}                     \\ \midrule
+            E3  & Concentration                                                              &      & 300  & 1200 & \si{\nano\gram\per\milli\litre} \\ \midrule
+            E4  & \multicolumn{5}{l}{Doit pouvoir être stoppé à l'aide d'un arrêt d'urgence}
+        \end{tabularx}
+    \end{center}
 \end{table}
 
 L'exemple de la table \ref{specification}, assigne pour chaque exigence un numéro unique. Cette table est normative, chaque élément doit pouvoir être référencé (cf. T\ref{specification}-E3).
@@ -209,7 +209,7 @@ Enfin, vous ajouterez une conclusion à votre travail. Il est de coutume de sign
 \vfil
 \hspace{8cm}\makeatletter\@author\makeatother\par
 \hspace{8cm}\begin{minipage}{5cm}
-% Place pour signature numérique
+    % Place pour signature numérique
 \end{minipage}
 \clearpage
 
