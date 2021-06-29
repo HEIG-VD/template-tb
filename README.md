@@ -3,10 +3,12 @@
 Ce référentiel contient le modèle de document LaTeX et Microsoft Word pour la production d'un rapport de Bachelor [HEIG-VD](http://heig-vd.ch).
 
 - [Utilisation](#utilisation)
+- [VsCode + Docker + LaTeX Suite](#vscode--docker--latex-suite)
   - [Fork et Clone du référentiel](#fork-et-clone-du-référentiel)
   - [Demarrer vscode](#demarrer-vscode)
   - [Compiler](#compiler)
   - [Nettoyer la base de code](#nettoyer-la-base-de-code)
+  - [Git ?](#git-)
 - [Compilation](#compilation)
 - [Prétraitement des figures](#prétraitement-des-figures)
 - [Bibliographie](#bibliographie)
@@ -27,6 +29,16 @@ L'environnement d'édition conseillé est l'éditeur [Microsoft Visual Studio Co
 
 La distribution LaTeX conseillée est [TeX Live](https://www.tug.org/texlive/). L'alternative MiKTeX est déconseillée.
 
+## VsCode + Docker + LaTeX Suite
+
+Certainement l'une des plus élégante manière de développer avec LaTeX est d'utiliser Visual Studio Code avec un container POSIX contenant une distribution TeXLive.
+
+L'éditeur couplé à LaTeX Workshop de James Yu permet une éditition fluide. Le menu `commands` offre l'accès à tous les outils de base. La structure (en bas à gauche) permet de naviguer facilement dans le code. Le panneau des symboles (à droite) permet l'insertion facile de symbols.
+
+![vscode](/assets/figures/editor.png)
+
+Le fichier PDF peut être visualisé dans un navigateur Web sur un deuxième écran. SyncTeX permet de naviguer facilement de la prévisualisation au code source : Control + Clic dans le navigateur.
+
 ### Fork et Clone du référentiel
 
 Commencez par faire un *fork* du référentiel en cliquant sur le bouton "Fork" depuis l'interface GitHub. Ceci vous crée une copie du modèle dans votre organisation GitHub. Clonez ensuite le référentiel avec `git clone`
@@ -46,6 +58,10 @@ Pour compiler le rapport exécutez simplement la commande `make`.
 ### Nettoyer la base de code
 
 Pour retirer tous les éléments informatifs du modèle exécutez `make fresh`. La commande va éditer `report.tex` pour y retirer les textes d'information.
+
+### Git ?
+
+Pour gérer le suivi de version de votre rédaction, vous pouvez utiliser Git intégré à VisualSudio Code. L'hébergement sur GitHub couplé à l'intégration continue permet la compilation automatique de votre rapport à chaque `git push`. Vous recevrez un e-mail en cas de problème de compilation. Le PDF sera quant à lui disponible depuis le panneau des artefacts de GitHub Actions.
 
 ## Compilation
 
