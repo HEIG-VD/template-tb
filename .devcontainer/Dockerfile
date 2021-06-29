@@ -1,44 +1,55 @@
-FROM ubuntu:latest
+FROM ubuntu:20.04
 LABEL maintainer="Yves Chevallier <yves.chevallier@heig-vd.ch>"
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
-RUN apt-get install -y texlive-xetex
-RUN apt-get install -y texlive-lang-french
-RUN apt-get install -y texlive-fonts-extra
-RUN apt-get install -y texlive-science
-RUN apt-get install -y latexmk
+RUN apt-get install -y texlive-xetex \
+    texlive-lang-french texlive-fonts-extra texlive-science \
+    latexmk git python3 python3-pip inkscape libnotify4 libxss1 xdg-utils \
+    libsecret-1-0 libappindicator3-1 wget
 
-RUN apt-get install -y python3 python3-pip
-
-RUN apt-get -y install inkscape
-
-RUN apt-get -y install libnotify4 libxss1 xdg-utils
-RUN apt-get -y install libsecret-1-0 libappindicator3-1
-RUN apt-get -y install wget
 RUN wget https://github.com/jgraph/drawio-desktop/releases/download/v14.6.13/drawio-amd64-14.6.13.deb
 RUN dpkg -i drawio-amd*
+
+RUN apt-get install -y xvfb sudo
+RUN pip install control Pygments
+RUN apt-get install -y texlive-bibtex-extra biber
 
 # Update font cache
 RUN fc-cache -fv
 
 # Clear cache, man page and documentation
-RUN apt-get clean -y
-RUN rm -rf /var/lib/apt/lists/*
-RUN rm -rf /usr/share/man
-RUN rm -f /etc/ssh/ssh_host_*
-RUN mkdir -p /usr/share/man
-RUN find /usr/share/doc -depth -type f ! -name copyright -delete
-RUN find /usr/share/doc -type f -name "*.pdf" -delete
-RUN find /usr/share/doc -type f -name "*.gz" -delete
-RUN find /usr/share/doc -type f -name "*.tex" -delete
-RUN (find /usr/share/doc -type d -empty -delete || true)
-RUN mkdir -p /usr/share/doc
-RUN rm -rf /var/cache/apt/archives
-RUN mkdir -p /var/cache/apt/archives
-RUN rm -rf /tmp/* /var/tmp/*
-RUN (find /usr/share/ -type f -empty -delete || true)
-RUN (find /usr/share/ -type d -empty -delete || true)
-RUN mkdir -p /usr/share/texmf/source
-RUN mkdir -p /usr/share/texlive/texmf-dist/source
+RUN apt-get clean -y &&\
+    rm -rf /var/lib/apt/lists/* &&\
+    rm -rf /usr/share/man &&\
+    rm -f /etc/ssh/ssh_host_* &&\
+    mkdir -p /usr/share/man &&\
+    find /usr/share/doc -depth -type f ! -name copyright -delete &&\
+    find /usr/share/doc -type f -name "*.pdf" -delete &&\
+    find /usr/share/doc -type f -name "*.gz" -delete &&\
+    find /usr/share/doc -type f -name "*.tex" -delete &&\
+    (find /usr/share/doc -type d -empty -delete || true) &&\
+    mkdir -p /usr/share/doc &&\
+    rm -rf /var/cache/apt/archives &&\
+    mkdir -p /var/cache/apt/archives &&\
+    rm -rf /tmp/* /var/tmp/* &&\
+    (find /usr/share/ -type f -empty -delete || true) &&\
+    (find /usr/share/ -type d -empty -delete || true) &&\
+    mkdir -p /usr/share/texmf/source &&\
+    mkdir -p /usr/share/texlive/texmf-dist/source
 
-ENV USER=latex
+ARG USERNAME=latex
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+# Create the user
+RUN groupadd --gid $USER_GID $USERNAME &&\
+    useradd --uid $USER_UID --gid $USER_GID -m $USERNAME &&\
+    echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME &&\
+    chmod 0440 /etc/sudoers.d/$USERNAME
+    
+#USER $USERNAME
+
+ADD .bashrc /root/.bashrc
+ADD .bashrc /home/${USERNAME}/.bashrc
+
+#ENV USER=${USERNAME}

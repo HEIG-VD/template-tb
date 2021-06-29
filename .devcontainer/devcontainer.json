@@ -1,8 +1,7 @@
 {
     "name": "tb-report",
-    "image": "tb-report",
-    "context": "..",
-    "runServices": ["vscode"],
+    "dockerFile": "Dockerfile",
+    // "remoteUser": "latex",
     "extensions": [
         "james-yu.latex-workshop",
         "eamodio.gitlens",
@@ -10,13 +9,14 @@
         "stkb.rewrap",
         "vscode-icons-team.vscode-icons",
     ],
-    "postCreateCommand": "apt-get update && apt-get install -y git",
+    "postCreateCommand": "",
     "settings": {
         "files.eol": "\n",
         "latex-workshop.chktex.enabled": true,
         "latex-workshop.latex.clean.subfolder.enabled": true,
         "latex-workshop.latex.autoClean.run": "onBuilt",
         "editor.formatOnSave": true,
+        "terminal.integrated.shell.linux": "/bin/bash",
         "files.associations": {
             "*.tex": "latex"
         }

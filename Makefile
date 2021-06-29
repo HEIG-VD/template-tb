@@ -27,7 +27,7 @@ $(FIGS_PY): $(BUILDDIR)/%.py.pdf: %.py | dirs
 	python3 $< > $@
 
 $(FIGS_XML): $(BUILDDIR)/%.xml.pdf: %.xml | dirs
-	drawio -x -fpdf -t --crop $< -o $@
+	xvfb-run -a drawio -x -fpdf -t --crop $< -o $@ --no-sandbox
 
 $(FIGS_PDF): $(BUILDDIR)/%.pdf: %.pdf | dirs
 	cp $< $@
