@@ -20,7 +20,6 @@ Ce référentiel contient le modèle de document LaTeX et Microsoft Word pour la
   - [Conventions typographiques](#conventions-typographiques)
   - [Locutions](#locutions)
 - [Standards](#standards)
-- [Modèle de document Microsoft Word](#modèle-de-document-microsoft-word)
 - [Références](#références)
 
 ## Utilisation
@@ -39,9 +38,23 @@ L'éditeur couplé à LaTeX Workshop de James Yu permet une éditition fluide. L
 
 Le fichier PDF peut être visualisé dans un navigateur Web sur un deuxième écran. SyncTeX permet de naviguer facilement de la prévisualisation au code source : Control + Clic dans le navigateur.
 
+Vous pouvez utiliser les commandes suivantes suivi de tab:
+
+| Commande | Font command  | Description                  |
+| -------- | ------------- |
+| FEM      | `\emph`       | Italiques                    |
+| FTT      | `\textt`      | Caractères à espacement fixe |
+| FSC      | `\textsc`     | Sans Serif                   |
+| FUL      | `\underline`  | Souligné                     |
+| FBF      | `\textbf`     | Gras                         |
+| SSE      | `\section`    | Nouvelle section             |
+| SSS      | `\subsection` | Nouvelle sous-section        |
+
+D'autres commandes existent et sont accessibles [ici](https://cheatography.com/jcwinkler/cheat-sheets/latex-workshop-visual-studio-code/).
+
 ### Fork et Clone du référentiel
 
-Commencez par faire un *fork* du référentiel en cliquant sur le bouton "Fork" depuis l'interface GitHub. Ceci vous crée une copie du modèle dans votre organisation GitHub. Clonez ensuite le référentiel avec `git clone`
+Commencez par faire un *fork* du référentiel en cliquant sur le bouton **Fork** depuis l'interface GitHub. Ceci vous crée une copie du modèle dans votre organisation GitHub. Clonez ensuite le référentiel avec `git clone`.
 
 ### Demarrer vscode
 
@@ -50,6 +63,8 @@ Si vous n'avez pas installé vscode et Docker, vous devez les installer au préa
 Démarrez vscode et installez l'extension *Visual Studio Code Remote - Containers*.
 
 Ouvrez le dossier (`CTRL+K+O`), l'environnement de développement sera automatiquement démarré.
+
+**NOTE:** La construction initiale du container prend beaucoup de temps car la distribution LaTeX doit être téléchargée. Vous pouvez aller boire un café.
 
 ### Compiler
 
@@ -75,7 +90,7 @@ Les figures sont placées dans `assets/figures`.
 
 Les figures au format `.svg` sont converties en `.svg.pdf` en utilisant `inkscape`.
 
-Les figures au format `.xml` sont converties en `.xml.pdf` en utilisant la version desktop de `drawio`.
+Les figures au format `.drawio` sont converties en `.drawio.pdf` en utilisant la version desktop de `drawio`.
 
 Les figures au format `.py` sont générées à l'aide de Python.
 
@@ -83,11 +98,11 @@ Pour chacun de ces formats un exemple est donné. L'utilisateur final est libre 
 
 Les conventions de nommage des fichiers intermédiaires sont les suivantes :
 
-| Type | Source | Destination |
-|------|--------|-------------|
-| Figure vectorielle svg | `.svg` | `.svg.pdf` |
-| Diagramme draw.io | `.xml` | `.xml.pdf` |
-| Figure Python | `.py` | `.py.pdf` |
+| Type                   | Source    | Destination   |
+| ---------------------- | --------- | ------------- |
+| Figure vectorielle svg | `.svg`    | `.svg.pdf`    |
+| Diagramme draw.io      | `.drawio` | `.drawio.pdf` |
+| Figure Python          | `.py`     | `.py.pdf`     |
 
 ## Bibliographie
 
@@ -111,26 +126,24 @@ L'ordre conseillé pour le sommaire d'un rapport de Bachelor est le suivant:
 8. Liste des abbréviations *optionnel*
 9. Liste des symboles *optionnel*
 10. Liste des codes sources *optionnel*
-
 11. Introduction
 12. Conclusion
 13. Glossaire *optionnel*
 14. Bibliographie
 15. Annexes *optionnel*
 16. Index
-
 17. Colophon *optionnel*
 
 Les termes utilisés sont les suivants :
 
 | Terminologie anglaise | Terminologie française | Alternative française |
-|-----------------------|------------------------|-----------------------|
-| Abstract | Version abbrégée | Résumé |
-| Preamble | Préambule | |
-| Authentication | Authentification | |
-| Content | Table des matières | Sommaire |
-| Appendices | Appendices | Annexes |
-| Appendix | Annexe | |
+| --------------------- | ---------------------- | --------------------- |
+| Abstract              | Version abbrégée       | Résumé                |
+| Preamble              | Préambule              |                       |
+| Authentication        | Authentification       |                       |
+| Content               | Table des matières     | Sommaire              |
+| Appendices            | Appendices             | Annexes               |
+| Appendix              | Annexe                 |                       |
 
 Les conventions consensuelles d'usage sont les suivantes :
 
@@ -179,16 +192,6 @@ Les locutions latines non francisées suivantes seront écrites en italique :
 
 - [Diagrammes BPMN 2.0](https://www.bpmn.org/) (*Business Process Model And Notation*)
 - [Diagrammes UML 2.5.1](https://www.omg.org/spec/UML/About-UML/) (*Unified Modelling Language*)
-
-## Modèle de document Microsoft Word
-
-Un modèle Microsoft Word est également fourni. Ceci soulève la question du choix entre Word et LaTeX.
-
-Quels sont les avantages et inconvénients de ces deux technologies ?
-
-Word est de facto le standard utilisé couramment dans des domaines aussi bien techniques que non techniques. Il s'agit d'un éditeur WYSIWYG (*What You See Is What You Get*) qui ne différentie pas le contenu de la présentation. Son utilisation de base est à la portée de tous, mais de nombreux pièges et fonctionnalités cachées existent. Les figures, les tables et les équations sont insérées dans le corps du document et ne sont pas liées à lui. Il n'est dès lors pas évident de générer automatique une figure à partir d'un code source externe (Matlab, Python...). Les conventions typographiques usuelles ne sont pas toutes supportées. Les ligatures sont partielles et les césures parfois capricieuses. La correction orthographique et grammaticale est intégrée dans une certaine mesure. En revanche la saisie de texte est facile et l'insertion de tabeaux intuitive.
-
-LaTeX est un langage de composition de document qui nécessite une phase de compilation pour produire le document final. La phase de compilation permet de recalculer les numéros de références, les tables de références (figures, et tables) ainsi que l'index. En cas de problème de résolution de référence, une alerte utilisateur est générée si bien que le document produit est facilement vérifiable. L'éditeur d'équations est parmi le plus puissant, c'est cet atout qui rend LaTeX populaire dans les milieux scientifiques. La plupart des thèses de doctorat et des articles scientifiques utilisent cette technologie.
 
 ## Références
 

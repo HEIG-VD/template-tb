@@ -8,6 +8,7 @@
         "shardulm94.trailing-spaces",
         "stkb.rewrap",
         "vscode-icons-team.vscode-icons",
+        "hediet.vscode-drawio"
     ],
     "postCreateCommand": "",
     "settings": {

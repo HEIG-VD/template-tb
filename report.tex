@@ -79,31 +79,30 @@ L'une des principales forces de \LaTeX est la saisie d'équations. L'équation \
 
 \section{Exemples de diagrammes}
 
-Les diagrammes de flux peuvent être réalisés en utilisant l'outil \href{https://app.diagrams.net/}{draw.io}. Une exportation en \texttt{.xml} (non compressé) permet de garder les sources de la figure. Le rendu en \texttt{.pdf} sera réalisé à la volée à la compilation. L'intérêt est double : n'avoir qu'une source de vérité \cad pas d'image intermédiaire à stocker, et réduire la quantité d'information stockée.
+Les diagrammes de flux peuvent être réalisés en utilisant l'outil \href{https://app.diagrams.net/}{draw.io}. Une exportation en \texttt{.drawio} (non compressé) permet de garder les sources de la figure. Le rendu en \texttt{.pdf} sera réalisé à la volée à la compilation. L'intérêt est double : n'avoir qu'une source de vérité \cad pas d'image intermédiaire à stocker, et réduire la quantité d'information stockée.
 
-Puisque la source est au format XML, les textes sont accessibles au correcteur orthographique et il vous est rendu possible les modifier sans avoir à éditer l'image. La figure \ref{euclide.xml} en est un exemple.
+Puisque la source est au format XML, les textes sont accessibles au correcteur orthographique et il vous est rendu possible les modifier sans avoir à éditer l'image. La figure \ref{euclide.drawio} en est un exemple.
 
-
-\figi{euclide.xml}{9cm}{Algorithme d'Euclide}
+\fig[width=9cm]{Algorithme d'Euclide}{euclide.drawio.pdf}
 
 Notons qu'il est inutile d'insérer des images coloriées là où la couleur n'offre aucune valeur ajoutée ; évitez également les ombrages et autres effets de style. Enfin, préférez toujours des représentations vectorielles là où c'est possible.
 
-Voici un autre type de diagramme utile (figure \ref{sequence.xml}), celui d'une séquence UML.
+Voici un autre type de diagramme utile (figure \ref{sequence.drawio}), celui d'une séquence UML.
 
-\figi{sequence.xml}{8cm}{Diagramme de séquence}
+\fig[width=8cm]{Diagramme de séquence}{sequence.drawio.pdf}
 
 \section{Exemple de figure}
 
 Pour présenter des résultats d'expérience, vous pouvez soit dessiner des graphiques manuellement en utilisant des outils de dessin vectoriel comme Inkscape ou Adobe Illustrator comme illustré à la figure \ref{plot.svg} ou alors, vous pouvez utiliser Python ou Matlab. Avec ce dernier choix, vous pouvez générer vos figures à la volée : le code source \ref{python} permet de générer la figure \ref{bode.py}.
 
-\fig{plot.svg}{Exemple de graphique plan}
+\fig{Exemple de graphique plan}{plot.svg.pdf}
 
 \begin{listing}[h]
     \inputminted{python}{assets/figures/bode.py}
     \caption{Génération d'un diagramme de Bode \label{python}}
 \end{listing}
 
-\figi{bode.py}{12cm}{Diagramme de Bode généré à la volée}
+\fig[width=12cm]{Diagramme de Bode généré à la volée}{bode.py.pdf}
 
 \clearpage
 
@@ -134,7 +133,7 @@ L'intégration de dessins mécaniques est préférée en vue filaire. SolidWorks
 
 \begin{figure}[!ht]
     \begin{center}
-        \includegraphics[width=10cm]{\assetsdir/assembly.svg.\graphicsExt}
+        \includegraphics[width=10cm]{\assetsdir/assembly.svg.pdf}
     \end{center}
     \caption[Assemblage mécanique]{\label{assembly}Réducteur cycloïdale de puissance comportant 6. l'axe de sortie, 14. le roulement de sortie, 1. le corps du réducteur en aluminium, 3 et 5. les disques cycloïdaux et 2. les goupilles de prise... D'autres informations liées à la figure elle-même peuvent aussi figurer dans la légende}
 \end{figure}
@@ -214,10 +213,10 @@ Il est de coutume de signer la conclusion...
 \vfil
 \hspace{8cm}\makeatletter\@author\makeatother\par
 \hspace{8cm}\begin{minipage}{5cm}
-%%if
+    %%if
     % Place pour signature numérique
     \printsignature
-%%fi
+    %%fi
 \end{minipage}
 \clearpage
 

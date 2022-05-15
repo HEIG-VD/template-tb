@@ -6,6 +6,7 @@
 \def\builddir{build}
 \def\graphicsExt{pdf}
 \def\assetsdir{\builddir/assets/figures}
+\def\assetsdirnotbuilded{./assets/figures}
 
 \RequirePackage[T1]{fontenc}
 \RequirePackage[main=french,english]{babel}
@@ -228,6 +229,9 @@
 \RequirePackage{siunitx}
 \RequirePackage{tabularx}
 \RequirePackage{tikz}
+\RequirePackage{bold-extra}
+\RequirePackage{ifthen}
+\RequirePackage{expkv-cs}
 \RequirePackage[outputdir=build,chapter]{minted}
 
 \RequirePackage[
@@ -373,7 +377,7 @@ Yverdon-les-Bains, le \@date
 \newcommand{\authentification}{
 \chapter*{\authenticiationname}
 \addcontentsline{toc}{chapter}{\authenticiationname}
-Je soussigné\ifx\@genre\female e\fi, \@author, atteste par la présente avoir réalisé seul\ifx\@genre\female e\fi~ce travail et n’avoir utilisé aucune autre source que celles expressément mentionnées.
+Je soussigné\ifx\@genre\female e\fi, \@author, atteste par la présente avoir réalisé seul\ifx\@genre\female e\fi~ce travail et n'avoir utilisé aucune autre source que celles expressément mentionnées.
 \vfil
 {\leftskip9cm\relax\@author\par
 \ifdefined\@signature
@@ -427,52 +431,30 @@ Yverdon-les-Bains, le \@date
   \ignorespaces
 }
 
-%% Figures macros
-\newcommand{\figi}[3]{
-   \begin{figure}[!ht]
-   \begin{center}
-   \includegraphics[width=#2]{\assetsdir/#1.\graphicsExt}
-   \end{center}
-   \caption{\label{#1}#3}
-   \end{figure}
-}
-
-\newcommand{\figs}[2]{
-   \begin{figure}[!ht]
-   \begin{center}
-   \includegraphics{\assetsdir/#1.\graphicsExt}
-   \end{center}
-   \caption{\label{#1}#2}
-   \end{figure}
-}
-
-\newcommand{\fig}[2]{
-   \begin{figure}[!ht]
-   \begin{center}
-   \includegraphics[width=\textwidth]{\assetsdir/#1.\graphicsExt}
-   \end{center}
-   \caption{\label{#1}#2}
-   \end{figure}
-}
-
-\newcommand{\figc}[3]{
-   \begin{figure}[!ht]
-   \begin{center}
-   \includegraphics[width=\textwidth]{\assetsdir/#1.\graphicsExt}
-   \end{center}
-   \caption[#2]{\label{#1}#3}
-   \end{figure}
-}
-
-\newcommand{\figh}[2]{
-   \begin{figure}[H]
-   \begin{center}
-   \includegraphics[width=\textwidth]{\assetsdir/#1.\graphicsExt}
-   \end{center}
-   \caption{\label{#1}#2}
-   \end{figure}
-}
-
+%% Figure macros
+\newcommand\fig[2][]{\fig@kv{short={#2},#1}{#2}}
+\ekvcSplitAndForward\fig@kv\fig@out
+  {
+    % defaults here
+     short = {}% will get set for each call to match the caption argument
+    ,internal-label = {} % empty, not for direct use (easier that way)
+    ,place = tbp
+    ,...
+  }
+\ekvcSecondaryKeys\fig@kv
+  {
+     nmeta H = place=H % shortcut
+    ,meta label = internal-label=\label{#1} % wraps \label around the value
+    % add more keys you want to be handled special here
+  }
+\newcommand\fig@out[6]
+  {%
+    \begin{figure}[#3]
+      \centering
+      \includegraphics[#4]{\assetsdir/#6}%
+      \caption[{#1}]{#5#2}%
+    \end{figure}%
+  }
 
 %% Asterism
 \newcommand{\asterism}{\vspace{1em}
@@ -487,4 +469,3 @@ Yverdon-les-Bains, le \@date
 \def\pex{p.~ex.~}
 \def\cad{c.-à-d.~}
 \def\cf{cf.~}
-

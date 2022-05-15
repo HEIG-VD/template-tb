@@ -1,26 +1,35 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 LABEL maintainer="Yves Chevallier <yves.chevallier@heig-vd.ch>"
 
 ARG USERNAME=latex
 ARG WORKDIR=/latex
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
-ARG DRAWIO_VERSION=14.6.13
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
-RUN apt-get install -y texlive-xetex texlive-extra-utils \
-    texlive-bibtex-extra biber \
-    texlive-lang-french texlive-fonts-extra texlive-science \
-    latexmk git python3 python3-pip inkscape libnotify4 libxss1 xdg-utils \
-    libsecret-1-0 libappindicator3-1 wget xvfb sudo locales
 
-# Draw.io for building figures
-RUN wget https://github.com/jgraph/drawio-desktop/releases/download/v${DRAWIO_VERSION}/drawio-amd64-${DRAWIO_VERSION}.deb
-RUN dpkg -i drawio-amd*
+RUN apt-get install -y git python3 python3-pip wget xvfb locales
+RUN apt-get install -y inkscape
+RUN apt-get install -y biber
 
 # Pygments for LaTeX minted
 RUN pip install control Pygments
+
+RUN apt-get install -y \
+    texlive-base \
+    texlive-bibtex-extra \
+    texlive-lang-french \
+    texlive-xetex \
+    texlive-extra-utils
+
+# Draw.io for building figures
+RUN apt-get install -y libnotify4 libxss1 xdg-utils libsecret-1-0 libappindicator3-1 libgbm1 libasound2
+RUN wget https://github.com/jgraph/drawio-desktop/releases/download/v18.0.4/drawio-amd64-18.0.4.deb
+RUN dpkg -i drawio-amd*
+
+RUN apt-get install -y latexmk
+RUN apt-get install -y texlive-science
 
 # Set the locale
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
