@@ -72,5 +72,5 @@ RUN apt-get clean -y &&\
 WORKDIR /latex
 
 # Bind bashrc
-ADD .bashrc /root/.bashrc
-ADD .bashrc /home/${USERNAME}/.bashrc
+# ADD .bashrc /root/.bashrc
+# ADD .bashrc /home/${USERNAME}/.bashrc
