@@ -18,9 +18,11 @@ jobs:
       - name: Build
         run: docker run -v $GITHUB_WORKSPACE:/latex -w/latex tb-report make
       - name: Perms
-        run: docker run -v $GITHUB_WORKSPACE:/latex -w/latex tb-report chmod a+r build/report.pdf
+        run: docker run -v $GITHUB_WORKSPACE:/latex -w/latex tb-report chmod -r a+rw build
+      - name: Dist directory
+        run: mkdir -p dist
       - name: Move
-        run : mkdir -p dist && mv build/report.pdf dist
+        run : cp build/report.pdf dist
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
