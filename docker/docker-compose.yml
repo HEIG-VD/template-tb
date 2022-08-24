@@ -1,0 +1,14 @@
+version: '3'
+services:
+  latex:
+    image: texlive/texlive:latest-medium
+    volumes:
+      - ./:/texlive
+  inkscape:
+    image: minidocks/inkscape:latest
+  drawio:
+    image: draw.io/draw.io:latest
+    volumes:
+      - ./:/draw.io
+    depends_on:
+      - latex

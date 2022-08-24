@@ -10,6 +10,10 @@
         "vscode-icons-team.vscode-icons",
         "hediet.vscode-drawio"
     ],
+    "containerEnv": {
+        "GITHUB_TOKEN": "${localEnv:GITHUB_TOKEN}",
+        "GITHUB_USER": "${localEnv:GITHUB_USER}"
+      },    
     "postCreateCommand": "",
     "settings": {
         "files.eol": "\n",

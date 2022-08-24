@@ -1,7 +1,9 @@
 # Modèle HEIG-VD pour Rapport de Bachelor <!-- omit in toc -->
 
-Ce référentiel contient le modèle de document LaTeX et Microsoft Word pour la production d'un rapport de Bachelor [HEIG-VD](http://heig-vd.ch).
+Ce référentiel contient un modèle de document LaTeX pour la production d'un rapport de Bachelor [HEIG-VD](http://heig-vd.ch). Il peut être adapté au besoin.
 
+- [Contexte](#contexte)
+- [Comment démarrer / Quick Start](#comment-démarrer--quick-start)
 - [Utilisation](#utilisation)
 - [VsCode + Docker + LaTeX Suite](#vscode--docker--latex-suite)
   - [Fork et Clone du référentiel](#fork-et-clone-du-référentiel)
@@ -19,8 +21,25 @@ Ce référentiel contient le modèle de document LaTeX et Microsoft Word pour la
   - [Outils utiles](#outils-utiles)
   - [Conventions typographiques](#conventions-typographiques)
   - [Locutions](#locutions)
+- [Technologies utilisées](#technologies-utilisées)
 - [Standards](#standards)
 - [Références](#références)
+- [Aide et Support](#aide-et-support)
+
+## Contexte
+
+Cet environnement de repose pas sur [Overleaf](https://www.overleaf.com/) parce que la plateforme en ligne ne permet pas la gestion des dépendances et des artefacts. Avec une solution en ligne les figures générées à partir de scripts (Python), les illustrations faites avec [draw.io](https://app.diagrams.net/) et la conversion de figures (`svg` en `pdf`), ne peut pas être automatisée.
+
+## Comment démarrer / Quick Start
+
+Pour utiliser ce canevas, vous avez besoin des logiciels suivants:
+
+- [Microsoft Visual Studio Code](https://code.visualstudio.com/)
+- [Docker](https://www.docker.com/)
+
+Une fois ces logiciels installés et démarrés, vous devez configurer une extension pour VS Code. Elle vous permettra de faire le lien avec Docker.
+
+- [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
 ## Utilisation
 
@@ -123,7 +142,7 @@ L'ordre conseillé pour le sommaire d'un rapport de Bachelor est le suivant:
 5. Table des matières
 6. Liste des figures
 7. Liste des tables
-8. Liste des abbréviations *optionnel*
+8. Liste des abbreviations *optionnel*
 9. Liste des symboles *optionnel*
 10. Liste des codes sources *optionnel*
 11. Introduction
@@ -138,7 +157,7 @@ Les termes utilisés sont les suivants :
 
 | Terminologie anglaise | Terminologie française | Alternative française |
 | --------------------- | ---------------------- | --------------------- |
-| Abstract              | Version abbrégée       | Résumé                |
+| Abstract              | Version abrégée        | Résumé                |
 | Preamble              | Préambule              |                       |
 | Authentication        | Authentification       |                       |
 | Content               | Table des matières     | Sommaire              |
@@ -176,8 +195,8 @@ Les conventions consensuelles d'usage sont les suivantes :
 - Une énumération ordonnée peut être constituée de phrase complètes.
 - Les unités de mesure sont espacée de la grandeur associée par une [espace insécable](https://fr.wikipedia.org/wiki/Espace_ins%C3%A9cable) et ne sont pas en italique ni placées entres crochets.
 - Les majuscules sont accentuées comme le recommande l'académie Française.
-- Et cetera s'écrit `etc.` et est toujours précédé d'une virgule dans une énumération. La locultion peut être remplacée par des points de suspension `...`. En aucun cas, ces deux formes sont combinées (`etc...`). Les points de suspension sont toujours collés dernier caractère d'une liste énumérée. (`a, b, c...`).
-- Les mots étrangés ou les anglicismes sont placés en italique.
+- Et cetera s'écrit `etc.` et est toujours précédé d'une virgule dans une énumération. La locution peut être remplacée par des points de suspension `...`. En aucun cas, ces deux formes sont combinées (`etc...`). Les points de suspension sont toujours collés dernier caractère d'une liste énumérée. (`a, b, c...`).
+- Les mots étrangers ou les anglicismes sont placés en italique.
 
 ### Locutions
 
@@ -187,6 +206,19 @@ Les conventions consensuelles d'usage sont les suivantes :
 
 Les locutions latines non francisées suivantes seront écrites en italique :
 *ad hoc*, *ad libitum*, *a fortiori*, *a posteriori*, *a posteriori*, *a priori*, *bis*, *grosso modo*, *ibidem*, *idem*, *in extenso*, *in extremis*, *in extenso*, *in extremis*, *in fine*, *infra*, *loc.cit.*, *modus vivendi*, *op.cit.*, *passim*, *quater*, *sic*, *statu quo*, *supra*, *ter*, *via*, *vice versa*.
+
+## Technologies utilisées
+
+- [XeLaTeX](https://en.wikipedia.org/wiki/XeTeX) permet le support natif de l'Unicode dans la production de fichiers PDF.
+- [Inkscape](https://inkscape.org/) pour la conversion d'images SVG en PDF.
+- [Draw.io](https://app.diagrams.net/) pour la conversion de diagrammes au format draw.io (XML) en PDF.
+- [Python](https://www.python.org/) pour la génération de figures à partir d'une source de données brute, et la coloration syntaxique de code.
+- [Make](https://www.gnu.org/software/make/) pour l'ordonnancement des étapes de compilation, et la gestion des dépendances.
+- [TeX Live](https://www.tug.org/texlive/) est la distribution LaTeX la plus populaire, compatible avec Linux, Windows et macOS.
+- [Visual Studio Code](https://code.visualstudio.com/) est un éditeur de code disposant d'extensions
+  - [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) offre des raccourcis et des fonctionnalités additionnelles pour l'écriture de documents avec LaTeX sous VS Code.
+  - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) pour le suivi de versions au sein de l'éditeur
+  - [Draw.io Integration](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio) pour intégrer à VS Code l'éditeur de diagrammes Draw.io
 
 ## Standards
 
@@ -198,3 +230,7 @@ Les locutions latines non francisées suivantes seront écrites en italique :
 - [Petites leçons de typographie](https://jacques-andre.fr/faqtypo/lessons.pdf) de Jaques André
 - [Lexique des règles typographiques en usage à l’Imprimerie
 nationale](https://www.payot.ch/Detail/lexique_des_regles_typographiques_en_usage_a_limprimerie_nationale-collectif-9782743304829) de l'Imprimerie Nationale française. ISBN 2-7433-0482-0
+
+## Aide et Support
+
+Pour toute question sur l'utilisation de ce modèle de document, veuillez créer une nouvelle [issue](https://github.com/heig-vd-tin/template-tb/issues), ou vous adresser à l'auteur du modèle Prof. Yves Chevallier.

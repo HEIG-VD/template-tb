@@ -1,0 +1,101 @@
+\documentclass[
+    iai, % Saisir le nom de l'institut rattaché
+    eai, % Saisir le nom de l'orientation
+    %confidential, % Décommentez si le travail est confidentiel
+]{heig-tb}
+
+\usepackage[nooldvoltagedirection,european,americaninductors]{circuitikz}
+
+\signature{mbernasconi.svg} % Remplacer par votre propre signature vectorielle.
+
+\makenomenclature
+\makenoidxglossaries
+\makeindex
+
+\addbibresource{bibliography.bib}
+
+\input{nomenclature}
+\input{acronyms}
+\input{glossary}
+\input{meta}
+
+\surroundwithmdframed{minted}
+
+%% Début du document
+\begin{document}
+\selectlanguage{french}
+\maketitle
+\frontmatter
+\clearemptydoublepage
+
+%% Requis par les dispositions générales des travaux de Bachelor
+\preamble
+\authentification
+
+%% Résumé / Résumé publiable / Version abrégée
+\begin{abstract}
+    \input{abstract}
+\end{abstract}
+
+%% Sommaire et tables
+\clearemptydoublepage
+{
+    \tableofcontents
+    \let\cleardoublepage\clearpage
+    \listoffigures
+    \let\cleardoublepage\clearpage
+    \listoftables
+    \let\cleardoublepage\clearpage
+    \listoflistings
+}
+
+\printnomenclature
+\clearemptydoublepage
+\pagenumbering{arabic}
+
+%% Contenu
+\mainmatter
+\chapter{Introduction}
+\input{introduction.tex} % Vous pouvez scinder votre travail en plusieurs fichiers. Un fichier par chapitre est recommandé.
+
+\chapter{Conclusion}
+\input{conclusion.tex}
+
+\clearpage
+
+\appendix
+\appendixpage
+\addappheadtotoc
+
+%%if
+\chapter{Première annexe}
+
+Les annexes n'ont pas un contenu \underline{normatif} mais \underline{descriptif}. Tout contenu annexé ne doit pas être nécessaire à la bonne compréhension du travail.
+
+Les annexes contiennent généralement :
+
+\begin{itemize}
+    \item les dessins mécaniques (mises en plan);
+    \item les schémas électriques détaillés;
+    \item des photographies du projet;
+    \item des scripts et des extraits de code source;
+    \item des documents techniques \pex \emph{datasheet};
+    \item des développements mathématiques.
+\end{itemize}
+\section{Sous section}
+\lipsum[1]
+%%fi
+
+\let\cleardoublepage\clearpage
+\backmatter
+
+\label{glossaire}
+\printnoidxglossary
+\printbibliography
+\label{index}
+\printindex
+
+% Le colophon est le dernier élément d'un document qui contient des notes de l'auteur concernant la mise en page et l'édition du document : il est parfaitement optionnel.
+\input{colophon.tex}
+
+\end{document}
