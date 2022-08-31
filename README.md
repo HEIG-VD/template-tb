@@ -1,7 +1,9 @@
 # Modèle HEIG-VD pour Rapport de Bachelor <!-- omit in toc -->
 
-Ce référentiel contient le modèle de document LaTeX et Microsoft Word pour la production d'un rapport de Bachelor [HEIG-VD](http://heig-vd.ch).
+Ce référentiel contient un modèle de document LaTeX pour la production d'un rapport de Bachelor [HEIG-VD](http://heig-vd.ch). Il peut être adapté au besoin.
 
+- [Contexte](#contexte)
+- [Comment démarrer / Quick Start](#comment-démarrer--quick-start)
 - [Utilisation](#utilisation)
 - [VsCode + Docker + LaTeX Suite](#vscode--docker--latex-suite)
   - [Fork et Clone du référentiel](#fork-et-clone-du-référentiel)
@@ -19,20 +21,41 @@ Ce référentiel contient le modèle de document LaTeX et Microsoft Word pour la
   - [Outils utiles](#outils-utiles)
   - [Conventions typographiques](#conventions-typographiques)
   - [Locutions](#locutions)
+- [Technologies utilisées](#technologies-utilisées)
 - [Standards](#standards)
 - [Références](#références)
+- [Aide et Support](#aide-et-support)
+
+## Contexte
+
+Cet environnement de repose pas sur [Overleaf](https://www.overleaf.com/) parce que la plateforme en ligne ne permet pas la gestion des dépendances et des artefacts et qu'elle est devenue payante avec le temps. Avec une solution en ligne les figures générées à partir de scripts (Python), les illustrations faites avec [draw.io](https://app.diagrams.net/) et la conversion de figures (`svg` en `pdf`), ne peut pas être automatisée.
+
+Ce modèle de document se veut simple d'accès pour les étudiantes et les étudiants de la HEIG-VD. Il peut être adapté et est libre d'utilisation.
+
+## Comment démarrer / Quick Start
+
+Pour utiliser ce canevas, vous avez besoin des logiciels suivants:
+
+- [Microsoft Visual Studio Code](https://code.visualstudio.com/)
+- [Docker](https://www.docker.com/)
+
+Une fois ces logiciels installés et démarrés, vous devez configurer une extension pour VS Code. Elle vous permettra de faire le lien avec Docker.
+
+- [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+Il est suggéré d'utiliser WSL2 avec la distribution Ubuntu par soucis de facilité d'utilisation.
 
 ## Utilisation
 
 L'environnement d'édition conseillé est l'éditeur [Microsoft Visual Studio Code](https://code.visualstudio.com/) couplé à [Docker](https://www.docker.com/) et au [Dev Containers](https://code.visualstudio.com/docs/remote/containers). Ceci vous évite d'installer une distribution LaTeX. Alternativement, il est possible de travailler dans [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
 
-La distribution LaTeX conseillée est [TeX Live](https://www.tug.org/texlive/). L'alternative MiKTeX est déconseillée.
+La distribution LaTeX conseillée est [TeX Live](https://www.tug.org/texlive/). L'alternative MiKTeX est déconseillée bien que très populaire.
 
 ## VsCode + Docker + LaTeX Suite
 
 Certainement l'une des plus élégante manière de développer avec LaTeX est d'utiliser Visual Studio Code avec un container POSIX contenant une distribution TeXLive.
 
-L'éditeur couplé à LaTeX Workshop de James Yu permet une éditition fluide. Le menu `commands` offre l'accès à tous les outils de base. La structure (en bas à gauche) permet de naviguer facilement dans le code. Le panneau des symboles (à droite) permet l'insertion facile de symbols.
+L'éditeur couplé à LaTeX Workshop de James Yu permet une éditition fluide. Le menu `commands` offre l'accès à tous les outils de base. La structure (en bas à gauche) et accessible par Ctrl+Alt+X permet de naviguer facilement dans le code. Le panneau des symboles (à droite) permet l'insertion facile de caractères mathématiques.
 
 ![vscode](/assets/figures/editor.png)
 
@@ -41,7 +64,7 @@ Le fichier PDF peut être visualisé dans un navigateur Web sur un deuxième éc
 Vous pouvez utiliser les commandes suivantes suivi de tab:
 
 | Commande | Font command  | Description                  |
-| -------- | ------------- |
+| -------- | ------------- | ---------------------------- |
 | FEM      | `\emph`       | Italiques                    |
 | FTT      | `\textt`      | Caractères à espacement fixe |
 | FSC      | `\textsc`     | Sans Serif                   |
@@ -52,13 +75,15 @@ Vous pouvez utiliser les commandes suivantes suivi de tab:
 
 D'autres commandes existent et sont accessibles [ici](https://cheatography.com/jcwinkler/cheat-sheets/latex-workshop-visual-studio-code/).
 
+L'éditeur de PDF [Sumatra](https://www.sumatrapdfreader.org/) est conseillé pour visualiser votre rapport, contrairement à Adobe Acrobat, le contenu est automatiquement rafraichi une fois le rapport recompilé.
+
 ### Fork et Clone du référentiel
 
-Commencez par faire un *fork* du référentiel en cliquant sur le bouton **Fork** depuis l'interface GitHub. Ceci vous crée une copie du modèle dans votre organisation GitHub. Clonez ensuite le référentiel avec `git clone`.
+Pour bien démarrer, commencez par faire un *fork* du référentiel en cliquant sur le bouton **Fork** depuis l'interface GitHub. Ceci vous crée une copie du modèle dans votre propre organisation GitHub. Clonez ensuite le référentiel avec `git clone`.
 
 ### Demarrer vscode
 
-Si vous n'avez pas installé vscode et Docker, vous devez les installer au préalable.
+Si vous n'avez pas installé VS code et Docker, vous devez les installer au préalable.
 
 Démarrez vscode et installez l'extension *Visual Studio Code Remote - Containers*.
 
@@ -68,7 +93,7 @@ Ouvrez le dossier (`CTRL+K+O`), l'environnement de développement sera automatiq
 
 ### Compiler
 
-Pour compiler le rapport exécutez simplement la commande `make`.
+Pour compiler le rapport exécutez simplement la commande `make`. Normalement, votre rapport est automatiquement compilé à chaque sauvegarde de vos modifications.
 
 ### Nettoyer la base de code
 
@@ -123,7 +148,7 @@ L'ordre conseillé pour le sommaire d'un rapport de Bachelor est le suivant:
 5. Table des matières
 6. Liste des figures
 7. Liste des tables
-8. Liste des abbréviations *optionnel*
+8. Liste des abbreviations *optionnel*
 9. Liste des symboles *optionnel*
 10. Liste des codes sources *optionnel*
 11. Introduction
@@ -138,7 +163,7 @@ Les termes utilisés sont les suivants :
 
 | Terminologie anglaise | Terminologie française | Alternative française |
 | --------------------- | ---------------------- | --------------------- |
-| Abstract              | Version abbrégée       | Résumé                |
+| Abstract              | Version abrégée        | Résumé                |
 | Preamble              | Préambule              |                       |
 | Authentication        | Authentification       |                       |
 | Content               | Table des matières     | Sommaire              |
@@ -176,8 +201,8 @@ Les conventions consensuelles d'usage sont les suivantes :
 - Une énumération ordonnée peut être constituée de phrase complètes.
 - Les unités de mesure sont espacée de la grandeur associée par une [espace insécable](https://fr.wikipedia.org/wiki/Espace_ins%C3%A9cable) et ne sont pas en italique ni placées entres crochets.
 - Les majuscules sont accentuées comme le recommande l'académie Française.
-- Et cetera s'écrit `etc.` et est toujours précédé d'une virgule dans une énumération. La locultion peut être remplacée par des points de suspension `...`. En aucun cas, ces deux formes sont combinées (`etc...`). Les points de suspension sont toujours collés dernier caractère d'une liste énumérée. (`a, b, c...`).
-- Les mots étrangés ou les anglicismes sont placés en italique.
+- Et cetera s'écrit `etc.` et est toujours précédé d'une virgule dans une énumération. La locution peut être remplacée par des points de suspension `...`. En aucun cas, ces deux formes sont combinées (`etc...`). Les points de suspension sont toujours collés dernier caractère d'une liste énumérée. (`a, b, c...`).
+- Les mots étrangers ou les anglicismes sont placés en italique.
 
 ### Locutions
 
@@ -187,6 +212,19 @@ Les conventions consensuelles d'usage sont les suivantes :
 
 Les locutions latines non francisées suivantes seront écrites en italique :
 *ad hoc*, *ad libitum*, *a fortiori*, *a posteriori*, *a posteriori*, *a priori*, *bis*, *grosso modo*, *ibidem*, *idem*, *in extenso*, *in extremis*, *in extenso*, *in extremis*, *in fine*, *infra*, *loc.cit.*, *modus vivendi*, *op.cit.*, *passim*, *quater*, *sic*, *statu quo*, *supra*, *ter*, *via*, *vice versa*.
+
+## Technologies utilisées
+
+- [XeLaTeX](https://en.wikipedia.org/wiki/XeTeX) permet le support natif de l'Unicode dans la production de fichiers PDF.
+- [Inkscape](https://inkscape.org/) pour la conversion d'images SVG en PDF.
+- [Draw.io](https://app.diagrams.net/) pour la conversion de diagrammes au format draw.io (XML) en PDF.
+- [Python](https://www.python.org/) pour la génération de figures à partir d'une source de données brute, et la coloration syntaxique de code.
+- [Make](https://www.gnu.org/software/make/) pour l'ordonnancement des étapes de compilation, et la gestion des dépendances.
+- [TeX Live](https://www.tug.org/texlive/) est la distribution LaTeX la plus populaire, compatible avec Linux, Windows et macOS.
+- [Visual Studio Code](https://code.visualstudio.com/) est un éditeur de code disposant d'extensions
+  - [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) offre des raccourcis et des fonctionnalités additionnelles pour l'écriture de documents avec LaTeX sous VS Code.
+  - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) pour le suivi de versions au sein de l'éditeur
+  - [Draw.io Integration](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio) pour intégrer à VS Code l'éditeur de diagrammes Draw.io
 
 ## Standards
 
@@ -198,3 +236,7 @@ Les locutions latines non francisées suivantes seront écrites en italique :
 - [Petites leçons de typographie](https://jacques-andre.fr/faqtypo/lessons.pdf) de Jaques André
 - [Lexique des règles typographiques en usage à l’Imprimerie
 nationale](https://www.payot.ch/Detail/lexique_des_regles_typographiques_en_usage_a_limprimerie_nationale-collectif-9782743304829) de l'Imprimerie Nationale française. ISBN 2-7433-0482-0
+
+## Aide et Support
+
+Pour toute question sur l'utilisation de ce modèle de document, veuillez créer une nouvelle [issue](https://github.com/heig-vd-tin/template-tb/issues), ou vous adresser à l'auteur du modèle Prof. Yves Chevallier.

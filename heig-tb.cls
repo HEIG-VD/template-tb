@@ -229,6 +229,7 @@
 \RequirePackage{siunitx}
 \RequirePackage{tabularx}
 \RequirePackage{tikz}
+\RequirePackage{makecell}
 \RequirePackage{bold-extra}
 \RequirePackage{ifthen}
 \RequirePackage{expkv-cs}
@@ -453,6 +454,7 @@ Yverdon-les-Bains, le \@date
       \centering
       \includegraphics[#4]{\assetsdir/#6}%
       \caption[{#1}]{#5#2}%
+      \label{#6}
     \end{figure}%
   }
 
@@ -469,3 +471,21 @@ Yverdon-les-Bains, le \@date
 \def\pex{p.~ex.~}
 \def\cad{c.-à-d.~}
 \def\cf{cf.~}
+
+%% Keystroke command
+\usetikzlibrary{shadows}
+
+\newcommand*\keystroke[1]{%
+  \tikz[baseline=(key.base)]
+    \node[%
+      draw,
+      fill=white,
+      drop shadow={shadow xshift=0.2ex,shadow yshift=-0.2ex,fill=black,opacity=0.55},
+      rectangle,
+      rounded corners=2pt,
+      inner sep=2pt,
+      line width=0.5pt,
+      font=\scriptsize\sffamily
+    ](key) {#1\strut}
+  ;
+}
