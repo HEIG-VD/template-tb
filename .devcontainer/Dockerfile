@@ -20,7 +20,8 @@ RUN apt-get install -y texlive-base \
     texlive-pstricks \
     texlive-pictures \
     texlive-latex-recommended \
-    texlive-science
+    texlive-science \
+    texlive-fonts-extra
 
 # Python
 RUN apt-get install -y git python3 python3-pip

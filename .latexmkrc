@@ -1,8 +1,5 @@
 system ("mkdir -p build/figures");
 
-$ENV{'TEXINPUTS'}='./texmf//:' . $ENV{'TEXINPUTS'};
-#$ENV{'BSTINPUTS'}='./bst//:' . $ENV{'BSTINPUTS'};
-
 @default_files = ('report.tex');
 @cus_dep_list = (@cus_dep_list, "glo gls 0 makenomenclature");
 sub makenomenclature {
@@ -16,8 +13,8 @@ sub makenomenclature {
 }
 
 $out_dir = 'build';
-$pdflatex = 'xelatex --synctex=1 -interaction=nonstopmode -shell-escape';
-$latex = 'latex --synctex=1 -interaction=nonstopmode -shell-escape';
+$pdflatex = 'xelatex --synctex=1 -interaction=nonstopmode --shell-escape';
+$latex = 'latex --synctex=1 -interaction=nonstopmode --shell-escape';
 
 $clean_ext .= " pythontex-files-%R/* pythontex-files-%R";
 push @generated_exts, 'pytxcode';
