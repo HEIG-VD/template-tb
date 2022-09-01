@@ -292,3 +292,4 @@ TSWLatexianTemp*
 *.py.pdf
 
 build/
+dist/
