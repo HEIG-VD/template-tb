@@ -262,6 +262,7 @@
   linkcolor=black,
   citecolor=black,
   plainpages=false,
+  unicode=true,
   urlcolor=linkcolor]{hyperref}
 
 \RequirePackage{csquotes}

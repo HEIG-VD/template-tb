@@ -18,7 +18,7 @@ jobs:
       - name: Build
         run: docker run -v $GITHUB_WORKSPACE:/latex -w/latex tb-report make
       - name: Perms
-        run: docker run -v $GITHUB_WORKSPACE:/latex -w/latex tb-report chmod -r a+rw build
+        run: docker run -v $GITHUB_WORKSPACE:/latex -w/latex tb-report chmod -R a+rw build
       - name: Dist directory
         run: mkdir -p dist
       - name: Move

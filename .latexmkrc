@@ -20,7 +20,7 @@ $clean_ext .= " pythontex-files-%R/* pythontex-files-%R";
 push @generated_exts, 'pytxcode';
 
 $pythontex = 'pythontex %O %S';
-$extra_rule_spec{'pythontex'}  = [ 'internal', '', 'mypythontex', "%Y%R.pytxcode",  "%Ypythontex-files-%R/%R.pytxmcr",    "%R", 1 ];
+$extra_rule_spec{'pythontex'}  = [ 'internal', '', 'mypythontex', "%Y%R.pytxcode", "%Ypythontex-files-%R/%R.pytxmcr", "%R", 1 ];
 
 sub mypythontex {
    my $result_dir = $aux_dir1."pythontex-files-$$Pbase";
