@@ -3,10 +3,7 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
-    "runArgs": [],
-    //"remoteUser": "vscode",
-
-    "postCreateCommand": "",
+    "initializeCommand": "bash ./.devcontainer/init.sh",
     "customizations": {
         "vscode": {
             "settings": {
