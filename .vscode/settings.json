@@ -3,4 +3,5 @@
     "latex-workshop.latex.outDir": "./build",
     "files.eol": "\n",
     "latex-workshop.view.pdf.viewer": "browser",
+    "terminal.integrated.defaultProfile.linux": "bash"
 }
