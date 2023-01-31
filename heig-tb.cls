@@ -398,13 +398,22 @@ Yverdon-les-Bains, le \@date
 \renewcommand\listoflistingscaption{Liste des codes sources}
 \renewcommand{\nomname}{Liste des Symboles}
 
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \ifdefined\@confidential
+  \fancyfoot[LE]{\MakeUppercase{\@confidential}}
+  \fancyfoot[RO]{\MakeUppercase{\@confidential}}
+  \fi
+}
+
 \fancypagestyle{headings}{
 \fancyhf{}
 \fancyhead[LO]{\textsl{\rightmark}}
 \fancyhead[RE]{\textsl{\leftmark}}
 \ifdefined\@confidential
-\fancyfoot[RO]{\MakeUppercase{\@confidential}}
 \fancyfoot[LE]{\MakeUppercase{\@confidential}}
+\fancyfoot[RO]{\MakeUppercase{\@confidential}}
 \fi
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0pt}
