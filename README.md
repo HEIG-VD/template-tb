@@ -97,7 +97,11 @@ Pour compiler le rapport exécutez simplement la commande `make`. Normalement, v
 
 ### Nettoyer la base de code
 
-Pour retirer tous les éléments informatifs du modèle exécutez `make fresh`. La commande va éditer `report.tex` pour y retirer les textes d'information.
+Pour retirer tous les éléments informatifs du modèle exécutez `make fresh`. La commande va éditer `report.tex` pour y retirer les textes d'information marqués par `%%if..%%fi`. La commande magique est :
+
+```bash
+find . -name '*.tex' -print0 | xargs -n1 -0 perl -0777 -pi -e "s/\%\%if.+?\%\%fi//gs"
+```
 
 ### Git ?
 
