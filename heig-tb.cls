@@ -62,11 +62,6 @@
   \def\institutename{Institut de conception mécanique et technologie des matériaux}
 }
 
-\DeclareOption{comatec}{
-  \def\instituteacronym{COMATEC}
-  \def\institutename{Institut de conception mécanique et technologie des matériaux}
-}
-
 %% Orientations
 \DeclareOption{eai}{
   \def\@orientation{Électronique et Automatisation industrielle}
@@ -107,20 +102,6 @@
   \def\@orientation{Thermotronique}
   \def\@department{TIN}
   \def\@faculty{Energie et techniques environnementales}
-  \def\@field{Ingénierie}
-}
-
-\DeclareOption{mi}{
-  \def\@orientation{Mécatronique}
-  \def\@department{TIN}
-  \def\@faculty{Microtechniques}
-  \def\@field{Ingénierie}
-}
-
-\DeclareOption{mi}{
-  \def\@orientation{Mécatronique}
-  \def\@department{TIN}
-  \def\@faculty{Microtechniques}
   \def\@field{Ingénierie}
 }
 
