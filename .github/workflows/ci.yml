@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - CiDev
+      - main
   create:
     tags:
 jobs:
