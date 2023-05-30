@@ -217,6 +217,17 @@ Les conventions consensuelles d'usage sont les suivantes :
 Les locutions latines non francisées suivantes seront écrites en italique :
 *ad hoc*, *ad libitum*, *a fortiori*, *a posteriori*, *a posteriori*, *a priori*, *bis*, *grosso modo*, *ibidem*, *idem*, *in extenso*, *in extremis*, *in extenso*, *in extremis*, *in fine*, *infra*, *loc.cit.*, *modus vivendi*, *op.cit.*, *passim*, *quater*, *sic*, *statu quo*, *supra*, *ter*, *via*, *vice versa*.
 
+## Release
+
+Une release du rapport peut être générée en ajoutant en tag git après un commit.
+```bash
+git commit -am "Update rapport"
+git tag v1.0.0 -m "Release v1.0.0"
+git push origin --tags
+```
+Pour que github action puisse générer la release il faut donner les droits à github action de créer des releases. Dans les paramètres du repo sous Actions/General/Workflows Permissions, cocher "Read and write permission" puis save.
+
+
 ## Technologies utilisées
 
 - [XeLaTeX](https://en.wikipedia.org/wiki/XeTeX) permet le support natif de l'Unicode dans la production de fichiers PDF.
