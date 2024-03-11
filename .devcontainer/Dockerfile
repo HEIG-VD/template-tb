@@ -7,10 +7,13 @@ ARG WORKDIR=/latex
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 ARG DEBIAN_FRONTEND=noninteractive
+ARG TARGETARCH
+
+RUN echo "I'm building for $TARGETARCH"
 
 RUN apt-get update
 
-# Texlive
+## Texlive
 RUN apt-get install -y latexmk biber
 RUN apt-get install -y texlive-base \
     texlive-binaries \
@@ -28,18 +31,32 @@ RUN apt-get install -y texlive-base \
 RUN apt-get install -y git python3 python3-pip
 
 # Inkscape
+
 RUN apt-get install -y inkscape
 
 # Additional utilities
+
 RUN apt-get install -y wget xvfb locales sudo
 
 # Pygments for LaTeX minted
+
 RUN pip install control Pygments
 
 # Draw.io for building figures
+
 RUN apt-get install -y libnotify4 libxss1 xdg-utils libsecret-1-0 libappindicator3-1 libgbm1 libasound2
-RUN wget https://github.com/jgraph/drawio-desktop/releases/download/v24.0.4/drawio-arm64-24.0.4.deb
-RUN dpkg -i drawio-arm64*
+
+COPY install-amd64.sh /
+COPY install-arm64.sh /
+
+RUN chmod +x install-amd64.sh
+RUN chmod +x install-arm64.sh
+
+RUN ./install-${TARGETARCH}.sh
+
+#RUN wget https://github.com/jgraph/drawio-desktop/releases/download/v24.0.4/drawio-arm64-24.0.4.deb 
+#RUN dpkg -i drawio-arm64* 
+
 
 # Set the locale
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
