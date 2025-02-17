@@ -21,7 +21,6 @@
             "extensions": [
                 "james-yu.latex-workshop",
                 "eamodio.gitlens",
-                "shardulm94.trailing-spaces",
                 "stkb.rewrap",
                 "vscode-icons-team.vscode-icons",
                 "hediet.vscode-drawio",
