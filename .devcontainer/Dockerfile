@@ -69,3 +69,6 @@ RUN python3 -m venv --system-site-packages ./venv \
     && pip install --no-cache-dir control
 
 RUN echo -e "\nsource /home/$USER/venv/bin/activate\n" >> /home/$USER/.bashrc
+
+# Remove GTK accessibility bridge triggering warnings
+ENV NO_AT_BRIDGE=1
