@@ -78,4 +78,4 @@ fi
 LS_COLORS='di=1;34:fi=92:ln=31:pi=96:so=96:bd=96:cd=96:or=31:mi=96:ex=33:*.rpm=90'
 export LS_COLORS
 
-export PS1="\[\e[33m\]\n\u@\[$CNX\]\h \[\e[32m\]\W \[\e[m\]\\n\$ "
+export PS1="\[\e[33m\]\u@\[$CNX\]\h \[\e[32m\]\W \[\e[m\]\\n\$ "

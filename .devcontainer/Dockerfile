@@ -58,6 +58,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends sudo \
     && chmod 0440 /etc/sudoers.d/$USER \
     && rm -rf /var/lib/apt/lists/*
 
+COPY ./.bashrc /home/$USER/.bashrc
+RUN chown $USER:$USER /home/$USER/.bashrc
+
 USER $USER
 WORKDIR /home/$USER
 
