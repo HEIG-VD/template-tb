@@ -1,4 +1,7 @@
 {
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "files.insertFinalNewline": true,
     "latex-workshop.latex.external.build.command": "make",
     "latex-workshop.latex.outDir": "./build",
     "files.eol": "\n",

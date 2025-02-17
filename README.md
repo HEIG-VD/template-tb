@@ -6,8 +6,8 @@ Ce référentiel contient un modèle de document LaTeX pour la production d'un r
 - [Comment démarrer / Quick Start](#comment-démarrer--quick-start)
 - [Utilisation](#utilisation)
 - [VsCode + Docker + LaTeX Suite](#vscode--docker--latex-suite)
-  - [Fork et Clone du référentiel](#fork-et-clone-du-référentiel)
-  - [Demarrer vscode](#demarrer-vscode)
+  - [Copie du référentiel](#copie-du-référentiel)
+  - [Démarrer vscode](#démarrer-vscode)
   - [Compiler](#compiler)
   - [Nettoyer la base de code](#nettoyer-la-base-de-code)
   - [Git ?](#git-)
@@ -77,11 +77,11 @@ D'autres commandes existent et sont accessibles [ici](https://cheatography.com/j
 
 L'éditeur de PDF [Sumatra](https://www.sumatrapdfreader.org/) est conseillé pour visualiser votre rapport, contrairement à Adobe Acrobat, le contenu est automatiquement rafraichi une fois le rapport recompilé.
 
-### Fork et Clone du référentiel
+### Copie du référentiel
 
-Pour bien démarrer, commencez par faire un *fork* du référentiel en cliquant sur le bouton **Fork** depuis l'interface GitHub. Ceci vous crée une copie du modèle dans votre propre organisation GitHub. Clonez ensuite le référentiel avec `git clone`.
+Pour créer votre propre référentiel à partir de celui-ci, allez sur la page https://github.com/new/import et entrez y son URL. Clonez ensuite votre nouveau référentiel avec `git clone`. Ceci vous crée une copie du modèle dans votre propre compte GitHub.
 
-### Demarrer vscode
+### Démarrer vscode
 
 Si vous n'avez pas installé VS code et Docker, vous devez les installer au préalable.
 
@@ -217,16 +217,17 @@ Les conventions consensuelles d'usage sont les suivantes :
 Les locutions latines non francisées suivantes seront écrites en italique :
 *ad hoc*, *ad libitum*, *a fortiori*, *a posteriori*, *a posteriori*, *a priori*, *bis*, *grosso modo*, *ibidem*, *idem*, *in extenso*, *in extremis*, *in extenso*, *in extremis*, *in fine*, *infra*, *loc.cit.*, *modus vivendi*, *op.cit.*, *passim*, *quater*, *sic*, *statu quo*, *supra*, *ter*, *via*, *vice versa*.
 
-## Release
+<!-- ## Release
 
 Une release du rapport peut être générée en ajoutant en tag git après un commit.
+
 ```bash
 git commit -am "Update rapport"
 git tag v1.0.0 -m "Release v1.0.0"
 git push origin --tags
 ```
-Pour que github action puisse générer la release il faut donner les droits à github action de créer des releases. Dans les paramètres du repo sous Actions/General/Workflows Permissions, cocher "Read and write permission" puis save.
 
+Pour que GitHub Actions puisse générer la release il faut lui en donner le droit. Pour ce faire, allez sur la page GitHub de votre référentiel, cliquez sur l'entrée de menu Actions et acceptez d'activer la fonctionnalité. -->
 
 ## Technologies utilisées
 

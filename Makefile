@@ -22,7 +22,7 @@ all: $(OUT).tex $(FIGS) | $(BUILDDIR)
 figures: $(FIGS)
 
 $(FIGS_SVG): $(BUILDDIR)/%.svg.pdf: %.svg | dirs
-	dbus-run-session inkscape --export-area-drawing -o $@ $<
+	$(INKSCAPE) --export-area-drawing -o $@ $<
 
 $(FIGS_PY): $(BUILDDIR)/%.py.pdf: %.py | dirs
 	python3 $< > $@

@@ -10,7 +10,6 @@
     "customizations": {
         "vscode": {
             "settings": {
-                "files.eol": "\n",
                 "latex-workshop.chktex.enabled": true,
                 "latex-workshop.latex.clean.subfolder.enabled": true,
                 "latex-workshop.latex.autoClean.run": "onBuilt",
@@ -20,9 +19,9 @@
                 }
             },
             "extensions": [
+                "ms-python.python",
                 "james-yu.latex-workshop",
                 "eamodio.gitlens",
-                "shardulm94.trailing-spaces",
                 "stkb.rewrap",
                 "vscode-icons-team.vscode-icons",
                 "hediet.vscode-drawio",
