@@ -19,6 +19,7 @@
                 }
             },
             "extensions": [
+                "ms-python.python",
                 "james-yu.latex-workshop",
                 "eamodio.gitlens",
                 "stkb.rewrap",
