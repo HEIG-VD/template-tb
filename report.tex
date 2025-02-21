@@ -14,9 +14,9 @@
 
 \addbibresource{bibliography.bib}
 
-\input{nomenclature}
-\input{acronyms}
-\input{glossary}
+\input{backmatter/nomenclature}
+\input{backmatter/acronyms}
+\input{backmatter/glossary}
 \input{meta}
 
 \surroundwithmdframed{minted}
@@ -29,12 +29,12 @@
 \clearemptydoublepage
 
 %% Requis par les dispositions générales des travaux de Bachelor
-\preamble
-\authentification
+\input{frontmatter/preamble}
+\input{frontmatter/authentication}
 
 %% Résumé / Résumé publiable / Version abrégée
 \begin{abstract}
-    \input{abstract}
+    \input{frontmatter/abstract}
 \end{abstract}
 
 %% Sommaire et tables
@@ -55,12 +55,12 @@
 
 %% Contenu
 \mainmatter
-\chapter{Introduction}
-\input{introduction.tex}
-\input{examples.tex}
 
-\chapter{Conclusion}
-\input{conclusion.tex}
+\input{content/introduction}
+\input{content/state-of-the-art}
+\input{content/implementation}
+\input{content/results}
+\input{content/conclusion}
 
 \clearpage
 \printbibliography
@@ -69,24 +69,8 @@
 \appendixpage
 \addappheadtotoc
 
-%%if
-\chapter{Première annexe}
-
-Les annexes ne possèdent pas de contenu \underline{normatif} mais \underline{descriptif}. Tout contenu annexé ne doit pas être nécessaire à la bonne compréhension du travail.
-
-Les annexes contiennent généralement :
-
-\begin{itemize}
-    \item les dessins mécaniques (mises en plan);
-    \item les schémas électriques détaillés;
-    \item des photographies du projet;
-    \item des scripts et des extraits de code source;
-    \item des documents techniques \pex \emph{datasheet};
-    \item des développements mathématiques.
-\end{itemize}
-\section{Sous-section}
-\lipsum[1]
-%%fi
+\input{appendix/appendix.tex}
+\input{appendix/examples.tex}
 
 \let\cleardoublepage\clearpage
 \backmatter
@@ -97,6 +81,6 @@ Les annexes contiennent généralement :
 \printindex
 
 % Le colophon est le dernier élément d'un document qui contient des notes de l'auteur concernant la mise en page et l'édition du document : il est parfaitement optionnel.
-\input{colophon.tex}
+\input{backmatter/colophon}
 
 \end{document}

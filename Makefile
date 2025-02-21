@@ -1,8 +1,8 @@
 BUILDDIR=build
 LATEXMK=latexmk
-INKSCAPE=inkscape
+INKSCAPE=NO_AT_BRIDGE=1 dbus-run-session inkscape
 FIGDIR=assets/figures
-DRAWIO=drawio
+DRAWIO=drawio-cli
 OUT=report
 
 SVGS=$(wildcard $(FIGDIR)/*.svg)
@@ -16,19 +16,26 @@ FIGS_PY=$(patsubst %.py, $(BUILDDIR)/%.py.pdf, $(PYFS))
 
 FIGS=$(FIGS_SVG) $(FIGS_DIO) $(FIGS_PDF) $(FIGS_PY)
 
+BLUE=\033[1;34m
+GREEN=\033[1;32m
+RESET=\033[0m
+
 all: $(OUT).tex $(FIGS) | $(BUILDDIR)
 	$(LATEXMK) -pdf $<
 
 figures: $(FIGS)
 
 $(FIGS_SVG): $(BUILDDIR)/%.svg.pdf: %.svg | dirs
-	dbus-run-session inkscape --export-area-drawing -o $@ $<
+	@printf "$(GREEN)Converting svg diagram '$<' to '$@'$(RESET)\n"
+	$(INKSCAPE) --export-area-drawing -o $@ $<
 
 $(FIGS_PY): $(BUILDDIR)/%.py.pdf: %.py | dirs
 	python3 $< > $@
 
+
 $(FIGS_DIO): $(BUILDDIR)/%.drawio.pdf: %.drawio | dirs
-	xvfb-run -a $(DRAWIO) --crop --export --format pdf --output $@ $< --disable-gpu --headless --no-sandbox
+	@printf "$(BLUE)Converting drawio diagram '$<' to '$@'$(RESET)\n"
+	$(DRAWIO) --crop --export --format pdf --output $@ $< --disable-gpu --headless --no-sandbox
 
 $(FIGS_PDF): $(BUILDDIR)/%.pdf: %.pdf | dirs
 	cp $< $@

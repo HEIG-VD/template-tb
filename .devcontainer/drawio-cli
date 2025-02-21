@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+UNWANTED_LINES=(
+  "Failed to connect to the bus"
+  "Failed to post task"
+  "Floss manager service not available"
+  "InitializeSandbox"
+  "extension not supported"
+  "Checking for beta autoupdate feature for deb/rpm distributions"
+  "Found package-type: deb"
+  "XDG_RUNTIME_DIR"
+)
+
+filter_output() {
+  local output="$1"
+  for pattern in "${UNWANTED_LINES[@]}"; do
+    output=$(echo "$output" | grep -Fv "$pattern")
+  done
+  echo "$output"
+}
+
+execute_drawio() {
+  timeout 10s xvfb-run -a /opt/drawio/drawio "$@" --no-sandbox --disable-gpu
+}
+
+main() {
+  local output
+  output=$(execute_drawio "$@" 2>&1)
+  filter_output "$output"
+}
+
+main "$@"

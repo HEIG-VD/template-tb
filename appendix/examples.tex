@@ -1,19 +1,40 @@
-%%if
-\section{Exemple d'équation}
-L'une des principales forces de \LaTeX~est la saisie d'équations. L'équation \ref{eq:1}, citée à titre d'exemple, représente la transformation de phase d'une lentille biconvexe. Pour rédiger une équation \LaTeX~vous pouvez utiliser des outils en ligne tels que \href{https://www.latex4technics.com/}{latex4technics}. Essayez autant que possible d'écrire vos équations à la main. La courbe d'apprentissage n'est pas très raide et la valeur ajoutée est grande. Vous pouvez vous aider du panneau de \LaTeX~Workshop dans Visual Studio Code. Il est accessible via le raccourci clavier \keystroke{Ctrl} + \keystroke{Alt} + \keystroke{X}.
+\chapter{Exemples}
+
+Ce chapitre est dédié à la présentation de quelques exemples de contenu que vous pourriez intégrer dans votre rapport. Il est important de noter que ce document est un modèle et que vous devriez adapter son contenu à votre projet. Les exemples suivants sont bien entendu donnés à titre indicatif.
+
+\section{Citations et bibliographie}
+
+Citer vos sources est essentiel. Avec \texttt{biblatex} vous pouvez facilement citer des articles, des livres ou des sites internet. Toutes les citations dans le texte seront automatiquement regroupées en fin de document dans la section \guillemotleft{} Bibliographie\guillemotright.
+
+À titre d'exemple nous pouvons citer un article d'Einstein \cite{einstein} ou le livre de Dirac \cite{dirac}. La communauté scientifique à de nombreux concensus pour référencer les articles scientifiques. On parle du style des citations. Certains styles sont normalisés comme le style \texttt{IEEEtran} ou \texttt{APA}. Le style \texttt{IEEEtran} est souvent utilisé pour les articles scientifiques en ingénierie et en informatique. Le style \texttt{APA} est souvent utilisé en psychologie et en sciences sociales. Avec \LaTeX{} vous pouvez facilement changer le style de citation en modifiant l'option \mintinline{latex}|style=alphabetic| dans le fichier \texttt{heig-tb.cls}.
+
+Ne citez pas pour citer, mais citez pour appuyer vos arguments sur des travaux existants. Elles doivent être utilisées pour montrer que vous avez fait des recherches sur le sujet.
+
+Parfois il peut être utile d'utiliser un gestionnaire de bibliographie. La communauté académique recommande l'outil \href{https://www.zotero.org/}{Zotero} qui permet de gérer une bibliothèque numérique d'ouvrages et de références numériques. Il permet également de générer une bibliographie compatible avec \LaTeX.
+
+Notez qu'il est très facile d'obtenir l'extrait \texttt{bibtex} depuis des journaux. Sélectionnez \emph{export/citation}. Si vous le pouvez, choisissez \texttt{bibtex}. Dans le cas d'un format \texttt{.ris}, utilisez un convertisseur en ligne comme \href{http://www.bruot.org/ris2bib/}{ris2bib}.
+
+\section{Mathématiques}
+
+L'une des principales forces de \LaTeX{} est la saisie d'équations. L'équation \ref{eq:1}, citée à titre d'exemple, représente la transformation de phase d'une lentille biconvexe. Pour rédiger une équation \LaTeX{} vous pouvez utiliser des outils en ligne tels que \href{https://www.latex4technics.com/}{latex4technics}. Essayez autant que possible d'écrire vos équations à la main.
+La courbe d'apprentissage n'est pas très raide et la valeur ajoutée est grande. Vous pouvez vous aider du panneau de \LaTeX{} Workshop dans Visual Studio Code. Il est accessible via le raccourci clavier \keystroke{Ctrl} + \keystroke{Alt} + \keystroke{X}.
 
 \begin{equation} \label{eq:1}
     \begin{split}
-        L(x,y) &= \exp\left( - i\frac{{2\pi }}{\lambda }\left( {n\Delta \varphi (x,y) + \Delta {\varphi _0} - \Delta \varphi (x,y)} \right)\right)\\
-        &= {\exp\left({i\frac{{2\pi }}{\lambda }\Delta {\varphi _0}}\right)}{\exp\left({ - i\frac{{2\pi }}{{\lambda f}}({x^2} + {y^2})}\right)}
+        L(x,y) & = \exp\left( - i\frac{{2\pi }}{\lambda }\left( {n\Delta \varphi (x,y) + \Delta {\varphi _0} - \Delta \varphi (x,y)} \right)\right)     \\
+               & = {\exp\left({i\frac{{2\pi }}{\lambda }\Delta {\varphi _0}}\right)}{\exp\left({ - i\frac{{2\pi }}{{\lambda f}}({x^2} + {y^2})}\right)}
     \end{split}
 \end{equation}
 
-\section{Exemples de diagrammes}
+Pensez à numéroter vos équations pour pouvoir les citer dans le texte.
 
-Les diagrammes de flux peuvent être réalisés en utilisant l'outil \href{https://app.diagrams.net/}{draw.io}. Une exportation en \texttt{.drawio} (non compressé) permet de garder les sources de la figure. Le rendu en \texttt{.pdf} sera réalisé à la volée à la compilation. L'intérêt est double : n'avoir qu'une source de vérité \cad pas d'image intermédiaire à stocker, et réduire la quantité d'information stockée.
+\section{Diagrammes}
 
-Puisque la source est au format XML, les textes sont accessibles au correcteur orthographique et il vous est rendu possible les modifier sans avoir à éditer l'image. La figure \ref{euclide.drawio} en est un exemple.
+Les diagrammes de flux peuvent être réalisés en utilisant l'outil \href{https://app.diagrams.net/}{draw.io}. Une exportation en \texttt{.drawio} (non compressé) permet de garder les sources de la figure. Le rendu en \texttt{.pdf} sera réalisé à la volée à la compilation ce qui est l'intérêt principal d'utiliser ce modèle.
+
+L'objectif est d'avoir qu'une source de vérité \cad pas d'image intermédiaire à stocker, et réduire la quantité d'information dans votre dépôt GitHub.
+
+Puisque la source de ces diagrammes est au format XML, les textes sont accessibles au correcteur orthographique et il vous est rendu possible les modifier sans avoir à éditer l'image. La figure \ref{euclide.drawio} en est un exemple.
 
 \fig[H, width=9cm]{Algorithme d'Euclide}{euclide.drawio}
 
@@ -21,15 +42,15 @@ Notons qu'il est inutile d'insérer des images coloriées là où la couleur n'o
 
 Voici un autre type de diagramme utile (figure \ref{sequence.drawio}), celui d'une séquence UML.
 
-\fig[H, width=0.4\textwidth]{Diagramme de séquence}{sequence.drawio}
+\fig[H, width=0.6\textwidth]{Diagramme de séquence}{sequence.drawio}
 
 Ce modèle apporte la commande \verb!\fig! qui peut prendre plusieurs options. Utilisez \verb!H! pour forcer la figure à apparaître à l'endroit de la déclaration. Ajustez la largeur de la figure à \SI{80}{\percent} de largeur de page avec \verb!width=0.8\textwidth!.
 
-\section{Exemple de figure}
+\section{Figures}
 
 Pour présenter vos résultats d'expérience, vous pouvez soit dessiner des graphiques manuellement en utilisant des outils de dessin vectoriel comme Inkscape ou Adobe Illustrator, comme illustré à la figure \ref{plot.svg}.
 
-\fig[H, width=0.8\textwidth]{Exemple de graphique plan}{plot.svg}
+\fig[H, width=1\textwidth]{Exemple de graphique plan}{plot.svg}
 
 Vous pouvez utiliser Python ou Matlab pour générer des figures à la volée à partir d'une source de données. À titre d'exemple, le code source \ref{python} permet de générer la figure \ref{bode.py}.
 \begin{listing}[h]
@@ -39,7 +60,7 @@ Vous pouvez utiliser Python ou Matlab pour générer des figures à la volée à
 
 \fig[H, width=12cm]{Diagramme de Bode généré à la volée}{bode.py}
 
-\subsection{Exemple de schéma électronique}
+\subsection{Schéma électronique}
 Vous pouvez également utiliser TikZ pour créer vos propres schémas électriques et électroniques comme l'exemple \ref{circuit}. N'hésitez pas à vous inspirer d'exemples disponibles sur internet (\href{https://texample.net/tikz/examples/area/electrical-engineering/}{texample/electrical-engineering}).
 
 \begin{figure}[h]
@@ -117,6 +138,8 @@ Comparez la lisibilité de cette même table avec celle que vous pourriez trouve
     \end{center}
 \end{table}
 
+\subsection{Exigences techniques}
+
 Si vous devez donner une spécification technique, n'oubliez pas de mentionner les valeurs minimales, maximales et nominales sans omettre l'unité de mesure. Notez que les séparateurs verticaux sont souvent critiqués pour réduire la lisibilité, mais parfois ils sont utiles. Utilisez-les avec parcimonie. Jouez avec l'alignement des colonnes pour accroître la lisibilité et utilisez l'environnement \mintinline{latex}{tabularx} pour plus d'unité dans les largeurs de vos tableaux.
 
 \begin{table}[h]
@@ -137,14 +160,16 @@ Si vous devez donner une spécification technique, n'oubliez pas de mentionner l
 
 L'exemple de la table \ref{specification}, assigne pour chaque exigence un numéro unique. Cette table est \textbf{normative}, chaque élément doit pouvoir être référencé par un identifiant unique (cf. T\ref{specification}-E3). Dans le cas où cet identifiant est utilisé en dehors de ce document, la version du document devra être renseignée.
 
-\section{Index}
-\LaTeX~ permet d'indexer les mots \index{mots} importants. Il suffit de placer les termes importants d'un paragraphe dans la commande \mintinline{latex}{\index{terme}} et ils apparaîtront automatiquement à la fin de ce rapport dans l'index du document.
+\section{Annotations et références}
+
+\subsection{Index}
+\LaTeX{} permet d'indexer les mots \index{mots} importants. Il suffit de placer les termes importants d'un paragraphe dans la commande \mintinline{latex}{\index{terme}} et ils apparaîtront automatiquement à la fin de ce rapport dans l'index du document. L'intérêt réside principalement dans une version imprimée. Si votre rapport n'est pas destiné a être imprimé, l'index n'est pas nécessaire.
 
 \index{Napoléon}
 
 Imaginons que dans cette section nous parlions du cheval blanc \index{cheval blanc} de Napoléon. Il se pourrait que le lecteur recherche ce passage dans la version imprimée du rapport. Avec l'index, rien de plus facile. Allez jeter un œil à la page \pageref{index}.
 
-\section{Notes de bas de page}
+\subsection{Notes de bas de page}
 
 \maraja{Je suis une marginale, et je suis utile pour résumé un paragraphe en quelques mots.} Parfois, il est plus élégant d'annoter une définition en utilisant une note de bas de page \footnote{La note en bas de page (ou note de bas de page) est une forme littéraire, consistant en une ou plusieurs lignes ne figurant pas dans le texte.}. Alternativement il est possible d'annoter un paragraphe avec une note marginale.
 
@@ -159,4 +184,17 @@ Lorsque vous mentionnez des quantités, utilisez les unités du système interna
 \mintinline{latex}{\SI{42.12}{\kilo\gram\metre\per\square\second}}\par
 
 Notez qu'une espace fine précède l'unité et que ces dernières ne sont pas en italiques.
-%%fi
+
+\section{Code source}
+
+Ce modèle vous offre deux environnements pour afficher du code source. Le plus traditionnel est l'environnement Listing et le second est l'environnement Minted. Le premier est plus simple à utiliser, mais le second offre une coloration syntaxique plus précise et utilise Python comme backend pour la coloration syntaxique.
+
+\begin{listing}[h]
+    \inputminted{c}{assets/code/fibonacci.c}
+    \caption{Exemple de programme en C \label{c} avec Minted}
+\end{listing}
+
+\begin{listing}[h]
+    \lstinputlisting{assets/code/fibonacci.c}
+    \caption{Exemple de programme en C \label{c} avec Listing}
+\end{listing}

@@ -1,0 +1,18 @@
+%% L'authentification est imposée par la direction de la HEIG-VD.
+%% Le texte ne doit pas être modifié.
+
+\chapter*{Authentification}
+\addcontentsline{toc}{chapter}{Authentification}
+
+Je soussigné\ifx\thegenre\female e\fi, \theauthor, atteste par la présente avoir réalisé seul\ifx\thegenre\female e\fi~ce travail et n'avoir utilisé aucune autre source que celles expressément mentionnées.
+
+\vfil
+{\leftskip9cm\relax\theauthor\par
+    \ifdefined\thesignature
+        %\hspace{8cm}
+        \printsignature
+
+    \fi
+}
+\vfil
+Yverdon-les-Bains, le \thedate
