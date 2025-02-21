@@ -1,13 +1,13 @@
 # Modèle HEIG-VD pour Rapport de Bachelor <!-- omit in toc -->
 
-Ce référentiel contient un modèle de document LaTeX pour la production d'un rapport de Bachelor [HEIG-VD](http://heig-vd.ch). Il peut être adapté au besoin.
+Ce référentiel contient le modèle de document LaTeX pour la production d'un rapport de bachelor [HEIG-VD](http://heig-vd.ch). Il peut être adapté au besoin.
 
 - [Contexte](#contexte)
 - [Comment démarrer / Quick Start](#comment-démarrer--quick-start)
 - [Utilisation](#utilisation)
 - [VsCode + Docker + LaTeX Suite](#vscode--docker--latex-suite)
   - [Fork et Clone du référentiel](#fork-et-clone-du-référentiel)
-  - [Demarrer vscode](#demarrer-vscode)
+  - [Démarrer vscode](#démarrer-vscode)
   - [Compiler](#compiler)
   - [Nettoyer la base de code](#nettoyer-la-base-de-code)
   - [Git ?](#git-)
@@ -21,14 +21,21 @@ Ce référentiel contient un modèle de document LaTeX pour la production d'un r
   - [Outils utiles](#outils-utiles)
   - [Conventions typographiques](#conventions-typographiques)
   - [Locutions](#locutions)
+- [Release](#release)
 - [Technologies utilisées](#technologies-utilisées)
 - [Standards](#standards)
+- [Autres modèles LaTeX](#autres-modèles-latex)
 - [Références](#références)
+- [FAQ (Foire Aux Questions)](#faq-foire-aux-questions)
+  - [Ma compilation est trop lente](#ma-compilation-est-trop-lente)
+  - [J'aimerais rajouter mon nom en haut de toutes les pages](#jaimerais-rajouter-mon-nom-en-haut-de-toutes-les-pages)
 - [Aide et Support](#aide-et-support)
 
 ## Contexte
 
-Cet environnement de repose pas sur [Overleaf](https://www.overleaf.com/) parce que la plateforme en ligne ne permet pas la gestion des dépendances et des artefacts et qu'elle est devenue payante avec le temps. Avec une solution en ligne les figures générées à partir de scripts (Python), les illustrations faites avec [draw.io](https://app.diagrams.net/) et la conversion de figures (`svg` en `pdf`), ne peut pas être automatisée.
+Cet environnement de repose pas sur [Overleaf](https://www.overleaf.com/) parce que la plateforme en ligne ne permet pas la gestion des dépendances et des artefacts et qu'elle est devenue payante avec le temps.
+
+Avec une solution en ligne comme Overleaf, les figures générées à partir de scripts (Python), les illustrations faites avec [Draw.io](https://app.diagrams.net/) et la conversion automatique de figures (`svg` en `pdf`), ne peuvent pas être automatisées. En revanche, en profitant d'un environnement de développement local, avec l'appui de Docker, ces tâches peuvent être automatisées et la compilation rendue plus rapide.
 
 Ce modèle de document se veut simple d'accès pour les étudiantes et les étudiants de la HEIG-VD. Il peut être adapté et est libre d'utilisation.
 
@@ -43,8 +50,6 @@ Une fois ces logiciels installés et démarrés, vous devez configurer une exten
 
 - [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
-Il est suggéré d'utiliser WSL2 avec la distribution Ubuntu par soucis de facilité d'utilisation.
-
 ## Utilisation
 
 L'environnement d'édition conseillé est l'éditeur [Microsoft Visual Studio Code](https://code.visualstudio.com/) couplé à [Docker](https://www.docker.com/) et au [Dev Containers](https://code.visualstudio.com/docs/remote/containers). Ceci vous évite d'installer une distribution LaTeX. Alternativement, il est possible de travailler dans [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
@@ -53,9 +58,9 @@ La distribution LaTeX conseillée est [TeX Live](https://www.tug.org/texlive/). 
 
 ## VsCode + Docker + LaTeX Suite
 
-Certainement l'une des plus élégante manière de développer avec LaTeX est d'utiliser Visual Studio Code avec un container POSIX contenant une distribution TeXLive.
+Certainement l'une des plus élégantes manières de développer avec LaTeX est d'utiliser Visual Studio Code avec un conteneur POSIX contenant une distribution TeXLive.
 
-L'éditeur couplé à LaTeX Workshop de James Yu permet une éditition fluide. Le menu `commands` offre l'accès à tous les outils de base. La structure (en bas à gauche) et accessible par Ctrl+Alt+X permet de naviguer facilement dans le code. Le panneau des symboles (à droite) permet l'insertion facile de caractères mathématiques.
+L'éditeur couplé à LaTeX Workshop de James Yu permet une édition fluide. Le menu `commands` offre l'accès à tous les outils de base. La structure (en bas à gauche) et accessible par Ctrl+Alt+X permet de naviguer facilement dans le code. Le panneau des symboles (à droite) permet l'insertion facile de caractères mathématiques.
 
 ![vscode](/assets/figures/editor.png)
 
@@ -81,7 +86,7 @@ L'éditeur de PDF [Sumatra](https://www.sumatrapdfreader.org/) est conseillé po
 
 Pour bien démarrer, commencez par faire un *fork* du référentiel en cliquant sur le bouton **Fork** depuis l'interface GitHub. Ceci vous crée une copie du modèle dans votre propre organisation GitHub. Clonez ensuite le référentiel avec `git clone`.
 
-### Demarrer vscode
+### Démarrer vscode
 
 Si vous n'avez pas installé VS code et Docker, vous devez les installer au préalable.
 
@@ -89,11 +94,11 @@ Démarrez vscode et installez l'extension *Visual Studio Code Remote - Container
 
 Ouvrez le dossier (`CTRL+K+O`), l'environnement de développement sera automatiquement démarré.
 
-**NOTE:** La construction initiale du container prend beaucoup de temps car la distribution LaTeX doit être téléchargée. Vous pouvez aller boire un café.
+**NOTE:** La construction initiale du conteneur prend beaucoup de temps, car la distribution LaTeX doit être téléchargée. Vous pouvez aller boire un café.
 
 ### Compiler
 
-Pour compiler le rapport exécutez simplement la commande `make`. Normalement, votre rapport est automatiquement compilé à chaque sauvegarde de vos modifications.
+Pour compiler le rapport, exécutez simplement la commande `make`. Normalement, votre rapport est automatiquement compilé à chaque sauvegarde de vos modifications.
 
 ### Nettoyer la base de code
 
@@ -123,7 +128,7 @@ Les figures au format `.drawio` sont converties en `.drawio.pdf` en utilisant la
 
 Les figures au format `.py` sont générées à l'aide de Python.
 
-Pour chacun de ces formats un exemple est donné. L'utilisateur final est libre de modifier la logique de production de ces fichiers et d'en ajouter selon ses besoins.
+Pour chacun de ces formats, un exemple est donné. L'utilisateur final est libre de modifier la logique de production de ces fichiers et d'en ajouter selon ses besoins.
 
 Les conventions de nommage des fichiers intermédiaires sont les suivantes :
 
@@ -152,7 +157,7 @@ L'ordre conseillé pour le sommaire d'un rapport de Bachelor est le suivant:
 5. Table des matières
 6. Liste des figures
 7. Liste des tables
-8. Liste des abbreviations *optionnel*
+8. Liste des abréviations *optionnel*
 9. Liste des symboles *optionnel*
 10. Liste des codes sources *optionnel*
 11. Introduction
@@ -178,8 +183,8 @@ Les conventions consensuelles d'usage sont les suivantes :
 
 ### Numérotation des pages
 
-- La première et dernière page de couverture ne sont pas numérotées
-- Les pages vide ne sont pas numérotées
+- La première et dernière page de couverture n’est pas numérotée
+- Les pages vides ne sont pas numérotées
 - Les pages précédant le premier chapitre du document sont numérotées en chiffres romains.
 - Les pages à partir du premier chapitre du document sont numérotées en chiffres indo-arabes.
 
@@ -201,11 +206,11 @@ Les conventions consensuelles d'usage sont les suivantes :
 - Les paragraphes sont soit indentés, soit espacés, mais pas les deux.
 - Le premier paragraphe d'une section n'est jamais indenté.
 - En français, les énumérations utilisent le [tiret demi-cadratin](https://fr.wikipedia.org/wiki/Tiret) (`U+2013`).
-- Une énumération non ordonnée est considérée comme une phrase continue, chaque entrée sera ponctuée d'une virgule ou d'un point virgule.
-- Une énumération ordonnée peut être constituée de phrase complètes.
-- Les unités de mesure sont espacée de la grandeur associée par une [espace insécable](https://fr.wikipedia.org/wiki/Espace_ins%C3%A9cable) et ne sont pas en italique ni placées entres crochets.
-- Les majuscules sont accentuées comme le recommande l'académie Française.
-- Et cetera s'écrit `etc.` et est toujours précédé d'une virgule dans une énumération. La locution peut être remplacée par des points de suspension `...`. En aucun cas, ces deux formes sont combinées (`etc...`). Les points de suspension sont toujours collés dernier caractère d'une liste énumérée. (`a, b, c...`).
+- Une énumération non ordonnée est considérée comme une phrase continue, chaque entrée sera ponctuée d'une virgule ou d'un point-virgule.
+- Une énumération ordonnée peut être constituée de phrases complètes.
+- Les unités de mesure sont espacées de la grandeur associée par une [espace insécable](https://fr.wikipedia.org/wiki/Espace_ins%C3%A9cable) et ne sont pas en italique ni placées entres crochets.
+- Les majuscules sont accentuées comme le recommande l'Académie française.
+- Et cetera s'écrit `etc.` et est toujours précédé d'une virgule dans une énumération. La locution peut être remplacée par des points de suspension `...`. En aucun cas, ces deux formes ne sont combinées (`etc...`). Les points de suspension sont toujours collés, dernier caractère d'une liste énumérée. (`a, b, c...`).
 - Les mots étrangers ou les anglicismes sont placés en italique.
 
 ### Locutions
@@ -230,7 +235,7 @@ Pour que github action puisse générer la release il faut donner les droits à 
 
 ## Technologies utilisées
 
-- [XeLaTeX](https://en.wikipedia.org/wiki/XeTeX) permet le support natif de l'Unicode dans la production de fichiers PDF.
+- [LuaLateX](https://www.luatex.org/) permet le support natif de l'Unicode dans la production de fichiers PDF.
 - [Inkscape](https://inkscape.org/) pour la conversion d'images SVG en PDF.
 - [Draw.io](https://app.diagrams.net/) pour la conversion de diagrammes au format draw.io (XML) en PDF.
 - [Python](https://www.python.org/) pour la génération de figures à partir d'une source de données brute, et la coloration syntaxique de code.
@@ -246,11 +251,33 @@ Pour que github action puisse générer la release il faut donner les droits à 
 - [Diagrammes BPMN 2.0](https://www.bpmn.org/) (*Business Process Model And Notation*)
 - [Diagrammes UML 2.5.1](https://www.omg.org/spec/UML/About-UML/) (*Unified Modelling Language*)
 
+## Autres modèles LaTeX
+
+- [EPFL unofficial PhD Thesis](https://github.com/glederrey/EPFL_thesis_template)
+- [KaoBook de Jimmy Roussel](https://github.com/JimRou/template_kaobook)
+- [Zurich University of Applied Sciences](https://github.com/matteodelucchi/ZHAW_thesis-template)
+- [Université de la Sorbonne](https://github.com/itoumlilt/sorbonne-univ-cleanthesis)
+
 ## Références
 
 - [Petites leçons de typographie](https://jacques-andre.fr/faqtypo/lessons.pdf) de Jaques André
 - [Lexique des règles typographiques en usage à l’Imprimerie
 nationale](https://www.payot.ch/Detail/lexique_des_regles_typographiques_en_usage_a_limprimerie_nationale-collectif-9782743304829) de l'Imprimerie Nationale française. ISBN 2-7433-0482-0
+
+## FAQ (Foire Aux Questions)
+
+### Ma compilation est trop lente
+
+Il est vivement recommandé d'utiliser un environnement Linux (WSL2 depuis Windows ou un Linux/Unix natif pour profiter de la rapidité du système de fichier. Votre compilation sera beaucoup plus rapide. N'oubliez pas si vous êtes dans WSL2 de ne pas travailler depuis votre point de montage Windows (`/mnt/c/Users/...`) mais depuis le système de fichier Linux (`/home/user/...`).
+
+### J'aimerais rajouter mon nom en haut de toutes les pages
+
+Il n'est généralement pas recommandé de mettre son nom sur toutes les pages d'un livre ou d'un rapport de thèse bien que de nombreux modèles le fassent et que certains enseignants le demandent. Néanmoins il existe des conventions académiques et éditoriales qui réfutent cette pratique.
+
+- Le nom de l'auteur apparaît habituellement sur la page de couverture et éventuellement dans les en-têtes des chapitres, mais pas sur chaque page.
+- Ce serait considéré comme inutile et redondant, car le lecteur sait déjà qui a écrit le livre.
+
+Les bonnes pratiques de mise en page recommandent de ne pas surcharger les pages de texte inutile. Les en-têtes et les pieds de page sont généralement réservés aux informations utiles pour la navigation dans le document, telles que le titre du chapitre en cours, le numéro de page, etc.
 
 ## Aide et Support
 

@@ -17,7 +17,7 @@ FIGS_PY=$(patsubst %.py, $(BUILDDIR)/%.py.pdf, $(PYFS))
 FIGS=$(FIGS_SVG) $(FIGS_DIO) $(FIGS_PDF) $(FIGS_PY)
 
 all: $(OUT).tex $(FIGS) | $(BUILDDIR)
-	$(LATEXMK) -pdf
+	$(LATEXMK) -pdf $<
 
 figures: $(FIGS)
 

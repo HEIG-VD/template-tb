@@ -3,4 +3,6 @@
     "latex-workshop.latex.outDir": "./build",
     "files.eol": "\n",
     "latex-workshop.view.pdf.viewer": "browser",
+    "latex-workshop.formatting.latex": "latexindent",
+    "latex-workshop.latex.clean.command": "make clean",
 }

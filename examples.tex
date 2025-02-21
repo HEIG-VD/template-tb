@@ -1,6 +1,6 @@
 %%if
 \section{Exemple d'équation}
-L'une des principales forces de \LaTeX~est la saisie d'équations. L'équation \ref{eq:1}, citée à titre d'exemple, représente la transformation de phase d'une lentille biconvexe. Pour rédiger une équation \LaTeX~vous pouvez utiliser des outils en ligne tels que \href{https://www.latex4technics.com/}{latex4technics}. Essayez autant que possible d'écrire vos équations à la main. La courbe d'apprentissage n'est pas très raide et la valeur ajoutée est grande. Vous pouvez vous aider du panneau de \LaTeX~Workshop dans Visual Studio Code. Il est accessible via le raccourcis clavier \keystroke{Ctrl} + \keystroke{Alt} + \keystroke{X}.
+L'une des principales forces de \LaTeX~est la saisie d'équations. L'équation \ref{eq:1}, citée à titre d'exemple, représente la transformation de phase d'une lentille biconvexe. Pour rédiger une équation \LaTeX~vous pouvez utiliser des outils en ligne tels que \href{https://www.latex4technics.com/}{latex4technics}. Essayez autant que possible d'écrire vos équations à la main. La courbe d'apprentissage n'est pas très raide et la valeur ajoutée est grande. Vous pouvez vous aider du panneau de \LaTeX~Workshop dans Visual Studio Code. Il est accessible via le raccourci clavier \keystroke{Ctrl} + \keystroke{Alt} + \keystroke{X}.
 
 \begin{equation} \label{eq:1}
     \begin{split}
@@ -39,7 +39,7 @@ Vous pouvez utiliser Python ou Matlab pour générer des figures à la volée à
 
 \fig[H, width=12cm]{Diagramme de Bode généré à la volée}{bode.py}
 
-\subsection{Example de schéma électronique}
+\subsection{Exemple de schéma électronique}
 Vous pouvez également utiliser TikZ pour créer vos propres schémas électriques et électroniques comme l'exemple \ref{circuit}. N'hésitez pas à vous inspirer d'exemples disponibles sur internet (\href{https://texample.net/tikz/examples/area/electrical-engineering/}{texample/electrical-engineering}).
 
 \begin{figure}[h]
@@ -62,16 +62,16 @@ Vous pouvez également utiliser TikZ pour créer vos propres schémas électriqu
 \end{figure}
 
 \subsection{Dessins techniques}
-La présentation de dessins mécaniques est préférée en vue filaire. SolidWorks conserve la représentation vectorielle à l'exportation mais pas lorsqu'il y a des textures ou des rendus. À partir du PDF généré, l'image peut être isolée et sauvegardée en format SVG.
+La présentation de dessins mécaniques est préférée en vue filaire. SolidWorks conserve la représentation vectorielle à l'exportation, mais pas lorsqu'il y a des textures ou des rendus. À partir du PDF généré, l'image peut être isolée et sauvegardée en format SVG.
 
 \begin{figure}[!ht]
     \begin{center}
         \includegraphics[width=10cm]{\assetsdir/assembly.svg.pdf}
     \end{center}
-    \caption[Assemblage mécanique]{\label{assembly}Réducteur cycloïdale de puissance comportant 6. l'axe de sortie, 14. le roulement de sortie, 1. le corps du réducteur en aluminium, 3 et 5. les disques cycloïdaux et 2. les goupilles de prise... D'autres informations liées à la figure elle-même peuvent aussi figurer dans la légende}
+    \caption[Assemblage mécanique]{\label{assembly}Réducteur cycloïdal de puissance comportant 6. l'axe de sortie, 14. le roulement de sortie, 1. le corps du réducteur en aluminium, 3 et 5. les disques cycloïdaux et 2. les goupilles de prise... D'autres informations liées à la figure elle-même peuvent aussi figurer dans la légende.}
 \end{figure}
 
-Notez ici que la légende est particulièrement longue. Celle que vous retrouverez dans la table figures est plus courte. La commande \mintinline{latex}{\caption[courte]{longue}} permet de saisir une légende courte pour la table des figures et une légende longue pour documenter la figure. Utilisez \mintinline{latex}{\fig[short=Légende courte]{Légende longue}{fichier}}.
+Notez ici que la légende est particulièrement longue. Celle que vous retrouverez dans la table de figures est plus courte. La commande \mintinline{latex}{\caption[courte]{longue}} permet de saisir une légende courte pour la table des figures et une légende longue pour documenter la figure. Utilisez \mintinline{latex}{\fig[short=Légende courte]{Légende longue}{fichier}}.
 
 La figure \ref{assembly} est un dessin technique épuré qui permet de décrire un phénomène ou un fonctionnement important dans le rapport technique. Les mises en plan détaillées seront quant à elles disponibles en annexes.
 
@@ -82,20 +82,23 @@ Concernant les tableaux un seul conseil : restez simple et minimaliste, n'ajoute
 \begin{table}[h]
     \begin{center}
         \caption{Liste des cantons \label{cantons}}
-        \begin{tabular}{c|l|r}
-            Abréviation & Nom du canton & Depuis                  \\ \hline
+        \begin{tabular}{rlr}
+            \toprule
+            Abréviation & Nom du canton & Depuis                  \\
+            \midrule
             ZH          & Zürich        & \ordinalnum{1} mai 1351 \\
             BE          & Berne         & 6 mars 1353             \\
             FR          & Fribourg      & 22 décembre 1481        \\
             VD          & Vaud          & 19 février 1815         \\
             VS          & Valais        & 4 août 1815             \\
             NE          & Neuchâtel     & 19 mai 1815             \\
-            GE          & Genève        & 19 mai 1815
+            GE          & Genève        & 19 mai 1815             \\
+            \bottomrule
         \end{tabular}
     \end{center}
 \end{table}
 
-Comparez la lisibilté de cette même table avec celle que vous pourriez trouver dans un document Word :
+Comparez la lisibilité de cette même table avec celle que vous pourriez trouver dans un document Word :
 
 \begin{table}[h]
     \begin{center}
@@ -114,7 +117,7 @@ Comparez la lisibilté de cette même table avec celle que vous pourriez trouver
     \end{center}
 \end{table}
 
-Si vous devez donner une spécification technique, n'oubliez pas de mentionner les valeurs minimales, maximales et nominales sans omettre l'unité de mesure. Notez que les séparateurs verticaux sont souvent critiqués pour réduire la lisibilité mais parfois ils sont utiles. Utilisez-les avec parcimonie. Jouez avec l'alignment des colonnes pour accroître la lisibilité et utilisez l'environmement \mintinline{latex}{tabularx} pour plus d'unité dans les largeurs de vos tableaux.
+Si vous devez donner une spécification technique, n'oubliez pas de mentionner les valeurs minimales, maximales et nominales sans omettre l'unité de mesure. Notez que les séparateurs verticaux sont souvent critiqués pour réduire la lisibilité, mais parfois ils sont utiles. Utilisez-les avec parcimonie. Jouez avec l'alignement des colonnes pour accroître la lisibilité et utilisez l'environnement \mintinline{latex}{tabularx} pour plus d'unité dans les largeurs de vos tableaux.
 
 \begin{table}[h]
     \begin{center}
@@ -132,14 +135,14 @@ Si vous devez donner une spécification technique, n'oubliez pas de mentionner l
     \end{center}
 \end{table}
 
-L'exemple de la table \ref{specification}, assigne pour chaque exigence un numéro unique. Cette table est \textbf{normative}, chaque élément doit pouvoir être référencé par un identifiant unique (cf. T\ref{specification}-E3). Dans le cas ou cet identifiant est utilisé en dehors de ce document, la version du document devra être renseignée.
+L'exemple de la table \ref{specification}, assigne pour chaque exigence un numéro unique. Cette table est \textbf{normative}, chaque élément doit pouvoir être référencé par un identifiant unique (cf. T\ref{specification}-E3). Dans le cas où cet identifiant est utilisé en dehors de ce document, la version du document devra être renseignée.
 
 \section{Index}
 \LaTeX~ permet d'indexer les mots \index{mots} importants. Il suffit de placer les termes importants d'un paragraphe dans la commande \mintinline{latex}{\index{terme}} et ils apparaîtront automatiquement à la fin de ce rapport dans l'index du document.
 
 \index{Napoléon}
 
-Imaginons que dans cette section nous parlions du cheval blanc \index{cheval blanc} de Napoléon. Il se pourrait que le lecteur recherche ce passage dans la version imprimée du rapport. Avec l'index, rien de plus facile. Allez jeter un oeil à la page \pageref{index}.
+Imaginons que dans cette section nous parlions du cheval blanc \index{cheval blanc} de Napoléon. Il se pourrait que le lecteur recherche ce passage dans la version imprimée du rapport. Avec l'index, rien de plus facile. Allez jeter un œil à la page \pageref{index}.
 
 \section{Notes de bas de page}
 
@@ -147,7 +150,7 @@ Imaginons que dans cette section nous parlions du cheval blanc \index{cheval bla
 
 \section{Glossaire et acronymes}
 
-La \Gls{heig-vd} membre de la \Gls{hes-so} propose ce modèle de document. Le format \LaTeX~est particulièrement adapté pour les documents qui contiennent des expressions mathématiques. Pour plus de détail sur l'utilisation d'un glossaire, se référer à \href{https://www.overleaf.com/learn/latex/Glossaries}{Overleaf/Glossaires}. Tient donc, ci-dessus nous utilisons deux acronymes. Les trouverez-vous dans le glossaire en page \pageref{glossaire} ?
+La \Gls{heig-vd} membre de la \Gls{hes-so} propose ce modèle de document. Le format \LaTeX~est particulièrement adapté pour les documents qui contiennent des expressions mathématiques. Pour plus de détail sur l'utilisation d'un glossaire, se référer à \href{https://www.overleaf.com/learn/latex/Glossaries}{Overleaf/Glossaires}. Tiens donc, ci-dessus, nous utilisons deux acronymes. Les trouverez-vous dans le glossaire en page \pageref{glossaire} ?
 
 \section{Unités de mesure}
 
