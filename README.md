@@ -26,10 +26,7 @@ Ce référentiel contient le modèle de document LaTeX pour la production d'un r
 - [Standards](#standards)
 - [Autres modèles LaTeX](#autres-modèles-latex)
 - [Références](#références)
-- [FAQ (Foire Aux Questions)](#faq-foire-aux-questions)
-  - [Ma compilation est trop lente](#ma-compilation-est-trop-lente)
-  - [J'aimerais rajouter mon nom en haut de toutes les pages](#jaimerais-rajouter-mon-nom-en-haut-de-toutes-les-pages)
-- [Aide et Support](#aide-et-support)
+- [Aide et support](#aide-et-support)
 
 ## Contexte
 
@@ -258,27 +255,6 @@ Pour que github action puisse générer la release il faut donner les droits à 
 - [Zurich University of Applied Sciences](https://github.com/matteodelucchi/ZHAW_thesis-template)
 - [Université de la Sorbonne](https://github.com/itoumlilt/sorbonne-univ-cleanthesis)
 
-## Références
-
-- [Petites leçons de typographie](https://jacques-andre.fr/faqtypo/lessons.pdf) de Jaques André
-- [Lexique des règles typographiques en usage à l’Imprimerie
-nationale](https://www.payot.ch/Detail/lexique_des_regles_typographiques_en_usage_a_limprimerie_nationale-collectif-9782743304829) de l'Imprimerie Nationale française. ISBN 2-7433-0482-0
-
-## FAQ (Foire Aux Questions)
-
-### Ma compilation est trop lente
-
-Il est vivement recommandé d'utiliser un environnement Linux (WSL2 depuis Windows ou un Linux/Unix natif pour profiter de la rapidité du système de fichier. Votre compilation sera beaucoup plus rapide. N'oubliez pas si vous êtes dans WSL2 de ne pas travailler depuis votre point de montage Windows (`/mnt/c/Users/...`) mais depuis le système de fichier Linux (`/home/user/...`).
-
-### J'aimerais rajouter mon nom en haut de toutes les pages
-
-Il n'est généralement pas recommandé de mettre son nom sur toutes les pages d'un livre ou d'un rapport de thèse bien que de nombreux modèles le fassent et que certains enseignants le demandent. Néanmoins il existe des conventions académiques et éditoriales qui réfutent cette pratique.
-
-- Le nom de l'auteur apparaît habituellement sur la page de couverture et éventuellement dans les en-têtes des chapitres, mais pas sur chaque page.
-- Ce serait considéré comme inutile et redondant, car le lecteur sait déjà qui a écrit le livre.
-
-Les bonnes pratiques de mise en page recommandent de ne pas surcharger les pages de texte inutile. Les en-têtes et les pieds de page sont généralement réservés aux informations utiles pour la navigation dans le document, telles que le titre du chapitre en cours, le numéro de page, etc.
-
-## Aide et Support
+## Aide et support
 
 Pour toute question sur l'utilisation de ce modèle de document, veuillez créer une nouvelle [issue](https://github.com/heig-vd-tin/template-tb/issues), ou vous adresser à l'auteur du modèle Prof. Yves Chevallier.
