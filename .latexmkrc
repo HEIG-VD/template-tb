@@ -3,7 +3,7 @@ system("mkdir -p build/figures");
 @default_files = ('report.tex');
 
 $pdf_mode = 1;
-$pdflatex = 'lualatex --synctex=1 -interaction=nonstopmode --shell-escape --output-directory=build';
+$pdflatex = 'lualatex -pdf --synctex=1 -file-line-error -interaction=nonstopmode --shell-escape --output-directory=build';
 $biber = 'biber';
 $bibtex_use = 2;
 $out_dir = 'build';

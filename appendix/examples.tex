@@ -28,6 +28,62 @@ La courbe d'apprentissage n'est pas très raide et la valeur ajoutée est grande
 
 Pensez à numéroter vos équations pour pouvoir les citer dans le texte.
 
+\subsection{Formules avec explications}
+
+L'exemple suivant montre les quatre équations de Maxwell sous forme différentielle à gauche et intégrales à droite. Les constantes sont expliquées après l'équation.
+
+\begin{subequations}
+    \begin{align}
+        \nabla \cdot \vec{E}  & = \frac{\rho}{\varepsilon_0}                                              & \oint_{S} \vec{E} \cdot d\vec{A} & = \frac{1}{\varepsilon_0} \int_{V} \rho \, dV                                                              \\[1em]
+        \nabla \cdot \vec{B}  & = 0                                                                       & \oint_{S} \vec{B} \cdot d\vec{A} & = 0                                                                                                        \\[1em]
+        \nabla \times \vec{E} & = -\frac{\partial \vec{B}}{\partial t}                                    & \oint_{C} \vec{E} \cdot d\vec{l} & = -\frac{d}{dt} \int_{S} \vec{B} \cdot d\vec{A}                                                            \\[1em]
+        \nabla \times \vec{B} & = \mu_0 \vec{J} + \mu_0 \varepsilon_0 \frac{\partial \vec{E}}{\partial t} & \oint_{C} \vec{B} \cdot d\vec{l} & = \mu_0 \int_{S} \vec{J} \cdot d\vec{A} + \mu_0 \varepsilon_0 \frac{d}{dt} \int_{S} \vec{E} \cdot d\vec{A}
+    \end{align}
+\end{subequations}
+
+\vspace{1em}
+
+où :
+
+\begin{tabular}{rll}
+    $\varepsilon_0$ & permittivité du vide & \si{\farad\per\meter}          \\
+    $\mu_0$         & perméabilité du vide & \si{\henry\per\meter}          \\
+    $\rho$          & densité de charge    & \si{\coulomb\per\meter\cubed}  \\
+    $\vec{J}$       & densité de courant   & \si{\ampere\per\meter\squared} \\
+    $\vec{E}$       & champ électrique     & \si{\volt\per\meter}           \\
+    $\vec{B}$       & champ magnétique     & \si{\tesla}                    \\
+\end{tabular}
+
+
+\subsection{Théorèmes et définitions}
+
+\LaTeX{} permet nativement de définir des théorèmes, des lemmes, des corollaires, des définitions, etc. Ces environnements sont très utiles pour structurer votre document. Voici quelques exemples :
+
+\begin{theorem}
+    Soit \(f\) une fonction dont la dérivée existe en tout point, alors \(f\) est
+    une fonction continue.
+\end{theorem}
+
+\begin{theorem}[Théorème de Pythagore]
+    \label{pythagorean}
+    Ceci est un théorème concernant les triangles rectangles et peut être résumé par l'équation suivante :
+    \[ x^2 + y^2 = z^2 \]
+\end{theorem}
+
+Une conséquence du théorème \ref{pythagorean} est l'énoncé du corollaire suivant.
+
+\begin{corollary}
+    Il n'existe pas de triangle rectangle dont les côtés mesurent 3 cm, 4 cm et 6 cm.
+\end{corollary}
+
+Vous pouvez référencer des théorèmes tels que \ref{pythagorean} lorsqu'une étiquette est attribuée.
+
+\begin{lemma}
+    Étant donnés deux segments de droite de longueurs respectives \(a\) et \(b\), il existe un
+    nombre réel \(r\) tel que \(b = ra\).
+\end{lemma}
+
+
 \section{Diagrammes}
 
 Les diagrammes de flux peuvent être réalisés en utilisant l'outil \href{https://app.diagrams.net/}{draw.io}. Une exportation en \texttt{.drawio} (non compressé) permet de garder les sources de la figure. Le rendu en \texttt{.pdf} sera réalisé à la volée à la compilation ce qui est l'intérêt principal d'utiliser ce modèle.
@@ -53,7 +109,7 @@ Pour présenter vos résultats d'expérience, vous pouvez soit dessiner des grap
 \fig[H, width=1\textwidth]{Exemple de graphique plan}{plot.svg}
 
 Vous pouvez utiliser Python ou Matlab pour générer des figures à la volée à partir d'une source de données. À titre d'exemple, le code source \ref{python} permet de générer la figure \ref{bode.py}.
-\begin{listing}[h]
+\begin{listing}[ht]
     \inputminted{python}{assets/figures/bode.py}
     \caption{Génération d'un diagramme de Bode \label{python}}
 \end{listing}
@@ -63,7 +119,7 @@ Vous pouvez utiliser Python ou Matlab pour générer des figures à la volée à
 \subsection{Schéma électronique}
 Vous pouvez également utiliser TikZ pour créer vos propres schémas électriques et électroniques comme l'exemple \ref{circuit}. N'hésitez pas à vous inspirer d'exemples disponibles sur internet (\href{https://texample.net/tikz/examples/area/electrical-engineering/}{texample/electrical-engineering}).
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \begin{center}
         \begin{circuitikz}
             \draw
@@ -96,11 +152,26 @@ Notez ici que la légende est particulièrement longue. Celle que vous retrouver
 
 La figure \ref{assembly} est un dessin technique épuré qui permet de décrire un phénomène ou un fonctionnement important dans le rapport technique. Les mises en plan détaillées seront quant à elles disponibles en annexes.
 
+\subsection{Formules chimiques}
+
+Pour les formules chimiques, utilisez le paquet \texttt{mhchem}. Par exemple, l'équation \ref{eq:2} représente la réaction de combustion du méthane.
+
+\begin{figure}[ht]
+    \begin{center}
+        \chemfig{A*6(-B=C(-CH_3)-D-E-F(=G)=)}
+    \end{center}
+    \caption{Formule chimique \label{fig:chem}}
+\end{figure}
+
+\begin{equation} \label{eq:2}
+    \ce{CH4 + 2O2 -> CO2 + 2H2O}
+\end{equation}
+
 \section{Tableaux}
 
 Concernant les tableaux un seul conseil : restez simple et minimaliste, n'ajoutez des séparateurs que là ou c'est nécessaire pour améliorer la lisibilité. Une liste de quelques cantons suisses est donnée à titre d'exemple dans la table \ref{cantons}.
 
-\begin{table}[h]
+\begin{table}[ht]
     \begin{center}
         \caption{Liste des cantons \label{cantons}}
         \begin{tabular}{rlr}
@@ -121,7 +192,7 @@ Concernant les tableaux un seul conseil : restez simple et minimaliste, n'ajoute
 
 Comparez la lisibilité de cette même table avec celle que vous pourriez trouver dans un document Word :
 
-\begin{table}[h]
+\begin{table}[ht]
     \begin{center}
         \caption{Liste des cantons (vilain)}
         \begin{tabular}{|l|l|l|} \hline
@@ -142,7 +213,7 @@ Comparez la lisibilité de cette même table avec celle que vous pourriez trouve
 
 Si vous devez donner une spécification technique, n'oubliez pas de mentionner les valeurs minimales, maximales et nominales sans omettre l'unité de mesure. Notez que les séparateurs verticaux sont souvent critiqués pour réduire la lisibilité, mais parfois ils sont utiles. Utilisez-les avec parcimonie. Jouez avec l'alignement des colonnes pour accroître la lisibilité et utilisez l'environnement \mintinline{latex}{tabularx} pour plus d'unité dans les largeurs de vos tableaux.
 
-\begin{table}[h]
+\begin{table}[ht]
     \begin{center}
         \caption{Exigences techniques \label{specification}}
         \begin{tabularx}{\textwidth}{cXcccr}
@@ -189,12 +260,318 @@ Notez qu'une espace fine précède l'unité et que ces dernières ne sont pas en
 
 Ce modèle vous offre deux environnements pour afficher du code source. Le plus traditionnel est l'environnement Listing et le second est l'environnement Minted. Le premier est plus simple à utiliser, mais le second offre une coloration syntaxique plus précise et utilise Python comme backend pour la coloration syntaxique.
 
-\begin{listing}[h]
+\begin{listing}[ht]
     \inputminted{c}{assets/code/fibonacci.c}
     \caption{Exemple de programme en C \label{c} avec Minted}
 \end{listing}
 
-\begin{listing}[h]
+\begin{listing}[ht]
     \lstinputlisting{assets/code/fibonacci.c}
     \caption{Exemple de programme en C \label{c} avec Listing}
 \end{listing}
+
+% \section{Echecs}
+
+% Pour les diagrammes d'échecs, le paquet \texttt{skak} est recommandé. Il permet de générer des diagrammes d'échecs à partir de notation FEN. Par exemple, la position de la figure \ref{echecs} est obtenue avec le code suivant :
+
+% \newchessgame
+% \mainline{1.e4 e5 2.Nf3 Nc6 3.Bb5 a6}
+% \showboard % A skak package command. Future examples will use \chessboard[...]
+
+
+\section{Tikz}
+
+\subsection{PGF Plots}
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                hide axis,
+                colormap/parula,
+            ]
+            \addplot3[
+                mesh,
+                samples=50,
+                domain=-8:8,
+            ]
+            {sin(deg(sqrt(x^2+y^2)))/sqrt(x^2+y^2)};
+            \addlegendentry{\(\frac{sin(r)}{r}\)}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Exemple de graphique 3D avec PGF Plots}
+\end{figure}
+
+
+\subsection{Jonction semiconducteur}
+
+\begin{tikzpicture}
+    % variables for pn-junction diagram:
+    % all parameters are in tikz scale
+    % p-side of the junction is here on the right
+
+    \def\V{1.5}   % junction polarisation (0=flat band)
+    \def\EG{3}    % band gap of semiconductor
+    \def\EF{1.5}  % vertical Fermi level position
+    \def\EFn{3.3} % pseudo fermi level for electrons
+    \def\EFp{1.8} % pseudo fermi level for holes
+    \def\DZCE{4}  % start position on the left for space charge region (SCR)
+    \def\LZCE{2}  % SCR width
+    \def\PN{10}   % total lentgh of the junction
+
+    % calculations
+    \pgfmathsetmacro\EC{\EG+\V};% conduction band heigth (without polarisation)
+    \pgfmathsetmacro\FZCE{\DZCE+\LZCE};% SCR end position
+
+    % valence and conduction band drawing:
+    \draw (0,0) node [left]{$E_V$} -- (\DZCE,0)
+    to[out=0, in=180, looseness=0.75] (\FZCE,\V) -- (\PN,\V); % EV
+    \draw (0,\EG) node [left] {$E_C$} -- (\DZCE,\EG)
+    to[out=0, in=180, looseness=0.75] (\FZCE,\EC) -- (\PN,\EC); % EC
+
+    % fermi level drawing (if needed):
+    %	\draw [dashed](0,\EF) -- ({\PN-0.5},\EF) node [right]{$E_F$}; % EF
+
+    % quasi fermi levels drawing (if needed) :
+    \draw [dashed] (0,\EFn)  -- (\PN,\EFn)
+    node [right] {$E_{Fn}$}; % EFn for electron
+    \draw [dashed] (0,\EFp)  -- ({\PN},\EFp)
+    node [right] {$E_{Fp}$}; % EFp for holes
+
+    % electric field in SCR drawing :
+    \draw [->] (\DZCE, {\V+\EG+1}) --
+    node [above] {$\vec{E}_{ZCE}$} (\FZCE, {\V+\EG+1}) ; % E vector
+
+    % excess carriers
+    \foreach \x in {1,2,...,7}
+    \draw ({\FZCE+1+\x/3},{\EC+0.2}) node {$\bullet$}; % p side : electrons
+    \foreach \x in {1,2,...,7}
+    \draw ({1+\x/3},{-0.2}) node {$\circ$}; % n side : holes
+
+    % photon injection and carrier generation
+    % p side : carrier generation:
+    \draw [->, loosely dashed] ({\FZCE+3}, \V) --
+    node [right] {\textcircled{1}}({\FZCE+3}, \EC);
+    % the textcircled{number} option is used in several places
+    % to describe the physical mechanisms.
+    % It can be safely removed if not needed
+    % photon wave injection in the bandgap on p-side :
+    \draw [decorate, decoration={snake}, ->] ({\PN+1},{\EC+1}) --
+    node [below,sloped]{$h\nu$} ({\FZCE+3}, \EG);
+
+    % excess carriers diffusion, with diffusion length :
+    % electrons on p side :
+    \draw [->] ({\FZCE+1},{\EC+0.2}) -- node [above] {$L_{Dn}$}
+    node [below=6pt] {\textcircled{2}}({\FZCE},{\EC+0.2})
+    node [left] {$\bullet$} ;
+    \draw [->] ({\FZCE-0.3},{\EC+0.2}) to [out=200, in=0, looseness=0.75]
+    node [above left] {\textcircled{3}} ({\DZCE},{\EG+0.2})
+    node [left] {$\bullet$} node [above left=3pt] {\textcircled{4}};
+    % holes on n side :
+    \draw [->] ({1.2+7/3},{-0.2}) -- node [below] {$L_{Dp}$} ({\DZCE},{-0.2})
+    node [right]{$\circ$} ;
+    \draw [->] ({\DZCE+0.3},-0.2) to [out=20, in=180, looseness=0.75]
+    ({\FZCE},{\V-0.2}) node [right]{$\circ$};
+\end{tikzpicture}
+
+\subsectinon{Filtrage}
+
+Diagramme du troisième ordre d'un filtre à bruit dans un lecteur de compact disc par Grant M. Erickson.
+
+\tikzset{%
+    block/.style    = {draw, thick, rectangle, minimum height = 3em,
+            minimum width = 3em},
+    sum/.style      = {draw, circle, node distance = 2cm}, % Adder
+    input/.style    = {coordinate}, % Input
+    output/.style   = {coordinate} % Output
+}
+% Defining string as labels of certain blocks.
+\newcommand{\suma}{\Large$+$}
+\newcommand{\inte}{$\displaystyle \int$}
+\newcommand{\derv}{\huge$\frac{d}{dt}$}
+
+\begin{tikzpicture}[auto, thick, node distance=2cm, >=triangle 45]
+    \draw
+    % Drawing the blocks of first filter :
+    node at (0,0)[right=-3mm]{\Large \textopenbullet}
+    node [input, name=input1] {}
+    node [sum, right of=input1] (suma1) {\suma}
+    node [block, right of=suma1] (inte1) {\inte}
+    node at (6.8,0)[block] (Q1) {\Large $Q_1$}
+    node [block, below of=inte1] (ret1) {\Large$T_1$};
+    % Joining blocks.
+    % Commands \draw with options like [->] must be written individually
+    \draw[->](input1) -- node {$X(Z)$}(suma1);
+    \draw[->](suma1) -- node {} (inte1);
+    \draw[->](inte1) -- node {} (Q1);
+    \draw[->](ret1) -| node[near end]{} (suma1);
+    % Adder
+    \draw
+    node at (5.4,-4) [sum, name=suma2] {\suma}
+    % Second stage of filter
+    node at  (1,-6) [sum, name=suma3] {\suma}
+    node [block, right of=suma3] (inte2) {\inte}
+    node [sum, right of=inte2] (suma4) {\suma}
+    node [block, right of=suma4] (inte3) {\inte}
+    node [block, right of=inte3] (Q2) {\Large$Q_2$}
+    node at (9,-8) [block, name=ret2] {\Large$T_2$}
+    ;
+    % Joining the blocks of second filter
+    \draw[->] (suma3) -- node {} (inte2);
+    \draw[->] (inte2) -- node {} (suma4);
+    \draw[->] (suma4) -- node {} (inte3);
+    \draw[->] (inte3) -- node {} (Q2);
+    \draw[->] (ret2) -| (suma3);
+    \draw[->] (ret2) -| (suma4);
+    % Third stage of filter:
+    % Defining nodes:
+    \draw
+    node at (11.5, 0) [sum, name=suma5]{\suma}
+    node [output, right of=suma5]{}
+    node [block, below of=suma5] (deriv1){\derv}
+    node [output, right of=suma5] (sal2){}
+    ;
+    % Joining the blocks:
+    \draw[->] (suma2) -| node {}(suma3);
+    \draw[->] (Q1) -- (8,0) |- node {}(ret1);
+    \draw[->] (8,0) |- (suma2);
+    \draw[->] (5.4,0) -- (suma2);
+    \draw[->] (Q1) -- node {}(suma5);
+    \draw[->] (deriv1) -- node {}(suma5);
+    \draw[->] (Q2) -| node {}(deriv1);
+    \draw[<->] (ret2) -| node {}(deriv1);
+    \draw[->] (suma5) -- node {$Y(Z)$}(sal2);
+    % Drawing nodes with \textbullet
+    \draw
+    node at (8,0) {\textbullet}
+    node at (8,-2){\textbullet}
+    node at (5.4,0){\textbullet}
+    node at (5,-8){\textbullet}
+    node at (11.5,-6){\textbullet}
+    ;
+    % Boxing and labelling noise shapers
+    \draw [color=gray,thick](-0.5,-3) rectangle (9,1);
+    \node at (-0.5,1) [above=5mm, right=0mm] {\textsc{first-order noise shaper}};
+    \draw [color=gray,thick](-0.5,-9) rectangle (12.5,-5);
+    \node at (-0.5,-9) [below=5mm, right=0mm] {\textsc{second-order noise shaper}};
+\end{tikzpicture}
+
+
+\subsection{Moteur à combustion}
+
+Voici un exemple d'un modèle d'un papillon des gaz utilisé dans un moteur à combustion interne. Le système mécatronique est modélisé par des sous-systèmes simplifiés permettant une description plus facile. Ce modèle a été utilisé dans le cadre d'un projet étudiant à l'Université technique de Berlin.
+
+\begin{circuitikz}
+    %	\draw [help lines] (-1,-2) grid (12,5);
+
+    % electrical equivalent circuit
+    \draw (0,3) to[V, v_=$U_R$] (0,0);
+    \draw (0,3) to[R, i>^=$I_A$, l=$R_A$] (3,3);
+    \draw (3,3) to[L, l=$L_A$] (4,3);
+
+    \draw (4,3) -- (5,3);
+    \draw (5,3) to[V, v_=$U_i$] (5,0);
+    \draw (0,0) -- (5,0);
+
+    % drive
+    \draw[fill=black] (4.85,0.85) rectangle (5.15,2.15);
+    \draw[fill=white] (5,1.5) ellipse (.45 and .45);
+
+    % transmission gear one
+    \draw[fill=black!50] (6.7,1.49)
+    ellipse (.08 and 0.33);
+    \draw[fill=black!50, color=black!50] (6.7,1.82)
+    rectangle (6.5,1.16);
+    \draw[fill=white] (6.5,1.49)
+    ellipse (.08 and 0.33);
+    \draw (6.5,1.82) -- (6.7,1.82);
+    \draw (6.5,1.16) -- (6.7,1.16);
+
+    % shaft drive -> transmission
+    \draw[fill=black] (5.45,1.45) rectangle (6.5,1.55);
+
+    % momentum arrow of drive -> transmission
+    \draw[line width=0.7pt,<-] (5.8,1) arc (-30:30:1);
+
+    % transmission gear two
+    \draw[fill=black!50] (6.7,0.40)
+    ellipse (.13 and 0.67);
+    \draw[fill=black!50, color=black!50] (6.7,1.07)
+    rectangle (6.5,-0.27);
+    \draw[fill=white] (6.5,0.40)
+    ellipse (.13 and 0.67);
+    \draw (6.5,1.07) -- (6.7,1.07);
+    \draw (6.5,-0.27) -- (6.7,-0.27);
+
+    % transmission gear three
+    \draw[fill=black!50] (6.85,1.14)
+    ellipse (.08 and 0.3);
+    \draw[fill=black!50, color=black!50] (6.85,1.44)
+    rectangle (6.65,0.84);
+    \draw[fill=white] (6.65,1.14)
+    ellipse (.08 and 0.3);
+    \draw (6.65,1.44) -- (6.86,1.44);
+    \draw (6.65,0.84) -- (6.86,0.84);
+
+    % transmission shaft from gear two to moment of inertia
+    \draw[fill=black] (6.84,0.38) rectangle (7.8,0.48);
+
+    % moment of inertia
+    \draw[fill=white] (8.5,0.42)
+    ellipse (.15 and 0.4);
+    \draw[fill=white, color=white] (7.9, 0.82)
+    rectangle (8.49, 0.02);
+    \draw (7.8,0.42) ellipse (.15 and 0.4);
+    \draw (7.8,0.82) -- (8.5,0.82);
+    \draw (7.8,0.02) -- (8.5,0.02);
+
+    % momentum arrow between transmission and moment of inertia
+    \draw[line width=0.7pt,<-] (7.2,-0.07) arc (-30:30:1);
+
+    % shaft right from moment of inertia
+    \draw[fill=black] (8.65,0.38) rectangle (10.9,0.48);
+
+    % brake shoe
+    \draw[fill=black] (9.55,{0.53+0.00})
+    -- +(-0.2,0.3) -- +(0.5,0.3) -- +(0.3,0.0);
+    \draw[fill=black] (9.55,{0.33-0.00})
+    -- +(-0.2,-0.3) -- +(0.5,-0.3) -- +(0.3,0.0);
+
+    % momentum arrow (left hand side of brake shoe)
+    \draw[line width=0.7pt,->] (9.05,-0.07) arc (-30:30:1);
+
+    % spring
+    \draw [domain=0:{-4.5*pi}, variable=\t, samples=200,
+        line width=1pt]
+    plot( {10.52+0.4 + 0.15*(\t*0.1)*cos(\t r)},
+    {0.40 + 0.15*(\t*0.3)*sin(\t r)});
+
+    % momentum arrow (left hand side of spring)
+    \draw[line width=0.7pt,->] (10.4,-0.07) arc (-30:30:1);
+
+    % spring wall mount
+    \draw[fill=black]
+    (10.9,{1.03-0.2}) rectangle (10.95,{1.03+0.2});
+    \foreach \x in {0,...,5}
+    \draw[line width=0.8pt]
+    ({10.55+0.4},{1.03-0.18+\x*0.07}) -- +(0.1,0.05);
+
+    % descriptions inside graphic
+    \draw (5.85,2.2) node {$\omega_A, M_A$};
+    \draw (7.29,1.11) node {$\omega_K$};
+    \draw (8.25,0.44) node {$J$};
+    \draw (9.05,1.15) node {$M_R$};
+    \draw (10.4,1.15) node {$M_F$};
+    \draw (6.6,-0.5) node {$v$};
+
+    % descriptions of subsystems under graphic
+    \draw [decorate,decoration={brace,amplitude=10pt},
+        xshift=0pt, yshift=0pt]
+    (5.5,-0.75) -- (-0.5,-0.75)
+    node[black,midway,yshift=-20pt]
+    {Sous-système électromagnétique};
+    \draw [decorate,decoration={brace,amplitude=10pt},
+        xshift=0pt, yshift=0pt]
+    (11.4,-0.75) -- (6,-0.75)
+    node[black,midway,yshift=-20pt]
+    {Sous-système mécanique};
+\end{circuitikz}

@@ -57,7 +57,4 @@ mrproper:
 biber: bibliography.bib
 	biber --tool --validate-datamodel $<
 
-fresh: $(wildcard *.tex)
-	find . -name '*.tex' -print0 | xargs -n1 -0 perl -0777 -pi -e "s/\%\%if.+?\%\%fi//gs"
-
-.PHONY: all figures dirs clean mrproper biber fresh
+.PHONY: all figures dirs clean mrproper biber

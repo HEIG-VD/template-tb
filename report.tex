@@ -1,10 +1,28 @@
 \documentclass[
     iai, % Saisir le nom de l'institut rattaché
     eai, % Saisir le nom de l'orientation
-    confidential, % Décommentez si le travail est confidentiel
+    %confidential, % Décommentez si le travail est confidentiel
 ]{heig-tb}
 
+%% Choix de la police de caractères
+%% (décommenter une des deux lignes suivantes)
+\setmainfont{Latin Modern Roman} % Traditionnel LaTeX
+%\setmainfont{TeX Gyre Heros} % Sans sérif
+
+% Si besoin d'insérer des formules chimiques
+\usepackage{chemfig}
+
+\usepackage{pgfplots}
+\usetikzlibrary{patterns,arrows,calc,decorations.pathmorphing}
+
+\pgfplotsset{width=10cm,compat=1.9}
+
+\newtheorem{theorem}{Théorème}[section]
+\newtheorem{corollary}{Corollaire}[theorem]
+\newtheorem{lemma}[theorem]{Lemme}
+
 \usepackage[nooldvoltagedirection,european,americaninductors]{circuitikz}
+
 
 \signature{mbernasconi.svg} % Remplacer par votre propre signature vectorielle.
 
@@ -13,7 +31,6 @@
 \makeindex
 
 \addbibresource{bibliography.bib}
-
 
 \input{backmatter/acronyms}
 \input{backmatter/glossary}
@@ -31,6 +48,9 @@
 %% Requis par les dispositions générales des travaux de Bachelor
 \input{frontmatter/preamble}
 \input{frontmatter/authentication}
+
+%% Une préface est optionnelle
+\input{frontmatter/notes}
 
 %% Résumé / Résumé publiable / Version abrégée
 \begin{abstract}
@@ -81,7 +101,6 @@
 \label{index}
 \printindex
 
-% Le colophon est le dernier élément d'un document qui contient des notes de l'auteur concernant la mise en page et l'édition du document : il est parfaitement optionnel.
 \input{backmatter/colophon}
 \input{backmatter/nomenclature}
 

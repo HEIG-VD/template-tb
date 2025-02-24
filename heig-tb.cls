@@ -22,18 +22,45 @@
 \ProcessOptions
 
 
+% Améliore le mode mathématique, aligne les équations à gauche
 \RequirePackage[fleqn]{amsmath}
+
+% Configuration des légendes (figures/tables):
+% mot clé en gras et texte en italique
 \RequirePackage[small,bf,textfont=it]{caption}
+
+% Meilleure gestion des annexes
 \RequirePackage{appendix}
-\RequirePackage{cellspace}
+
 \RequirePackage{color}
+
+% Configuration des en-têtes et pieds de page
 \RequirePackage{fancyhdr}
+
+% Meilleure gestion des tableaux
+% Ajoute les commandes \toprule, \midrule et \bottomrule
 \RequirePackage{booktabs}
+
+% Autorise des figures et tables plus flexibles avec
+% l'environnement [H] de la classe float
 \RequirePackage{float}
+
+% Permet d'écrire un nombre en lettre (ex: 1 -> un)
 \RequirePackage{fmtcount}
+
+% Outils bas niveau pour LaTeX tel que
+% \ifstrequal ou \ifdefstring
 \RequirePackage{etoolbox}
+
+% Encadre des blocs de textes avec des bordures
+% Utilisé pour le code source
 \RequirePackage{framed}
+
+% Gestion des glossaires et acronymes
 \RequirePackage{glossaries}
+
+% Insertion de figures \includegraphics
+% LuaLaTeX support les formats PDF, PNG, JPEG et EPS
 \RequirePackage{graphicx}
 \RequirePackage{lastpage}
 \RequirePackage{lipsum}
@@ -51,10 +78,16 @@
 \RequirePackage{tikz}
 \RequirePackage{makecell}
 \RequirePackage{bold-extra}
+
+\RequirePackage{cellspace}
 \RequirePackage{expkv-cs}
+
+% Coloration syntaxique du code source avec Python
+% Nécessite la compilation avec --shell-escape
 \RequirePackage[outputdir=build,chapter]{minted}
 
-\setmainfont{Latin Modern Roman}
+% Gestion des citations \enquote{Ceci est une citation}
+\RequirePackage{csquotes}
 
 \RequirePackage[
   backref=true,
@@ -76,7 +109,7 @@
   heightrounded,
   includehead]{geometry}
 
-\definecolor{linkcolor}{RGB}{219, 48, 122}
+\definecolor{linkcolor}{RGB}{130, 22, 69}
 \RequirePackage[
   colorlinks=true,
   plainpages=true,
@@ -88,8 +121,6 @@
 
 % Avoid \c@page warnings
 \hypersetup{pdfpagelabels=false,bookmarksdepth=section}
-
-\RequirePackage{csquotes}
 
 \usetikzlibrary{babel}
 \usemintedstyle{colorful}
@@ -180,7 +211,7 @@
 \renewcommand\appendixpagename{Annexes}
 
 \renewcommand\listoflistingscaption{Liste des codes sources}
-\renewcommand{\nomname}{Liste des Symboles}
+\renewcommand{\nomname}{Liste des symboles}
 
 \fancypagestyle{plain}{
   \fancyhf{}
