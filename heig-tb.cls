@@ -93,6 +93,8 @@
 % Gestion des citations \enquote{Ceci est une citation}
 \RequirePackage{csquotes}
 
+\setmathfont{Latin Modern Math}
+
 \usetikzlibrary{babel,shadows,patterns,arrows,calc,decorations.pathmorphing}
 
 \RequirePackage[

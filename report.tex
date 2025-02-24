@@ -7,9 +7,7 @@
 %% Choix de la police de caractères
 %% (décommenter une des deux lignes suivantes)
 \setmainfont{Latin Modern Roman} % Traditionnel LaTeX
-\setmathfont{Latin Modern Math}
 %\setmainfont{TeX Gyre Heros} % Sans sérif
-%\setmainfont{Linux Libertine O}
 
 % Si besoin d'insérer des formules chimiques
 \usepackage{chemfig}
@@ -69,19 +67,19 @@
 
 %% Résumé / Résumé publiable / Version abrégée
 \begin{abstract}
-    \input{frontmatter/abstract}
+  \input{frontmatter/abstract}
 \end{abstract}
 
 %% Sommaire et tables
 \clearemptydoublepage
 {
-    \tableofcontents
-    \let\cleardoublepage\clearpage
-    \listoffigures
-    \let\cleardoublepage\clearpage
-    \listoftables
-    \let\cleardoublepage\clearpage
-    \listoflistings
+  \tableofcontents
+  \let\cleardoublepage\clearpage
+  \listoffigures
+  \let\cleardoublepage\clearpage
+  \listoftables
+  \let\cleardoublepage\clearpage
+  \listoflistings
 }
 
 \printnomenclature
