@@ -116,7 +116,43 @@ Vous pouvez utiliser Python ou Matlab pour générer des figures à la volée à
 
 \fig[H, width=12cm]{Diagramme de Bode généré à la volée}{bode.py}
 
+\subsection{Sous figures}
 
+Vous pouvez insérer des sous-figures, par exemple ici 4 figures côte à côte (2 colonnes et deux lignes). Les images sont remplacées par \verb!\tikz\randuck! permettant de générer un canard aléatoire à chaque compilation.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \randuck
+        \end{tikzpicture}
+        \caption{Canard 1}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \randuck
+        \end{tikzpicture}
+        \caption{Canard 2}
+    \end{subfigure}
+
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \randuck
+        \end{tikzpicture}
+        \caption{Canard 3}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \randuck
+        \end{tikzpicture}
+        \caption{Canard 4}
+    \end{subfigure}
+    \caption{Quatre canards}
+\end{figure}
 
 \subsection{Dessins techniques}
 La présentation de dessins mécaniques est préférée en vue filaire. SolidWorks conserve la représentation vectorielle à l'exportation, mais pas lorsqu'il y a des textures ou des rendus. À partir du PDF généré, l'image peut être isolée et sauvegardée en format SVG.
@@ -242,6 +278,54 @@ Le paquet \texttt{siunitx} facilite grandement la saisie de quantités. La comma
 \mintinline{text}{\qty{42.12}{\kilo\gram\metre\per\square\second}}\par
 
 Pour afficher simplement une unité comme le \si{\kilo\gram} on utilise la commande \mintinline{text}{\si{\kilo\gram}}.
+
+\section{Mise en forme}
+
+\subsection{Multi-colonnes}
+
+Si vous avez de longues listes, ou pour certains paragraphes, il peut être utile d'utiliser l'environnement \verb|\multicols| pour afficher le texte sur plusieurs colonnes. Cela permet de gagner de la place et d'améliorer la lisibilité. Par exemple, voici un extrait de l'article de la Constitution fédérale suisse de 1999.
+
+\begin{multicols}{2}
+    \begin{enumerate}
+        \item La Confédération et les cantons veillent à ce que les enfants et les jeunes soient protégés contre la négligence et la violence, contre l'exploitation et la discrimination et qu'ils puissent se développer de manière saine.
+        \item Ils veillent à ce que les enfants et les jeunes puissent exercer leurs droits et assumer leurs responsabilités.
+        \item Ils encouragent les parents à assumer leur rôle d'éducateurs et leur apportent leur soutien.
+        \item Ils tiennent compte des intérêts de l'enfant lorsqu'ils prennent des décisions qui le concernent.
+        \item Ils veillent à ce que les enfants et les jeunes soient informés de leurs droits et de leurs devoirs.
+        \item Ils encouragent les institutions et les organisations qui s'engagent en faveur de l'enfance et de la jeunesse.
+    \end{enumerate}
+\end{multicols}
+
+\subsection{Colonnes parallèles}
+
+\maraja{Un pangramme est une phrase contenant toutes les lettres de l'alphabet.}Le module \verb!parcolumns! permet de créer des colonnes parallèles. Cela peut être utile pour comparer des textes en plusieurs langues ou pour afficher des traductions. Voici un exemple de \emph{pangramme} en différentes langues.\par
+
+\begin{parcolumns}{4}
+    \colchunk{Le vif zéphyr jubile sur les kumquats du clown gracieux.}
+    \colchunk{The quick brown fox jumps over the lazy dog.}
+    \colchunk{Victor jagt zwölf Boxkämpfer quer über den großen Sylter Deich.}
+    \colchunk{Quel fez sghembo copre davanti.}
+\end{parcolumns}
+
+\subsection{Boîtes colorées}
+
+\maraja{Les boîtes disponibles sont: note, info, tip, success, warning, important, hint, bug, example} Il est parfois utile de mettre en évidence certaines parties, pour indiquer une astuce, un point important, un exemple, etc. Voici quelques exemples mais un conseil, n'en abusez pas.
+
+\begin{callout}[callout tip]
+    \lipsum[1][1]
+\end{callout}
+
+\begin{callout}[callout info]
+    \lipsum[1][2]
+\end{callout}
+
+\begin{callout}[callout success]
+    \lipsum[1][3]
+\end{callout}
+
+\begin{callout}[callout warning]
+    \lipsum[1][4]
+\end{callout}
 
 \section{Code source}
 

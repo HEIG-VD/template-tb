@@ -20,3 +20,21 @@ Les bonnes pratiques de mise en page recommandent de ne pas surcharger les pages
 La meilleure ressource est \url{https://www.overleaf.com/learn}. Overleaf est un éditeur en ligne de documents LaTeX qui propose une documentation très complète et des exemples pour vous aider à démarrer. Vous pouvez également consulter le site \url{https://tex.stackexchange.com/} qui est une mine d'or pour les questions et réponses sur LaTeX.
 
 Certains professeurs de la HEIG-VD connaissent très bien LaTeX et peuvent vous aider. N'hésitez pas à leur demander de l'aide.
+
+\section{Que faire si j'ai une erreur de compilation ?}
+
+Lorsque vous exécutez \verb!make! vous pouvez parfois avoir une erreur de compilation comme :
+
+\begin{verbatim}
+./appendix/examples.tex:125: LaTeX Error: Environment subfigure undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+    ...
+
+l.125     \begin{subfigure}
+                            {0.45\textwidth}
+?
+\end{verbatim}
+
+Dans ce cas, il vous faut chercher dans le fichier \verb!appendix/examples.tex! à la ligne 125 pour voir ce qui ne va pas. Le prompt \verb!?! vous permet de continuer la compilation ou de quitter. Pour continuer la compilation, tapez \verb!H <return>!. Pour quitter, tapez \verb!X <return>!.

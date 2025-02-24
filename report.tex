@@ -9,6 +9,15 @@
 \setmainfont{Latin Modern Roman} % Traditionnel LaTeX
 %\setmainfont{TeX Gyre Heros} % Sans sérif
 
+% Générer du texte de remplissage pour les exemples
+\usepackage{lipsum}
+
+% Si besoin de gérer des colonnes parallèles
+\usepackage{parcolumns}
+
+% Utile pour générer des images temporaires
+\usepackage{tikzducks}
+
 % Si besoin d'insérer des formules chimiques
 \usepackage{chemfig}
 \usepackage[version=4]{mhchem}
@@ -67,19 +76,19 @@
 
 %% Résumé / Résumé publiable / Version abrégée
 \begin{abstract}
-  \input{frontmatter/abstract}
+    \input{frontmatter/abstract}
 \end{abstract}
 
 %% Sommaire et tables
 \clearemptydoublepage
 {
-  \tableofcontents
-  \let\cleardoublepage\clearpage
-  \listoffigures
-  \let\cleardoublepage\clearpage
-  \listoftables
-  \let\cleardoublepage\clearpage
-  \listoflistings
+    \tableofcontents
+    \let\cleardoublepage\clearpage
+    \listoffigures
+    \let\cleardoublepage\clearpage
+    \listoftables
+    \let\cleardoublepage\clearpage
+    \listoflistings
 }
 
 \printnomenclature

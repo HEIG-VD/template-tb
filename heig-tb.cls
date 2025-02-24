@@ -65,14 +65,39 @@
 % Insertion de figures \includegraphics
 % LuaLaTeX support les formats PDF, PNG, JPEG et EPS
 \RequirePackage{graphicx}
+
+% Utile pour obtenir le numéro de la dernière page du document
+% \fancyfoot[C]{Page \thepage{} sur \pageref{LastPage}}
+% (non utilisé ici)
 \RequirePackage{lastpage}
-\RequirePackage{lipsum}
+
+% Alternative à minted pour afficher du code source
+% Plus traditionnel et plus rapide à compiler
+% Ne nécessite pas --shell-escape
 \RequirePackage{listings}
+
+% Meilleure gestion des espacements entre les mots et
+% les lettres (microtypographie), meilleure gestion des
+% césures. Très utile quand la font n'est pas CM.
 \RequirePackage{microtype}
+
+% Pour gérer l'index. Nécessite une compilation avec makeindex
+% Automatiquement géré par latexmkrc
 \RequirePackage{makeidx}
+
+% Permet des encadrés personnalisés, par exemple pour du code
 \RequirePackage{mdframed}
+
+% Autorise plus de environ 18 flottents en attente de placement,
+% évite l'erreur ! LaTeX Error: Too many unprocessed floats.
 \RequirePackage{morefloats}
+
+% Permet de gérer plusieurs colonnes avec l'environnement multicols
 \RequirePackage{multicol}
+
+% Permet de gérer plusieurs figures dans un environnement figure
+\RequirePackage{subcaption}
+
 \RequirePackage{nomencl}
 \RequirePackage{parskip}
 \RequirePackage{rotating}
@@ -81,10 +106,12 @@
 \RequirePackage{tikz}
 \RequirePackage{makecell}
 \RequirePackage{bold-extra}
-\RequirePackage{tcolorbox}
+\RequirePackage[many]{tcolorbox}
 \RequirePackage{unicode-math}
 \RequirePackage{cellspace}
 \RequirePackage{expkv-cs}
+\RequirePackage{fontawesome5}
+
 
 % Coloration syntaxique du code source avec Python
 % Nécessite la compilation avec --shell-escape
@@ -330,3 +357,124 @@
 \newcommand{\theauthor}{\@author}
 \newcommand{\thesignature}{\@signature}
 \makeatother
+
+%% Admonitions / Callout
+
+\definecolor{calloutNoteBg}{HTML}{ECF3FF}
+\definecolor{calloutNoteFrame}{HTML}{448AFF}
+
+\definecolor{calloutAbstractBg}{HTML}{E5F7FF}
+\definecolor{calloutAbstractFrame}{HTML}{00B0FF}
+
+\definecolor{calloutInfoBg}{HTML}{E5F8FB}
+\definecolor{calloutInfoFrame}{HTML}{00B8D4}
+
+\definecolor{calloutTipBg}{HTML}{E5F8F6}
+\definecolor{calloutTipFrame}{HTML}{00BFA5}
+
+\definecolor{calloutSuccessBg}{HTML}{E5F9ED}
+\definecolor{calloutSuccessFrame}{HTML}{00C853}
+
+\definecolor{calloutQuestionBg}{HTML}{EFFCE7}
+\definecolor{calloutQuestionFrame}{HTML}{64DD17}
+
+\definecolor{calloutWarningBg}{HTML}{FFF4E5}
+\definecolor{calloutWarningFrame}{HTML}{FF9E1D}
+
+\definecolor{calloutFailureBg}{HTML}{FFEDED}
+\definecolor{calloutFailureFrame}{HTML}{FF5252}
+
+\definecolor{calloutDangerBg}{HTML}{FFE7EC}
+\definecolor{calloutDangerFrame}{HTML}{FF1744}
+
+\definecolor{calloutBugBg}{HTML}{FEE5EE}
+\definecolor{calloutBugFrame}{HTML}{F50057}
+
+\definecolor{calloutExampleBg}{HTML}{F2EDFF}
+\definecolor{calloutExampleFrame}{HTML}{7C4DFF}
+
+\tcbset{
+  callout note/.style={
+      colbacktitle=calloutNoteBg,
+      colframe=calloutNoteFrame,
+      coltitle=calloutNoteFrame!80!black,
+      borderline west={0.3mm}{0mm}{calloutNoteFrame},
+      title={\makebox[1.3em][c]{\faBookmark}~\textbf{Note}},
+    },
+  callout info/.style={
+      colbacktitle=calloutInfoBg,
+      colframe=calloutInfoFrame,
+      coltitle=calloutInfoFrame!80!black,
+      borderline west={0.3mm}{0mm}{calloutInfoFrame},
+      title={\makebox[1.3em][c]{\faComment}~\textbf{Information}},
+    },
+  callout tip/.style={
+      colbacktitle=calloutTipBg,
+      colframe=calloutTipFrame,
+      coltitle=calloutTipFrame!80!black,
+      borderline west={0.3mm}{0mm}{calloutTipFrame},
+      title={\makebox[1.3em][c]{\faLightbulb}~\textbf{Astuce}},
+    },
+  callout success/.style={
+      colbacktitle=calloutSuccessBg,
+      colframe=calloutSuccessFrame,
+      coltitle=calloutSuccessFrame!80!black,
+      borderline west={0.3mm}{0mm}{calloutSuccessFrame},
+      title={\makebox[1.3em][c]{\faCheck}~\textbf{Succès}},
+    },
+  callout warning/.style={
+      colbacktitle=calloutWarningBg,
+      colframe=calloutWarningFrame,
+      coltitle=calloutWarningFrame!80!black,
+      borderline west={0.3mm}{0mm}{calloutWarningFrame},
+      title={\makebox[1.3em][c]{\faBolt}~\textbf{Avertissement}},
+    },
+  callout important/.style={
+      colbacktitle=calloutDangerBg,
+      colframe=calloutDangerFrame,
+      coltitle=calloutDangerFrame!80!black,
+      borderline west={0.3mm}{0mm}{calloutDangerFrame},
+      title={\makebox[1.3em][c]{\faExclamationTriangle}~\textbf{Danger}},
+    },
+  callout hint/.style={
+      colbacktitle=calloutTipBg,
+      colframe=calloutTipFrame,
+      coltitle=calloutTipFrame!80!black,
+      borderline west={0.3mm}{0mm}{calloutTipFrame},
+      title={\makebox[1.3em][c]{\faLightbulb}~\textbf{Indice}},
+    },
+  callout bug/.style={
+      colbacktitle=calloutBugBg,
+      colframe=calloutBugFrame,
+      coltitle=calloutBugFrame!80!black,
+      borderline west={0.3mm}{0mm}{calloutBugFrame},
+      title={\makebox[1.3em][c]{\faBomb}~\textbf{Bogue}},
+    },
+  callout example/.style={
+      colbacktitle=calloutExampleBg,
+      colframe=calloutExampleFrame,
+      coltitle=calloutExampleFrame!80!black,
+      borderline west={0.3mm}{0mm}{calloutExampleFrame},
+      title={\makebox[1.3em][c]{\faFlask}~\textbf{Exemple}},
+    },
+  callout default/.style={
+      colbacktitle=gray!40!white,
+
+      title={\textcolor{black}{\makebox[1.3em][l]{\faComment}}},
+    }
+}
+
+\newtcolorbox{callout}[1][]{%
+  breakable,
+  enhanced,
+  arc=0mm,
+  boxrule=0mm,
+  titlerule=0mm,
+  lefttitle=1mm,
+  leftupper=1mm,
+  colback=white,
+  parbox=false, % Allow paragraph breaks inside the box
+  frame hidden,
+  borderline west={0.3mm}{0mm}{black!70},
+  #1
+}
