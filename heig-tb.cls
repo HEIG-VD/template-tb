@@ -24,6 +24,7 @@
 
 % Améliore le mode mathématique, aligne les équations à gauche
 \RequirePackage[fleqn]{amsmath}
+\RequirePackage{nccmath}
 
 % Symboles mathématiques étendus
 \RequirePackage{amssymb}

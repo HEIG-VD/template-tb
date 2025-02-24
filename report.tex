@@ -26,6 +26,7 @@
 \usepgfplotslibrary{colormaps}
 \pgfplotsset{width=10cm,compat=1.18}
 
+\setlength{\fboxsep}{10pt}
 
 \newtheorem{theorem}{Théorème}[section]
 \newtheorem{corollary}{Corollaire}[theorem]
@@ -76,19 +77,19 @@
 
 %% Résumé / Résumé publiable / Version abrégée
 \begin{abstract}
-    \input{frontmatter/abstract}
+  \input{frontmatter/abstract}
 \end{abstract}
 
 %% Sommaire et tables
 \clearemptydoublepage
 {
-    \tableofcontents
-    \let\cleardoublepage\clearpage
-    \listoffigures
-    \let\cleardoublepage\clearpage
-    \listoftables
-    \let\cleardoublepage\clearpage
-    \listoflistings
+  \tableofcontents
+  \let\cleardoublepage\clearpage
+  \listoffigures
+  \let\cleardoublepage\clearpage
+  \listoftables
+  \let\cleardoublepage\clearpage
+  \listoflistings
 }
 
 \printnomenclature
