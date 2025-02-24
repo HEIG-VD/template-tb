@@ -7,15 +7,18 @@
 %% Choix de la police de caractères
 %% (décommenter une des deux lignes suivantes)
 \setmainfont{Latin Modern Roman} % Traditionnel LaTeX
+\setmathfont{Latin Modern Math}
 %\setmainfont{TeX Gyre Heros} % Sans sérif
+%\setmainfont{Linux Libertine O}
 
 % Si besoin d'insérer des formules chimiques
 \usepackage{chemfig}
+\usepackage[version=4]{mhchem}
 
 \usepackage{pgfplots}
-\usetikzlibrary{patterns,arrows,calc,decorations.pathmorphing}
+\usepgfplotslibrary{colormaps}
+\pgfplotsset{width=10cm,compat=1.18}
 
-\pgfplotsset{width=10cm,compat=1.9}
 
 \newtheorem{theorem}{Théorème}[section]
 \newtheorem{corollary}{Corollaire}[theorem]
@@ -37,6 +40,18 @@
 \input{meta}
 
 \surroundwithmdframed{minted}
+
+
+\renewcommand\nomgroup[1]{%
+  \item[\bfseries
+              \ifstrequal{#1}{A}{Constantes physiques}{%
+                \ifstrequal{#1}{B}{Groupes}{%
+                  \ifstrequal{#1}{C}{Autres Symboles}{}}}%
+        ]}
+
+\newcommand{\nomunit}[1]{%
+  \renewcommand{\nomentryend}{\hspace*{\fill}#1}}
+
 
 %% Début du document
 \begin{document}
@@ -89,9 +104,12 @@
 \appendixpage
 \addappheadtotoc
 
-\input{appendix/appendix.tex}
-\input{appendix/examples.tex}
-\input{appendix/faq.tex}
+\input{appendix/appendix}
+\input{appendix/examples}
+\input{appendix/advice}
+\input{appendix/structure}
+\input{appendix/faq}
+\input{appendix/template.tex}
 
 \let\cleardoublepage\clearpage
 \backmatter

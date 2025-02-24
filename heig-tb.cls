@@ -25,6 +25,9 @@
 % Améliore le mode mathématique, aligne les équations à gauche
 \RequirePackage[fleqn]{amsmath}
 
+% Symboles mathématiques étendus
+\RequirePackage{amssymb}
+
 % Configuration des légendes (figures/tables):
 % mot clé en gras et texte en italique
 \RequirePackage[small,bf,textfont=it]{caption}
@@ -32,7 +35,7 @@
 % Meilleure gestion des annexes
 \RequirePackage{appendix}
 
-\RequirePackage{color}
+\RequirePackage{xcolor}
 
 % Configuration des en-têtes et pieds de page
 \RequirePackage{fancyhdr}
@@ -78,7 +81,8 @@
 \RequirePackage{tikz}
 \RequirePackage{makecell}
 \RequirePackage{bold-extra}
-
+\RequirePackage{tcolorbox}
+\RequirePackage{unicode-math}
 \RequirePackage{cellspace}
 \RequirePackage{expkv-cs}
 
@@ -88,6 +92,8 @@
 
 % Gestion des citations \enquote{Ceci est une citation}
 \RequirePackage{csquotes}
+
+\usetikzlibrary{babel,shadows,patterns,arrows,calc,decorations.pathmorphing}
 
 \RequirePackage[
   backref=true,
@@ -112,19 +118,21 @@
 \definecolor{linkcolor}{RGB}{130, 22, 69}
 \RequirePackage[
   colorlinks=true,
-  plainpages=true,
+  plainpages=false,
   linkcolor=black,
   citecolor=black,
-  plainpages=false,
   unicode=true,
-  urlcolor=linkcolor]{hyperref}
+  urlcolor=linkcolor,
+  pdfpagelabels=false, % Évite les warnings liés à \c@page
+  bookmarksdepth=section % Profondeur des signets dans le PDF
+]{hyperref}
 
-% Avoid \c@page warnings
-\hypersetup{pdfpagelabels=false,bookmarksdepth=section}
-
-\usetikzlibrary{babel}
 \usemintedstyle{colorful}
-\setminted{frame=single,fontsize=\footnotesize}
+\setminted{
+  %frame=single,
+  style=friendly,
+  fontsize=\footnotesize
+}
 
 \newcommand{\clearemptydoublepage}{%
   \newpage{\thispagestyle{empty}\cleardoublepage}}
@@ -298,8 +306,6 @@
 \def\cf{cf.~}
 
 %% Keystroke command
-\usetikzlibrary{shadows}
-
 \newcommand*\keystroke[1]{%
   \tikz[baseline=(key.base)]
   \node[%

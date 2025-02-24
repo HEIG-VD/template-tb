@@ -1,13 +1,4 @@
 
-\renewcommand\nomgroup[1]{%
-  \item[\bfseries
-              \ifstrequal{#1}{A}{Constantes physiques}{%
-                \ifstrequal{#1}{B}{Groupes}{%
-                  \ifstrequal{#1}{C}{Autres Symboles}{}}}%
-        ]}
-
-\newcommand{\nomunit}[1]{%
-  \renewcommand{\nomentryend}{\hspace*{\fill}#1}}
 
 \nomenclature[A, 02]{\(c\)}{\href{https://physics.nist.gov/cgi-bin/cuu/Value?c}
   {Vitesse de la lumière dans le vide}
@@ -15,11 +6,11 @@
 
 \nomenclature[A, 03]{\(h\)}{\href{https://physics.nist.gov/cgi-bin/cuu/Value?h}
   {Constante de Planck}
-  \nomunit{\qty[group-digits=false]{6.62607015e-34}{\joule\per\hertz}}}
+  \nomunit{\qty[group-digits=none]{6.62607015e-34}{\joule\per\hertz}}}
 
 \nomenclature[A, 01]{\(G\)}{\href{https://physics.nist.gov/cgi-bin/cuu/Value?bg}
   {Constante de gravitation universelle}
-  \nomunit{\qty[group-digits=false]{6.67430e-11}{\meter\cubed\per\kilogram\per\second\squared}}}
+  \nomunit{\qty[group-digits=none]{6.67430e-11}{\meter\cubed\per\kilogram\per\second\squared}}}
 
 \nomenclature[B, 03]{\(\mathbb{R}\)}{Nombres réels}
 \nomenclature[B, 02]{\(\mathbb{C}\)}{Nombres complexes}

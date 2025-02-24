@@ -116,27 +116,7 @@ Vous pouvez utiliser Python ou Matlab pour générer des figures à la volée à
 
 \fig[H, width=12cm]{Diagramme de Bode généré à la volée}{bode.py}
 
-\subsection{Schéma électronique}
-Vous pouvez également utiliser TikZ pour créer vos propres schémas électriques et électroniques comme l'exemple \ref{circuit}. N'hésitez pas à vous inspirer d'exemples disponibles sur internet (\href{https://texample.net/tikz/examples/area/electrical-engineering/}{texample/electrical-engineering}).
 
-\begin{figure}[ht]
-    \begin{center}
-        \begin{circuitikz}
-            \draw
-            (0,0) to [short, *-] (6,0)
-            to [V, l_=$\mathrm{j}{\omega}_m \underline{\phi}^s_R$] (6,2)
-            to [R, l_=$R_R$] (6,4)
-            to [short, i_=$\underline{i}^s_R$] (5,4)
-            (0,0) to [open, v^>=$\underline{u}^s_s$] (0,4)
-            to [short, *- ,i=$\underline{i}^s_s$] (1,4)
-            to [R, l=$R_s$] (3,4)
-            to [L, l=$L_{\sigma}$] (5,4)
-            to [short, i_=$\underline{i}^s_M$] (5,3)
-            to [L, l_=$L_M$] (5,0);
-        \end{circuitikz}
-        \caption{Circuit électrique \label{circuit}}
-    \end{center}
-\end{figure}
 
 \subsection{Dessins techniques}
 La présentation de dessins mécaniques est préférée en vue filaire. SolidWorks conserve la représentation vectorielle à l'exportation, mais pas lorsqu'il y a des textures ou des rendus. À partir du PDF généré, l'image peut être isolée et sauvegardée en format SVG.
@@ -152,7 +132,7 @@ Notez ici que la légende est particulièrement longue. Celle que vous retrouver
 
 La figure \ref{assembly} est un dessin technique épuré qui permet de décrire un phénomène ou un fonctionnement important dans le rapport technique. Les mises en plan détaillées seront quant à elles disponibles en annexes.
 
-\subsection{Formules chimiques}
+\section{Formules chimiques}
 
 Pour les formules chimiques, utilisez le paquet \texttt{mhchem}. Par exemple, l'équation \ref{eq:2} représente la réaction de combustion du méthane.
 
@@ -167,6 +147,7 @@ Pour les formules chimiques, utilisez le paquet \texttt{mhchem}. Par exemple, l'
     \ce{CH4 + 2O2 -> CO2 + 2H2O}
 \end{equation}
 
+\newpage
 \section{Tableaux}
 
 Concernant les tableaux un seul conseil : restez simple et minimaliste, n'ajoutez des séparateurs que là ou c'est nécessaire pour améliorer la lisibilité. Une liste de quelques cantons suisses est donnée à titre d'exemple dans la table \ref{cantons}.
@@ -179,7 +160,6 @@ Concernant les tableaux un seul conseil : restez simple et minimaliste, n'ajoute
             Abréviation & Nom du canton & Depuis                  \\
             \midrule
             ZH          & Zürich        & \ordinalnum{1} mai 1351 \\
-            BE          & Berne         & 6 mars 1353             \\
             FR          & Fribourg      & 22 décembre 1481        \\
             VD          & Vaud          & 19 février 1815         \\
             VS          & Valais        & 4 août 1815             \\
@@ -190,7 +170,7 @@ Concernant les tableaux un seul conseil : restez simple et minimaliste, n'ajoute
     \end{center}
 \end{table}
 
-Comparez la lisibilité de cette même table avec celle que vous pourriez trouver dans un document Word :
+Comparez la lisibilité de cette même table avec celle que vous pourriez trouver dans un document Word. Évitez par conséquent les bordures et les couleurs.
 
 \begin{table}[ht]
     \begin{center}
@@ -199,7 +179,6 @@ Comparez la lisibilité de cette même table avec celle que vous pourriez trouve
             \textbf{Abréviation} & \textbf{Nom du canton} & \textbf{Depuis}         \\
             \Xhline{4\arrayrulewidth}
             ZH                   & Zürich                 & \ordinalnum{1} mai 1351 \\ \hline
-            BE                   & Berne                  & 6 mars 1353             \\ \hline
             FR                   & Fribourg               & 22 décembre 1481        \\ \hline
             VD                   & Vaud                   & 19 février 1815         \\ \hline
             VS                   & Valais                 & 4 août 1815             \\ \hline
@@ -240,9 +219,13 @@ L'exemple de la table \ref{specification}, assigne pour chaque exigence un numé
 
 Imaginons que dans cette section nous parlions du cheval blanc \index{cheval blanc} de Napoléon. Il se pourrait que le lecteur recherche ce passage dans la version imprimée du rapport. Avec l'index, rien de plus facile. Allez jeter un œil à la page \pageref{index}.
 
+\subsection{Notes maginales}
+
+\maraja{Je suis une marginale, et je suis utile pour résumé un paragraphe en quelques mots.} Vous pouvez sporadiquement utiliser les notes maginales pour mettre en exergue un point important. Elles sont particulièrement utiles pour résumer un paragraphe en quelques mots. Elles sont également utiles pour ajouter des commentaires ou des réflexions personnelles.
+
 \subsection{Notes de bas de page}
 
-\maraja{Je suis une marginale, et je suis utile pour résumé un paragraphe en quelques mots.} Parfois, il est plus élégant d'annoter une définition en utilisant une note de bas de page \footnote{La note en bas de page (ou note de bas de page) est une forme littéraire, consistant en une ou plusieurs lignes ne figurant pas dans le texte.}. Alternativement il est possible d'annoter un paragraphe avec une note marginale.
+Parfois, il est plus élégant d'annoter une définition en utilisant une note de bas de page \footnote{La note en bas de page (ou note de bas de page) est une forme littéraire, consistant en une ou plusieurs lignes ne figurant pas dans le texte.}.
 
 \section{Glossaire et acronymes}
 
@@ -250,11 +233,15 @@ La \Gls{heig-vd} membre de la \Gls{hes-so} propose ce modèle de document. Le fo
 
 \section{Unités de mesure}
 
-Lorsque vous mentionnez des quantités, utilisez les unités du système international. \LaTeX~et le paquet \texttt{siunitx} permet la saisie de quantités. La commande suivante permet d'afficher \SI{42.12}{\kilo\gram\metre\per\square\second}.\par
+Le plus difficile dans la rédaction d'un rapport technique est de rester cohérent dans l'utilisation des unités de mesure. Contrairement aux idées reçues les unités ne sont pas placées entre crochets ni mises en italiques.
 
-\mintinline{latex}{\SI{42.12}{\kilo\gram\metre\per\square\second}}\par
+Une espace fine doit être placée entre le nombre et l'unité, et on évitera les barres de division pour les unités composées.
 
-Notez qu'une espace fine précède l'unité et que ces dernières ne sont pas en italiques.
+Le paquet \texttt{siunitx} facilite grandement la saisie de quantités. La commande suivante permet d'afficher par exemple \qty{42.12}{\kilo\gram\metre\per\square\second}.\par
+
+\mintinline{text}{\qty{42.12}{\kilo\gram\metre\per\square\second}}\par
+
+Pour afficher simplement une unité comme le \si{\kilo\gram} on utilise la commande \mintinline{text}{\si{\kilo\gram}}.
 
 \section{Code source}
 
@@ -262,32 +249,38 @@ Ce modèle vous offre deux environnements pour afficher du code source. Le plus 
 
 \begin{listing}[ht]
     \inputminted{c}{assets/code/fibonacci.c}
-    \caption{Exemple de programme en C \label{c} avec Minted}
+    \caption{Exemple de programme en C \label{cminted} avec Minted}
 \end{listing}
 
 \begin{listing}[ht]
     \lstinputlisting{assets/code/fibonacci.c}
-    \caption{Exemple de programme en C \label{c} avec Listing}
+    \caption{Exemple de programme en C \label{clist} avec Listing}
 \end{listing}
 
-% \section{Echecs}
+Voici un exemple directement dans le texte :
 
-% Pour les diagrammes d'échecs, le paquet \texttt{skak} est recommandé. Il permet de générer des diagrammes d'échecs à partir de notation FEN. Par exemple, la position de la figure \ref{echecs} est obtenue avec le code suivant :
+\begin{minted}{python}
+def hello_world():
+print("Hello, world!")
+\end{minted}
 
-% \newchessgame
-% \mainline{1.e4 e5 2.Nf3 Nc6 3.Bb5 a6}
-% \showboard % A skak package command. Future examples will use \chessboard[...]
-
-
+\clearpage
 \section{Tikz}
 
+Ti\textit{k}Z est un outil puissant pour dessiner des graphiques en \LaTeX. Il est particulièrement utile pour les diagrammes de circuits, les graphiques 2D et 3D, les diagrammes de séquence, les arbres, etc. Voici un exemple simple de diagramme de séquence. On préfèrera aujourd'hui des outils WYSIWYG comme draw.io pour les diagrammes mais pour des diagrammes techniques de haute qualité, Tikz reste un outil de choix. Sa courbe d'apprentissage est raide, mais les résultats sont impressionnants.
+
+N'hésitez pas à vous inspirer d'exemples disponibles sur internet (\href{https://texample.net/category/science-technology/}{texample.net}).
+
 \subsection{PGF Plots}
-\begin{figure}[ht]
+
+PGF Plots est un package TikZ spécialisé dans les graphiques. Voici l'exemple d'un graphique 3D réalisé avec PGF Plots. Il est également possible de générer des graphiques à partir de données tabulaires. Pour plus d'informations, consultez la documentation de PGF Plots.
+
+\begin{figure}[H]
     \centering
     \begin{tikzpicture}
         \begin{axis}[
                 hide axis,
-                colormap/parula,
+                colormap/viridis,
             ]
             \addplot3[
                 mesh,
@@ -295,14 +288,15 @@ Ce modèle vous offre deux environnements pour afficher du code source. Le plus 
                 domain=-8:8,
             ]
             {sin(deg(sqrt(x^2+y^2)))/sqrt(x^2+y^2)};
-            \addlegendentry{\(\frac{sin(r)}{r}\)}
+            %\addlegendentry{\(\frac{sin(r)}{r}\)}
         \end{axis}
     \end{tikzpicture}
     \caption{Exemple de graphique 3D avec PGF Plots}
 \end{figure}
 
-
 \subsection{Jonction semiconducteur}
+
+Voici un autre exemple d'un diagramme de jonction semi-conducteur.
 
 \begin{tikzpicture}
     % variables for pn-junction diagram:
@@ -372,89 +366,6 @@ Ce modèle vous offre deux environnements pour afficher du code source. Le plus 
     \draw [->] ({\DZCE+0.3},-0.2) to [out=20, in=180, looseness=0.75]
     ({\FZCE},{\V-0.2}) node [right]{$\circ$};
 \end{tikzpicture}
-
-\subsectinon{Filtrage}
-
-Diagramme du troisième ordre d'un filtre à bruit dans un lecteur de compact disc par Grant M. Erickson.
-
-\tikzset{%
-    block/.style    = {draw, thick, rectangle, minimum height = 3em,
-            minimum width = 3em},
-    sum/.style      = {draw, circle, node distance = 2cm}, % Adder
-    input/.style    = {coordinate}, % Input
-    output/.style   = {coordinate} % Output
-}
-% Defining string as labels of certain blocks.
-\newcommand{\suma}{\Large$+$}
-\newcommand{\inte}{$\displaystyle \int$}
-\newcommand{\derv}{\huge$\frac{d}{dt}$}
-
-\begin{tikzpicture}[auto, thick, node distance=2cm, >=triangle 45]
-    \draw
-    % Drawing the blocks of first filter :
-    node at (0,0)[right=-3mm]{\Large \textopenbullet}
-    node [input, name=input1] {}
-    node [sum, right of=input1] (suma1) {\suma}
-    node [block, right of=suma1] (inte1) {\inte}
-    node at (6.8,0)[block] (Q1) {\Large $Q_1$}
-    node [block, below of=inte1] (ret1) {\Large$T_1$};
-    % Joining blocks.
-    % Commands \draw with options like [->] must be written individually
-    \draw[->](input1) -- node {$X(Z)$}(suma1);
-    \draw[->](suma1) -- node {} (inte1);
-    \draw[->](inte1) -- node {} (Q1);
-    \draw[->](ret1) -| node[near end]{} (suma1);
-    % Adder
-    \draw
-    node at (5.4,-4) [sum, name=suma2] {\suma}
-    % Second stage of filter
-    node at  (1,-6) [sum, name=suma3] {\suma}
-    node [block, right of=suma3] (inte2) {\inte}
-    node [sum, right of=inte2] (suma4) {\suma}
-    node [block, right of=suma4] (inte3) {\inte}
-    node [block, right of=inte3] (Q2) {\Large$Q_2$}
-    node at (9,-8) [block, name=ret2] {\Large$T_2$}
-    ;
-    % Joining the blocks of second filter
-    \draw[->] (suma3) -- node {} (inte2);
-    \draw[->] (inte2) -- node {} (suma4);
-    \draw[->] (suma4) -- node {} (inte3);
-    \draw[->] (inte3) -- node {} (Q2);
-    \draw[->] (ret2) -| (suma3);
-    \draw[->] (ret2) -| (suma4);
-    % Third stage of filter:
-    % Defining nodes:
-    \draw
-    node at (11.5, 0) [sum, name=suma5]{\suma}
-    node [output, right of=suma5]{}
-    node [block, below of=suma5] (deriv1){\derv}
-    node [output, right of=suma5] (sal2){}
-    ;
-    % Joining the blocks:
-    \draw[->] (suma2) -| node {}(suma3);
-    \draw[->] (Q1) -- (8,0) |- node {}(ret1);
-    \draw[->] (8,0) |- (suma2);
-    \draw[->] (5.4,0) -- (suma2);
-    \draw[->] (Q1) -- node {}(suma5);
-    \draw[->] (deriv1) -- node {}(suma5);
-    \draw[->] (Q2) -| node {}(deriv1);
-    \draw[<->] (ret2) -| node {}(deriv1);
-    \draw[->] (suma5) -- node {$Y(Z)$}(sal2);
-    % Drawing nodes with \textbullet
-    \draw
-    node at (8,0) {\textbullet}
-    node at (8,-2){\textbullet}
-    node at (5.4,0){\textbullet}
-    node at (5,-8){\textbullet}
-    node at (11.5,-6){\textbullet}
-    ;
-    % Boxing and labelling noise shapers
-    \draw [color=gray,thick](-0.5,-3) rectangle (9,1);
-    \node at (-0.5,1) [above=5mm, right=0mm] {\textsc{first-order noise shaper}};
-    \draw [color=gray,thick](-0.5,-9) rectangle (12.5,-5);
-    \node at (-0.5,-9) [below=5mm, right=0mm] {\textsc{second-order noise shaper}};
-\end{tikzpicture}
-
 
 \subsection{Moteur à combustion}
 
@@ -575,3 +486,26 @@ Voici un exemple d'un modèle d'un papillon des gaz utilisé dans un moteur à c
     node[black,midway,yshift=-20pt]
     {Sous-système mécanique};
 \end{circuitikz}
+
+\subsection{Schéma électronique}
+
+Vous pouvez également utiliser TikZ pour créer vos propres schémas électriques et électroniques comme l'exemple \ref{circuit}.
+
+\begin{figure}[ht]
+    \begin{center}
+        \begin{circuitikz}
+            \draw
+            (0,0) to [short, *-] (6,0)
+            to [V, l_=$\mathrm{j}{\omega}_m \underline{\phi}^s_R$] (6,2)
+            to [R, l_=$R_R$] (6,4)
+            to [short, i_=$\underline{i}^s_R$] (5,4)
+            (0,0) to [open, v^>=$\underline{u}^s_s$] (0,4)
+            to [short, *- ,i=$\underline{i}^s_s$] (1,4)
+            to [R, l=$R_s$] (3,4)
+            to [L, l=$L_{\sigma}$] (5,4)
+            to [short, i_=$\underline{i}^s_M$] (5,3)
+            to [L, l_=$L_M$] (5,0);
+        \end{circuitikz}
+        \caption{Circuit électrique \label{circuit}}
+    \end{center}
+\end{figure}
