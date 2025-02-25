@@ -6,7 +6,7 @@ Ce chapitre est dédié à la présentation de quelques exemples de contenu que 
 
 Citer vos sources est essentiel. Avec \texttt{biblatex} vous pouvez facilement citer des articles, des livres ou des sites internet. Toutes les citations dans le texte seront automatiquement regroupées en fin de document dans la section \emph{bibliographie}.
 
-À titre d'exemple citons à l'aide de la commande \verb!\cite! un article d'Einstein \cite{einstein} paru en 1905 ou le livre de Dirac \cite{dirac} introduisant quelques principes de méchanique quantique. La communauté scientifique dispose de nombreux consensus pour référencer les articles scientifiques. On parle du style des citations. Certains de ces styles sont normalisés comme le style \texttt{IEEEtran} ou \texttt{APA}. Avec \LaTeX{} vous pouvez facilement changer le style \mintinline{latex}|style=alphabetic| dans le fichier \texttt{heig-tb.cls}.
+À titre d'exemple citons à l'aide de la commande \verb!\cite! un article d'Einstein \cite{einstein} paru en 1905 ou le livre de Dirac \cite{dirac} introduisant quelques principes de mécanique quantique. La communauté scientifique dispose de nombreux consensus pour référencer les articles scientifiques. On parle du style des citations. Certains de ces styles sont normalisés comme le style \texttt{IEEEtran} ou \texttt{APA}. Avec \LaTeX{} vous pouvez facilement changer le style \mintinline{latex}|style=alphabetic| dans le fichier \texttt{heig-tb.cls}.
 
 Un conseil, ne citez pas pour citer et gonfler artificiellement votre bibliographie. Citez des articles ou des références afin d'appuyer vos arguments sur des travaux existants. Ces références permettent également de lier votre travail à d'autres travaux antérieurs.
 
@@ -98,7 +98,7 @@ Vous pouvez référencer des théorèmes tels que \ref{pythagorean} lorsqu'une �
 
 \section{Diagrammes}
 
-Les diagrammes de flux peuvent être réalisés en utilisant l'outil \href{https://app.diagrams.net/}{draw.io}. Une exportation en \texttt{.drawio} (non compressé) permet de garder les sources de la figure. Le rendu en \texttt{.pdf} sera réalisé à la volée à la compilation ce qui est l'intérêt principal d'utiliser ce modèle.
+Les diagrammes de flux peuvent être réalisés en utilisant l'outil \href{https://app.diagrams.net/}{draw.io}. Une exportation en \texttt{.drawio} (non compressé) permet de conserver les sources de la figure. Le rendu en \texttt{.pdf} sera réalisé à la volée à la compilation ce qui est l'intérêt principal d'utiliser ce modèle.
 
 L'objectif est d'avoir qu'une source de vérité \cad pas d'image intermédiaire à stocker, et réduire la quantité d'information dans votre dépôt GitHub.
 
@@ -222,7 +222,7 @@ Comparez la lisibilité de cette même table avec celle que vous pourriez trouve
 
 \begin{table}[ht]
     \begin{center}
-        \caption{Liste des cantons (vilain)}
+        \caption{Liste des cantons}
         \begin{tabular}{|l|l|l|} \hline
             \textbf{Abréviation} & \textbf{Nom du canton} & \textbf{Depuis}         \\
             \Xhline{4\arrayrulewidth}
@@ -264,8 +264,9 @@ L'exemple de la table \ref{specification}, assigne pour chaque exigence un numé
 \LaTeX{} permet d'indexer les mots \index{mots} importants. Il suffit de placer les termes importants d'un paragraphe dans la commande \mintinline{latex}{\index{terme}} et ils apparaîtront automatiquement à la fin de ce rapport dans l'index du document. L'intérêt réside principalement dans une version imprimée. Si votre rapport n'est pas destiné à être imprimé, l'index n'est pas nécessaire.
 
 \index{Napoléon}
+\index{Henri IV}
 
-Imaginons que dans cette section nous parlions du cheval blanc \index{cheval blanc} de Napoléon. Il se pourrait que le lecteur recherche ce passage dans la version imprimée du rapport. Avec l'index, rien de plus facile. Allez jeter un œil à la page \pageref{index}.
+Imaginons que dans cette section nous parlions du cheval blanc \index{cheval blanc} de Napoléon (ou d'Henri IV). Il se pourrait que le lecteur recherche ce passage dans la version imprimée du rapport. Avec l'index, rien de plus facile. Allez jeter un œil à la page \pageref{index}.
 
 \subsection{Notes maginales}
 
@@ -367,7 +368,7 @@ Ti\textit{k}Z est un outil puissant pour dessiner des graphiques en \LaTeX. Il e
 
 N'hésitez pas à vous inspirer d'exemples disponibles sur internet (\href{https://texample.net/category/science-technology/}{texample.net}).
 
-\subsection{PGF Plots}
+\subsection{Graphiques PGF}
 
 PGF Plots est un package TikZ spécialisé dans les graphiques. Voici l'exemple d'un graphique 3D réalisé avec PGF Plots. Il est également possible de générer des graphiques à partir de données tabulaires. Pour plus d'informations, consultez la documentation de PGF Plots.
 
