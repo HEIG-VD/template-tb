@@ -10,6 +10,9 @@
 
 \RequirePackage{fontspec}
 \RequirePackage[main=french,english]{babel}
+\babelprovide[import=fr]{french}
+\babelprovide[import=en]{english}
+\babelprovide[import=la]{latin}
 
 %% Confidentiel
 \DeclareOption{confidential}{
@@ -29,9 +32,18 @@
 % Symboles mathématiques étendus
 \RequirePackage{amssymb}
 
+% Insertion de figures \includegraphics
+% LuaLaTeX support les formats PDF, PNG, JPEG et EPS
+\RequirePackage{graphicx}
+
 % Configuration des légendes (figures/tables):
 % mot clé en gras et texte en italique
 \RequirePackage[small,bf,textfont=it]{caption}
+\RequirePackage{subcaption}
+
+% Autorise des figures et tables plus flexibles avec
+% l'environnement [H] de la classe float
+\RequirePackage{float}
 
 % Meilleure gestion des annexes
 \RequirePackage{appendix}
@@ -45,9 +57,6 @@
 % Ajoute les commandes \toprule, \midrule et \bottomrule
 \RequirePackage{booktabs}
 
-% Autorise des figures et tables plus flexibles avec
-% l'environnement [H] de la classe float
-\RequirePackage{float}
 
 % Permet d'écrire un nombre en lettre (ex: 1 -> un)
 \RequirePackage{fmtcount}
@@ -63,14 +72,11 @@
 % Gestion des glossaires et acronymes
 \RequirePackage{glossaries}
 
-% Insertion de figures \includegraphics
-% LuaLaTeX support les formats PDF, PNG, JPEG et EPS
-\RequirePackage{graphicx}
 
 % Utile pour obtenir le numéro de la dernière page du document
 % \fancyfoot[C]{Page \thepage{} sur \pageref{LastPage}}
 % (non utilisé ici)
-\RequirePackage{lastpage}
+%\RequirePackage{lastpage}
 
 % Alternative à minted pour afficher du code source
 % Plus traditionnel et plus rapide à compiler
@@ -96,8 +102,6 @@
 % Permet de gérer plusieurs colonnes avec l'environnement multicols
 \RequirePackage{multicol}
 
-% Permet de gérer plusieurs figures dans un environnement figure
-\RequirePackage{subcaption}
 
 \RequirePackage{nomencl}
 \RequirePackage{parskip}
@@ -112,7 +116,7 @@
 \RequirePackage{cellspace}
 \RequirePackage{expkv-cs}
 \RequirePackage{fontawesome5}
-
+\RequirePackage{enumitem}
 
 % Coloration syntaxique du code source avec Python
 % Nécessite la compilation avec --shell-escape

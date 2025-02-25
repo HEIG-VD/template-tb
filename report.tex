@@ -6,8 +6,12 @@
 
 %% Choix de la police de caractères
 %% (décommenter une des deux lignes suivantes)
-\setmainfont{Latin Modern Roman} % Traditionnel LaTeX
+%\setmainfont{Latin Modern Roman} % Traditionnel LaTeX
 %\setmainfont{TeX Gyre Heros} % Sans sérif
+
+% Police de caractère moins cursive pour le code
+% pour une meilleure lisibilité.
+\setmonofont{Source Code Pro}
 
 % Générer du texte de remplissage pour les exemples
 \usepackage{lipsum}
@@ -49,7 +53,7 @@
 
 \surroundwithmdframed{minted}
 
-
+% Utilisé par la nomenclature
 \renewcommand\nomgroup[1]{%
   \item[\bfseries
               \ifstrequal{#1}{A}{Constantes physiques}{%
