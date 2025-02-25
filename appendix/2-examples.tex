@@ -407,8 +407,8 @@ Voici un autre exemple d'un diagramme de jonction semi-conducteur.
     \def\PN{10}   % total lentgh of the junction
 
     % calculations
-    \pgfmathsetmacro\EC{\EG+\V};% conduction band heigth (without polarisation)
-    \pgfmathsetmacro\FZCE{\DZCE+\LZCE};% SCR end position
+    \pgfmathsetmacro\EC{\EG+\V} % conduction band heigth (without polarisation)
+    \pgfmathsetmacro\FZCE{\DZCE+\LZCE} % SCR end position
 
     % valence and conduction band drawing:
     \draw (0,0) node [left]{$E_V$} -- (\DZCE,0)

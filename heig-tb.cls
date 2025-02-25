@@ -102,11 +102,12 @@
 % Permet de gérer plusieurs colonnes avec l'environnement multicols
 \RequirePackage{multicol}
 
+% Permet de faire des tests conditionnels
+\RequirePackage{ifthen}
 
 \RequirePackage{nomencl}
 \RequirePackage{parskip}
 \RequirePackage{rotating}
-\RequirePackage{siunitx}
 \RequirePackage{tabularx}
 \RequirePackage{tikz}
 \RequirePackage{makecell}
@@ -117,6 +118,7 @@
 \RequirePackage{expkv-cs}
 \RequirePackage{fontawesome5}
 \RequirePackage{enumitem}
+\RequirePackage{siunitx}
 
 % Coloration syntaxique du code source avec Python
 % Nécessite la compilation avec --shell-escape
@@ -124,6 +126,9 @@
 
 % Gestion des citations \enquote{Ceci est une citation}
 \RequirePackage{csquotes}
+
+% Permet d'executer du Lua
+\RequirePackage{luacode}
 
 \setmathfont{Latin Modern Math}
 
@@ -182,19 +187,34 @@
   language=C, % Vous pouvez choisir le langage de votre choix
   breaklines=true,
   breakatwhitespace=false,
+  caption={},
   basicstyle=\footnotesize\sffamily}
+
+%% Gestion des accords du genre
+
+
+% Définition des genres
+\newcommand{\setmale}{\def\genre{male}}
+\newcommand{\setfemale}{\def\genre{female}}
+
+% Commande pour gérer les accords en fonction du genre
+\newcommand{\accord}[2]{\ifthenelse{\equal{\genre}{female}}{#2}{#1}}
 
 %% Settings
 \def\subtitle#1{\def\@subtitle{#1}}
 \def\teacher#1{\def\@teacher{#1}}
-\def\genre#1{\def\@genre{#1}}
 \def\field#1{\def\@field{#1}}
-\def\female{female}
+
 \def\signature#1{\def\@signature{#1}}
 
 \def\printsignature{\includegraphics[width=4cm]{
     \assetsdir/\@signature.\graphicsExt}
 }
+
+\newcommand{\thedate}{\@date}
+\newcommand{\thefield}{\@field}
+\newcommand{\theauthor}{\@author}
+\newcommand{\thesignature}{\@signature}
 
 \def\thesis#1{\def\@thesis{#1}}
 \def\endyear#1{\def\@endyear{#1}}
@@ -355,14 +375,6 @@
   ;
 }
 
-\makeatletter
-\newcommand{\thedate}{\@date}
-\newcommand{\thefield}{\@field}
-\newcommand{\thegenre}{\@genre}
-\newcommand{\theauthor}{\@author}
-\newcommand{\thesignature}{\@signature}
-\makeatother
-
 %% Admonitions / Callout
 
 \definecolor{calloutNoteBg}{HTML}{ECF3FF}
@@ -482,4 +494,48 @@
   frame hidden,
   borderline west={0.3mm}{0mm}{black!70},
   #1
+}
+
+% Inclusion dynamique de fichiers
+\begin{luacode}
+  -- Fonction pour trier les fichiers par ordre naturel (natural sort)
+  local function natural_sort(a, b)
+  local function padnum(d) return string.format("%03d", tonumber(d)) end
+  local function tokenize(str)
+  local tokens = {}
+  for c in str:gmatch("(%d+)|(%D+)") do
+  if tonumber(c) then
+  table.insert(tokens, padnum(c))
+  else
+  table.insert(tokens, c)
+  end
+  end
+  return table.concat(tokens)
+  end
+  return tokenize(a) < tokenize(b)
+  end
+
+  function include_dir(order, dir)
+  local files = {}
+  for file in io.popen('ls ' .. dir .. '/*.tex'):lines() do
+  table.insert(files, file)
+  end
+
+  -- Appliquer le tri si demandé
+  if order == "natural" then
+  table.sort(files, natural_sort)
+  else
+  table.sort(files) -- Tri alphabétique standard par défaut
+  end
+
+  -- Inclure les fichiers
+  for _, file in ipairs(files) do
+  tex.sprint("\\input{" .. file .. "}")
+  end
+  end
+\end{luacode}
+
+% Commande personnalisée en LaTeX
+\newcommand{\inputdir}[2][]{%
+  \directlua{include_dir([[#1]], [[#2]])}%
 }

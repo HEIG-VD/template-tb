@@ -36,6 +36,8 @@ $(FIGS_PY): $(BUILDDIR)/%.py.pdf: %.py | dirs
 $(FIGS_DIO): $(BUILDDIR)/%.drawio.pdf: %.drawio | dirs
 	@printf "$(BLUE)Converting drawio diagram '$<' to '$@'$(RESET)\n"
 	$(DRAWIO) --crop --export --format pdf --output $@ $< --disable-gpu --headless --no-sandbox
+	# Conversion in 1.5, LaTeX is capricious...
+	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -sOutputFile=$@ $@
 
 $(FIGS_PDF): $(BUILDDIR)/%.pdf: %.pdf | dirs
 	cp $< $@

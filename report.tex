@@ -72,17 +72,7 @@
 \frontmatter
 \clearemptydoublepage
 
-%% Requis par les dispositions générales des travaux de Bachelor
-\input{frontmatter/preamble}
-\input{frontmatter/authentication}
-
-%% Une préface est optionnelle
-\input{frontmatter/notes}
-
-%% Résumé / Résumé publiable / Version abrégée
-\begin{abstract}
-  \input{frontmatter/abstract}
-\end{abstract}
+\inputdir[order=natural]{frontmatter}
 
 %% Sommaire et tables
 \clearemptydoublepage
@@ -103,11 +93,7 @@
 %% Contenu
 \mainmatter
 
-\input{content/introduction}
-\input{content/state-of-the-art}
-\input{content/implementation}
-\input{content/results}
-\input{content/conclusion}
+\inputdir[order=natural]{content}
 
 \clearpage
 \printbibliography
@@ -116,12 +102,7 @@
 \appendixpage
 \addappheadtotoc
 
-\input{appendix/appendix}
-\input{appendix/examples}
-\input{appendix/advice}
-\input{appendix/structure}
-\input{appendix/faq}
-\input{appendix/template.tex}
+\inputdir[order=natural]{appendix}
 
 \let\cleardoublepage\clearpage
 \backmatter
