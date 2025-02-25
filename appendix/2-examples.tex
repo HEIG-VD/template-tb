@@ -1,18 +1,18 @@
 \chapter{Exemples}
 
-Ce chapitre est dédié à la présentation de quelques exemples de contenu que vous pourriez intégrer dans votre rapport. Il est important de noter que ce document est un modèle et que vous devriez adapter son contenu à votre projet. Les exemples suivants sont bien entendu donnés à titre indicatif.
+Ce chapitre est dédié à la présentation de quelques exemples de contenu que vous pourriez intégrer dans votre rapport.
 
 \section{Citations et bibliographie}
 
-Citer vos sources est essentiel. Avec \texttt{biblatex} vous pouvez facilement citer des articles, des livres ou des sites internet. Toutes les citations dans le texte seront automatiquement regroupées en fin de document dans la section \guillemotleft{} Bibliographie\guillemotright.
+Citer vos sources est essentiel. Avec \texttt{biblatex} vous pouvez facilement citer des articles, des livres ou des sites internet. Toutes les citations dans le texte seront automatiquement regroupées en fin de document dans la section \emph{bibliographie}.
 
-À titre d'exemple nous pouvons citer un article d'Einstein \cite{einstein} ou le livre de Dirac \cite{dirac}. La communauté scientifique à de nombreux consensus pour référencer les articles scientifiques. On parle du style des citations. Certains styles sont normalisés comme le style \texttt{IEEEtran} ou \texttt{APA}. Le style \texttt{IEEEtran} est souvent utilisé pour les articles scientifiques en ingénierie et en informatique. Le style \texttt{APA} est souvent utilisé en psychologie et en sciences sociales. Avec \LaTeX{} vous pouvez facilement changer le style de citation en modifiant l'option \mintinline{latex}|style=alphabetic| dans le fichier \texttt{heig-tb.cls}.
+À titre d'exemple citons à l'aide de la commande \verb!\cite! un article d'Einstein \cite{einstein} paru en 1905 ou le livre de Dirac \cite{dirac} introduisant quelques principes de méchanique quantique. La communauté scientifique dispose de nombreux consensus pour référencer les articles scientifiques. On parle du style des citations. Certains de ces styles sont normalisés comme le style \texttt{IEEEtran} ou \texttt{APA}. Avec \LaTeX{} vous pouvez facilement changer le style \mintinline{latex}|style=alphabetic| dans le fichier \texttt{heig-tb.cls}.
 
-Ne citez pas pour citer, mais citez pour appuyer vos arguments sur des travaux existants. Elles doivent être utilisées pour montrer que vous avez fait des recherches sur le sujet.
+Un conseil, ne citez pas pour citer et gonfler artificiellement votre bibliographie. Citez des articles ou des références afin d'appuyer vos arguments sur des travaux existants. Ces références permettent également de lier votre travail à d'autres travaux antérieurs.
 
 Parfois il peut être utile d'utiliser un gestionnaire de bibliographie. La communauté académique recommande l'outil \href{https://www.zotero.org/}{Zotero} qui permet de gérer une bibliothèque numérique d'ouvrages et de références numériques. Il permet également de générer une bibliographie compatible avec \LaTeX.
 
-Notez qu'il est très facile d'obtenir l'extrait \texttt{bibtex} depuis des journaux. Sélectionnez \emph{export/citation}. Si vous le pouvez, choisissez \texttt{bibtex}. Dans le cas d'un format \texttt{.ris}, utilisez un convertisseur en ligne comme \href{http://www.bruot.org/ris2bib/}{ris2bib}.
+Notez qu'il est également très facile d'obtenir l'extrait \texttt{bibtex} depuis des journaux. Sélectionnez \emph{export/citation}. Si vous le pouvez, choisissez \texttt{bibtex}. Dans le cas d'un format \texttt{.ris}, utilisez un convertisseur en ligne comme \href{http://www.bruot.org/ris2bib/}{ris2bib}.
 
 \section{Mathématiques}
 
@@ -56,7 +56,7 @@ où :
 
 \subsection{Encadrés mathématiques}
 
-Souvent on veut mettre en évidence une équation en l'encadrant. C'est possible avec \verb!fbox!. Voici l'exemple avec l'équation de Schrödinger \eqref{eq:schrodinger}:
+Parfois on souhaite mettre en exergue une équation ; c'est possible avec \verb!fbox!. Voici l'exemple avec l'équation de Schrödinger \eqref{eq:schrodinger}:
 
 \begin{equation}
     \begin{ceqn}
@@ -65,13 +65,16 @@ Souvent on veut mettre en évidence une équation en l'encadrant. C'est possible
     \end{ceqn}
 \end{equation}
 
+\newpage
+
 \subsection{Théorèmes et définitions}
 
-\LaTeX{} permet nativement de définir des théorèmes, des lemmes, des corollaires, des définitions, etc. Ces environnements sont très utiles pour structurer votre document. Voici quelques exemples :
+\LaTeX{} permet nativement de définir des théorèmes, des lemmes, des corollaires, des définitions, etc. Ces environnements sont très utiles pour structurer votre document.
+
+L'environnement \texttt{theorem} est utilisé pour définir des théorèmes. Un théorème est un énoncé qui a été prouvé. Les théorèmes sont numérotés en fonction de leur section.
 
 \begin{theorem}
-    Soit \(f\) une fonction dont la dérivée existe en tout point, alors \(f\) est
-    une fonction continue.
+    Soit $f$ une fonction dont la dérivée existe en tout point, alors $f$ est une fonction continue.
 \end{theorem}
 
 \begin{theorem}[Théorème de Pythagore]
@@ -89,8 +92,7 @@ Une conséquence du théorème \ref{pythagorean} est l'énoncé du corollaire su
 Vous pouvez référencer des théorèmes tels que \ref{pythagorean} lorsqu'une étiquette est attribuée.
 
 \begin{lemma}
-    Étant donnés deux segments de droite de longueurs respectives \(a\) et \(b\), il existe un
-    nombre réel \(r\) tel que \(b = ra\).
+    Étant donnés deux segments de droite de longueurs respectives $a$ et $b$, il existe un nombre réel $r$ tel que $b = ra$.
 \end{lemma}
 
 
@@ -382,7 +384,7 @@ PGF Plots est un package TikZ spécialisé dans les graphiques. Voici l'exemple 
                 domain=-8:8,
             ]
             {sin(deg(sqrt(x^2+y^2)))/sqrt(x^2+y^2)};
-            %\addlegendentry{\(\frac{sin(r)}{r}\)}
+            %\addlegendentry{$\frac{sin(r)}{r}$}
         \end{axis}
     \end{tikzpicture}
     \caption{Exemple de graphique 3D avec PGF Plots}
