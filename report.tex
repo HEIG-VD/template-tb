@@ -5,41 +5,31 @@
 ]{heig-tb}
 
 %% Choix de la police de caractères
-%% (décommenter une des deux lignes suivantes)
-%\setmainfont{Latin Modern Roman} % Traditionnel LaTeX
+%% (décommenter si vous souhaitez une police sans serif)
 %\setmainfont{TeX Gyre Heros} % Sans sérif
 
-% Police de caractère moins cursive pour le code
-% pour une meilleure lisibilité.
-\setmonofont{Source Code Pro}
+%% Packages supplémentaires si besoin
+\usepackage{lipsum} % Générer du texte de remplissage pour les exemples
+\usepackage{parcolumns} % Si besoin de gérer des colonnes parallèles
+\usepackage{tikzducks} % Utile pour générer des images temporaires
+\usepackage{chemfig} % Si besoin d'insérer des formules chimiques
+\usepackage[version=4]{mhchem} % Si besoin d'insérer des formules chimiques
+\usepackage[
+  nooldvoltagedirection,
+  european,
+  americaninductors]{circuitikz} % Pour les schémas électriques
 
-% Générer du texte de remplissage pour les exemples
-\usepackage{lipsum}
-
-% Si besoin de gérer des colonnes parallèles
-\usepackage{parcolumns}
-
-% Utile pour générer des images temporaires
-\usepackage{tikzducks}
-
-% Si besoin d'insérer des formules chimiques
-\usepackage{chemfig}
-\usepackage[version=4]{mhchem}
-
+% Si vous voulez générer des graphiques avec pgfplots
 \usepackage{pgfplots}
 \usepgfplotslibrary{colormaps}
 \pgfplotsset{width=10cm,compat=1.18}
 
-\setlength{\fboxsep}{10pt}
-
+% Types de théorèmes
 \newtheorem{theorem}{Théorème}[section]
 \newtheorem{corollary}{Corollaire}[theorem]
 \newtheorem{lemma}[theorem]{Lemme}
 
-\usepackage[nooldvoltagedirection,european,americaninductors]{circuitikz}
-
-
-\signature{mbernasconi.svg} % Remplacer par votre propre signature vectorielle.
+\signature{signature.svg} % Remplacer par votre propre signature vectorielle.
 
 \makenomenclature
 \makenoidxglossaries
@@ -67,6 +57,7 @@
 
 %% Début du document
 \begin{document}
+
 \selectlanguage{french}
 \maketitle
 \frontmatter

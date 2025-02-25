@@ -1,61 +1,97 @@
 # Modèle HEIG-VD pour Rapport de Bachelor <!-- omit in toc -->
 
-Ce référentiel contient le modèle de document LaTeX pour la production d'un rapport de bachelor [HEIG-VD](http://heig-vd.ch). Il peut être adapté au besoin.
+Ce référentiel contient une proposition de modèle de document $\LaTeX{}$ pour la production d'un rapport de travail de bachelor [HEIG-VD](http://heig-vd.ch). Il peut être adapté au besoin.
 
-- [Contexte](#contexte)
+- [TL; DR;](#tl-dr)
+- [Overleaf ?](#overleaf-)
 - [Comment démarrer / Quick Start](#comment-démarrer--quick-start)
-- [Utilisation](#utilisation)
-- [VsCode + Docker + LaTeX Suite](#vscode--docker--latex-suite)
-  - [Fork et Clone du référentiel](#fork-et-clone-du-référentiel)
-  - [Démarrer vscode](#démarrer-vscode)
-  - [Compiler](#compiler)
-  - [Nettoyer la base de code](#nettoyer-la-base-de-code)
-  - [Git ?](#git-)
-- [Compilation](#compilation)
-- [Prétraitement des figures](#prétraitement-des-figures)
-- [Bibliographie](#bibliographie)
-- [Glossaire](#glossaire)
+  - [Prérequis](#prérequis)
+  - [Clone du projet](#clone-du-projet)
+  - [Ouverture dans Visual Studio Code](#ouverture-dans-visual-studio-code)
+  - [Configuration du titre et de la signature](#configuration-du-titre-et-de-la-signature)
+  - [Nettoyage du modèle](#nettoyage-du-modèle)
+- [Environnement de travail](#environnement-de-travail)
+  - [VsCode + Docker + LaTeX Suite](#vscode--docker--latex-suite)
+  - [Compilation](#compilation)
+  - [Prétraitement des figures](#prétraitement-des-figures)
+  - [Bibliographie](#bibliographie)
+  - [Glossaire](#glossaire)
 - [Conventions typographiques et de style](#conventions-typographiques-et-de-style)
   - [Numérotation des pages](#numérotation-des-pages)
   - [Numérotation des éléments](#numérotation-des-éléments)
-  - [Outils utiles](#outils-utiles)
   - [Conventions typographiques](#conventions-typographiques)
   - [Locutions](#locutions)
+- [Outils utiles](#outils-utiles)
 - [Release](#release)
 - [Technologies utilisées](#technologies-utilisées)
 - [Standards](#standards)
 - [Autres modèles LaTeX](#autres-modèles-latex)
-- [Références](#références)
 - [Aide et support](#aide-et-support)
 
-## Contexte
+## TL; DR;
 
-Cet environnement de repose pas sur [Overleaf](https://www.overleaf.com/) parce que la plateforme en ligne ne permet pas la gestion des dépendances et des artefacts et qu'elle est devenue payante avec le temps.
+- Utilisez [Visual Studio Code](https://code.visualstudio.com/) avec l'extension [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) pour éditer votre rapport.
+- Clonez le référentiel et ouvrez le dossier dans VS Code.
+- Compilez votre rapport avec `make`.
+- Vous devez avoir [Docker](https://www.docker.com/) installé sur votre machine.
+- Ce projet compile à la volée les diagrammes Draw.io, les figures SVG et les graphiques Python.
 
-Avec une solution en ligne comme Overleaf, les figures générées à partir de scripts (Python), les illustrations faites avec [Draw.io](https://app.diagrams.net/) et la conversion automatique de figures (`svg` en `pdf`), ne peuvent pas être automatisées. En revanche, en profitant d'un environnement de développement local, avec l'appui de Docker, ces tâches peuvent être automatisées et la compilation rendue plus rapide.
+## Overleaf ?
 
-Ce modèle de document se veut simple d'accès pour les étudiantes et les étudiants de la HEIG-VD. Il peut être adapté et est libre d'utilisation.
+Pourquoi ne pas offrir un modèle [Overleaf](https://www.overleaf.com/) ? D'une part parce que Overleaf n'est pas nécessairement gratuit et qu'il n'offre pas la possibilité de compiler des scripts Python ou des diagrammes Draw.io.
+
+Éditer le rapport hors ligne semble plus adapté pour des raisons de confort d'utilisation, de confidentialité et de sécurité.
+
+Avec le temps le support de Git/GitHub, et l'historique des changements ne sont plus disponibles dans la version gratuite d'Overleaf. Il est donc préférable de travailler en local et de pousser les modifications sur GitHub.
 
 ## Comment démarrer / Quick Start
+
+### Prérequis
 
 Pour utiliser ce canevas, vous avez besoin des logiciels suivants:
 
 - [Microsoft Visual Studio Code](https://code.visualstudio.com/)
 - [Docker](https://www.docker.com/)
+- [Git](https://git-scm.com/)
 
 Une fois ces logiciels installés et démarrés, vous devez configurer une extension pour VS Code. Elle vous permettra de faire le lien avec Docker.
 
 - [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
-## Utilisation
+### Clone du projet
 
-L'environnement d'édition conseillé est l'éditeur [Microsoft Visual Studio Code](https://code.visualstudio.com/) couplé à [Docker](https://www.docker.com/) et au [Dev Containers](https://code.visualstudio.com/docs/remote/containers). Ceci vous évite d'installer une distribution LaTeX. Alternativement, il est possible de travailler dans [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+Ensuite, vous pouvez cloner le référentiel sur votre machine en utilisant `git clone` ou GitHub Desktop, puis ouvrir le dossier dans VS Code.
 
-La distribution LaTeX conseillée est [TeX Live](https://www.tug.org/texlive/). L'alternative MiKTeX est déconseillée bien que très populaire.
+Alternativement, et préférablement, vous pouvez faire un *fork* du référentiel sur GitHub, puis cloner votre copie sur votre machine. Ce faisant, vous pourrez pousser vos modifications sur votre propre copie du référentiel et surveiller les mises à jour du modèle original.
 
-## VsCode + Docker + LaTeX Suite
+### Ouverture dans Visual Studio Code
 
-Certainement l'une des plus élégantes manières de développer avec LaTeX est d'utiliser Visual Studio Code avec un conteneur POSIX contenant une distribution TeXLive.
+Une fois le projet ouvert dans Visual Studio Code, l'extension *Remote - Containers* vous proposera de construire l'image Docker nécessaire à la compilation du document. Cette construction peut prendre du temps (2 à 15 minutes) selon votre connexion et votre machine.
+
+Après cela la compilation est possible avec la commande `make` ou Ctrl+Alt+B.
+
+### Configuration du titre et de la signature
+
+Éditez le fichier `meta.tex` pour y inscrire le titre de votre rapport, votre nom et prénom et le nom de votre superviseur.
+
+Remplacez ensuite la signature `assets/figures/signature.svg` par la vôtre. Il est préférable de garder une variante vectorielle, mais un fichier PNG peut également être utilisé.
+
+### Nettoyage du modèle
+
+Ce modèle est fourni avec des textes d'information. Supprimez simplement les fichiers superflus dans les répertoires suivants :
+
+- `assets/frontmatter`
+- `assets/content`
+- `assets/backmatter`
+- `assets/appendix`
+
+Vous pouvez éventuellement garder la structure de `assets/content` et supprimer les textes d'information.
+
+## Environnement de travail
+
+### VsCode + Docker + LaTeX Suite
+
+Certainement l'une des plus élégantes manières de développer avec $\LaTeX{}$ est d'utiliser Visual Studio Code avec un conteneur POSIX contenant une distribution TeXLive.
 
 L'éditeur couplé à LaTeX Workshop de James Yu permet une édition fluide. Le menu `commands` offre l'accès à tous les outils de base. La structure (en bas à gauche) et accessible par Ctrl+Alt+X permet de naviguer facilement dans le code. Le panneau des symboles (à droite) permet l'insertion facile de caractères mathématiques.
 
@@ -77,45 +113,15 @@ Vous pouvez utiliser les commandes suivantes suivi de tab:
 
 D'autres commandes existent et sont accessibles [ici](https://cheatography.com/jcwinkler/cheat-sheets/latex-workshop-visual-studio-code/).
 
-L'éditeur de PDF [Sumatra](https://www.sumatrapdfreader.org/) est conseillé pour visualiser votre rapport, contrairement à Adobe Acrobat, le contenu est automatiquement rafraichi une fois le rapport recompilé.
+L'éditeur de PDF [Sumatra](https://www.sumatrapdfreader.org/) est conseillé pour visualiser votre rapport, contrairement à Adobe Acrobat, le contenu est automatiquement rafraichi une fois le rapport recompilé. Il est plus agréable à utiliser que la prévisualisation intégrée à VS Code, ou la visionneuse de PDF dans le navigateur.
 
-### Fork et Clone du référentiel
+### Compilation
 
-Pour bien démarrer, commencez par faire un *fork* du référentiel en cliquant sur le bouton **Fork** depuis l'interface GitHub. Ceci vous crée une copie du modèle dans votre propre organisation GitHub. Clonez ensuite le référentiel avec `git clone`.
+Ce modèle de document est prévu pour fonctionner avec LuaLaTeX pour la production d'un fichier `.pdf`. L'outil `latexmk` est utilisé pour séquencer la production du document final. Un `Makefile` s'occupe du prétraitement des figures.
 
-### Démarrer vscode
+LuaLaTeX permet de directement lire les documents encodés en UTF-8 et supporte par conséquent l'Unicode et les polices de caractères TrueType et OpenType nativement.
 
-Si vous n'avez pas installé VS code et Docker, vous devez les installer au préalable.
-
-Démarrez vscode et installez l'extension *Visual Studio Code Remote - Containers*.
-
-Ouvrez le dossier (`CTRL+K+O`), l'environnement de développement sera automatiquement démarré.
-
-**NOTE:** La construction initiale du conteneur prend beaucoup de temps, car la distribution LaTeX doit être téléchargée. Vous pouvez aller boire un café.
-
-### Compiler
-
-Pour compiler le rapport, exécutez simplement la commande `make`. Normalement, votre rapport est automatiquement compilé à chaque sauvegarde de vos modifications.
-
-### Nettoyer la base de code
-
-Pour retirer tous les éléments informatifs du modèle exécutez `make fresh`. La commande va éditer `report.tex` pour y retirer les textes d'information marqués par `%%if..%%fi`. La commande magique est :
-
-```bash
-find . -name '*.tex' -print0 | xargs -n1 -0 perl -0777 -pi -e "s/\%\%if.+?\%\%fi//gs"
-```
-
-### Git ?
-
-Pour gérer le suivi de version de votre rédaction, vous pouvez utiliser Git intégré à VisualSudio Code. L'hébergement sur GitHub couplé à l'intégration continue permet la compilation automatique de votre rapport à chaque `git push`. Vous recevrez un e-mail en cas de problème de compilation. Le PDF sera quant à lui disponible depuis le panneau des artefacts de GitHub Actions.
-
-## Compilation
-
-Ce modèle de document est prévu pour fonctionner avec XeTeX pour la production d'un fichier `.pdf`. L'outil `latexmk` est utilisé pour séquencer la production du document final. Un `Makefile` s'occupe du prétraitement des figures.
-
-XeTeX permet de directement lire les documents encodés en UTF-8 et supporte par conséquent l'Unicode et les polices de caractères TrueType et OpenType nativement.
-
-## Prétraitement des figures
+### Prétraitement des figures
 
 Les figures sont placées dans `assets/figures`.
 
@@ -135,11 +141,11 @@ Les conventions de nommage des fichiers intermédiaires sont les suivantes :
 | Diagramme draw.io      | `.drawio` | `.drawio.pdf` |
 | Figure Python          | `.py`     | `.py.pdf`     |
 
-## Bibliographie
+### Bibliographie
 
 Les entrées de bibliographie sont directement éditées dans `bibliography.bib`.
 
-## Glossaire
+### Glossaire
 
 Le glossaire se trouve dans `glossary.tex`
 
@@ -189,14 +195,6 @@ Les conventions consensuelles d'usage sont les suivantes :
 
 - Les tables et les figures sont numérotées selon la convention `chapitre.id` où chapitre est le numéro courant du chapitre et `id` un compteur redémarré à `1` à chaque nouveau chapitre.
 
-### Outils utiles
-
-- Éditeur d'équation en ligne [latex3technics](https://www.latex4technics.com/)
-- Éditeur de diagrammes en ligne [draw.io](https://app.diagrams.net/)
-- Éditeur de tables pour LaTeX [tablegenerator](https://www.tablesgenerator.com/)
-- Éditeur LaTeX en ligne [overleaf](https://www.overleaf.com/)
-- Correcteur orthographique compatible LaTeX : [Druide Antidote](https://www.antidote.info/en/antidote-10)
-
 ### Conventions typographiques
 
 - Les ligatures sont souhaitées.
@@ -213,11 +211,19 @@ Les conventions consensuelles d'usage sont les suivantes :
 ### Locutions
 
 - La locution *confer* (voir ceci) est abrégée `cf.` (`\cf`)
-- La locution *id est* (c'est à dire) est abrégée `c.-à-d.` et non `i.e.` (`\cad`)
+- La locution *id est* (c'est-à-dire) est abrégée `c.-à-d.` et non `i.e.` (`\cad`)
 - La locution *exempli gratia* (pour l'exemple) est abrégée `p. ex.` et non `e.g.` (`\pex`)
 
 Les locutions latines non francisées suivantes seront écrites en italique :
 *ad hoc*, *ad libitum*, *a fortiori*, *a posteriori*, *a posteriori*, *a priori*, *bis*, *grosso modo*, *ibidem*, *idem*, *in extenso*, *in extremis*, *in extenso*, *in extremis*, *in fine*, *infra*, *loc.cit.*, *modus vivendi*, *op.cit.*, *passim*, *quater*, *sic*, *statu quo*, *supra*, *ter*, *via*, *vice versa*.
+
+## Outils utiles
+
+- Éditeur d'équation en ligne [latex3technics](https://www.latex4technics.com/)
+- Éditeur de diagrammes en ligne [draw.io](https://app.diagrams.net/)
+- Éditeur de tables pour LaTeX [tablegenerator](https://www.tablesgenerator.com/)
+- Éditeur LaTeX en ligne [overleaf](https://www.overleaf.com/)
+- Correcteur orthographique compatible LaTeX : [Druide Antidote](https://www.antidote.info/en/antidote-10)
 
 ## Release
 
@@ -228,7 +234,6 @@ git tag v1.0.0 -m "Release v1.0.0"
 git push origin --tags
 ```
 Pour que github action puisse générer la release il faut donner les droits à github action de créer des releases. Dans les paramètres du repo sous Actions/General/Workflows Permissions, cocher "Read and write permission" puis save.
-
 
 ## Technologies utilisées
 

@@ -19,11 +19,170 @@
   \def\@confidential{Confidentiel}
 }
 
-\input{meta/institutes.tex}
-\input{meta/orientations.tex}
+%% Liste des instituts de recherche appliquée et développement de la HEIG-VD
+%% https://heig-vd.ch/recherche/instituts/
+
+\DeclareOption{iide}{
+  \def\instituteacronym{IIDE}
+  \def\institutename{Institut Interdisciplinaire du Développement de l'Entreprise}
+}
+
+\DeclareOption{reds}{
+  \def\instituteacronym{REDS}
+  \def\institutename{Reconfigurable \& Embedded Digital Systems}
+}
+
+\DeclareOption{iai}{
+  \def\instituteacronym{IAI}
+  \def\institutename{Institut d'Automatisation Industrielle}
+}
+
+\DeclareOption{mei}{
+  \def\instituteacronym{MEI}
+  \def\institutename{Media Engineering Institute}
+}
+
+\DeclareOption{iict}{
+  \def\instituteacronym{IICT}
+  \def\institutename{Institut des Technologies de l'information et de la Communication}
+}
+
+\DeclareOption{insit}{
+  \def\instituteacronym{INSIT}
+  \def\institutename{Institut d'ingénierie du territoire}
+}
+
+\DeclareOption{ie}{
+  \def\instituteacronym{IE}
+  \def\institutename{Institut des Énergies}
+}
+
+\DeclareOption{comatec}{
+  \def\instituteacronym{COMATEC}
+  \def\institutename{Institut de conception mécanique et technologie des matériaux}
+}
+
+%% Orientations
+\DeclareOption{eai}{
+  \def\@orientation{Électronique et Automatisation industrielle}
+  \def\@department{TIN}
+  \def\@faculty{Génie Électrique}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{eem}{
+  \def\@orientation{Électronique embarquée et Mécatronique}
+  \def\@department{TIN}
+  \def\@faculty{Génie Électrique}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{en}{
+  \def\@orientation{Systèmes énergétiques}
+  \def\@department{TIN}
+  \def\@faculty{Génie Électrique}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{eba}{
+  \def\@orientation{Energétique du bâtiment}
+  \def\@department{TIN}
+  \def\@faculty{Energie et techniques environnementales}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{thi}{
+  \def\@orientation{Thermique industrielle}
+  \def\@department{TIN}
+  \def\@faculty{Energie et techniques environnementales}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{tho}{
+  \def\@orientation{Thermotronique}
+  \def\@department{TIN}
+  \def\@faculty{Energie et techniques environnementales}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{mi}{
+  \def\@orientation{Mécatronique}
+  \def\@department{TIN}
+  \def\@faculty{Microtechniques}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{gen}{
+  \def\@orientation{Génie de l'environnement}
+  \def\@department{EC+G}
+  \def\@faculty{Géomatique}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{ggt}{
+  \def\@orientation{Géomatique et gestion du territoire}
+  \def\@department{EC+G}
+  \def\@faculty{Géomatique}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{gci}{
+  \def\@orientation{Construction et infrastructures}
+  \def\@department{EC+G}
+  \def\@faculty{Géomatique}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{ie}{
+  \def\@orientation{Systèmes informatiques embarqués}
+  \def\@department{TIC}
+  \def\@faculty{Informatique et systèmes de communication}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{il}{
+  \def\@orientation{Informatique logicielle}
+  \def\@department{TIC}
+  \def\@faculty{Informatique et systèmes de communication}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{tr}{
+  \def\@orientation{Réseaux et systèmes}
+  \def\@department{TIC}
+  \def\@faculty{Informatique et systèmes de communication}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{id}{
+  \def\@orientation{Ingénierie des données}
+  \def\@department{TIC}
+  \def\@faculty{Informatique et systèmes de communication}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{ts}{
+  \def\@orientation{Sécurité informatique}
+  \def\@department{TIC}
+  \def\@faculty{Informatique et systèmes de communication}
+  \def\@field{Ingénierie}
+}
+
+\DeclareOption{ee}{
+  \def\@orientation{}
+  \def\@department{HEG}
+  \def\@faculty{Économie d'entreprise}
+  \def\@field{Économie d'entreprise}
+}
+
+\DeclareOption{igi}{
+  \def\@orientation{Qualité et performance industrrielles}
+  \def\@department{TIN}
+  \def\@faculty{Ingénierie et gestion industrielles}
+  \def\@field{Ingénierie}
+}
 
 \ProcessOptions
-
 
 % Améliore le mode mathématique, aligne les équations à gauche
 \RequirePackage[fleqn]{amsmath}
@@ -31,6 +190,9 @@
 
 % Symboles mathématiques étendus
 \RequirePackage{amssymb}
+
+% Meilleure gestion de l'unicode et des mathématiques
+\RequirePackage{unicode-math}
 
 % Insertion de figures \includegraphics
 % LuaLaTeX support les formats PDF, PNG, JPEG et EPS
@@ -57,7 +219,6 @@
 % Ajoute les commandes \toprule, \midrule et \bottomrule
 \RequirePackage{booktabs}
 
-
 % Permet d'écrire un nombre en lettre (ex: 1 -> un)
 \RequirePackage{fmtcount}
 
@@ -71,7 +232,6 @@
 
 % Gestion des glossaires et acronymes
 \RequirePackage{glossaries}
-
 
 % Utile pour obtenir le numéro de la dernière page du document
 % \fancyfoot[C]{Page \thepage{} sur \pageref{LastPage}}
@@ -105,19 +265,40 @@
 % Permet de faire des tests conditionnels
 \RequirePackage{ifthen}
 
+% Gestion de la nomenclature
 \RequirePackage{nomencl}
+
+% Évite le retrait de la première ligne d'un paragraphe
+% et ajoute un espace vertical entre les paragraphes
 \RequirePackage{parskip}
+
+% Rotation of floats (figures, tables)
 \RequirePackage{rotating}
+
+% Tableaux justifiés sur la largeur de la page
 \RequirePackage{tabularx}
+
+% Mode dessin vectoriel
 \RequirePackage{tikz}
+
 \RequirePackage{makecell}
+
 \RequirePackage{bold-extra}
+
 \RequirePackage[many]{tcolorbox}
-\RequirePackage{unicode-math}
+
 \RequirePackage{cellspace}
+
+% Gestion des macros key=value
 \RequirePackage{expkv-cs}
+
+% Gestion des émoticônes et symboles
 \RequirePackage{fontawesome5}
+
+% Meilleur control des itemize enumerate et description
 \RequirePackage{enumitem}
+
+% Gestion des unités SI
 \RequirePackage{siunitx}
 
 % Coloration syntaxique du code source avec Python
@@ -129,10 +310,6 @@
 
 % Permet d'executer du Lua
 \RequirePackage{luacode}
-
-\setmathfont{Latin Modern Math}
-
-\usetikzlibrary{babel,shadows,patterns,arrows,calc,decorations.pathmorphing}
 
 \RequirePackage[
   backref=true,
@@ -166,6 +343,19 @@
   bookmarksdepth=section % Profondeur des signets dans le PDF
 ]{hyperref}
 
+%% Configuration de la police de caractères
+\setmathfont{Latin Modern Math}
+\setmonofont{Source Code Pro}
+
+\usetikzlibrary{
+  babel,
+  shadows,
+  patterns,
+  arrows,
+  calc,
+  decorations.pathmorphing
+}
+
 \usemintedstyle{colorful}
 \setminted{
   %frame=single,
@@ -180,6 +370,7 @@
     \null\thispagestyle{empty}\newpage\fi}
 
 \setlength{\parindent}{0pt}
+\setlength{\fboxsep}{10pt}
 \setlength\parskip{\medskipamount}
 
 %% Configuration de listings (minted est néanmoins préféré)
@@ -191,7 +382,6 @@
   basicstyle=\footnotesize\sffamily}
 
 %% Gestion des accords du genre
-
 
 % Définition des genres
 \newcommand{\setmale}{\def\genre{male}}
