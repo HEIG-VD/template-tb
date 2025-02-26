@@ -22,6 +22,7 @@
                 "github.copilot",
                 "ms-azuretools.vscode-docker",
                 "ms-python.python",
+                "ms-vscode.makefile-tools",
                 "eamodio.gitlens",
                 "hediet.vscode-drawio",
                 "james-yu.latex-workshop",
