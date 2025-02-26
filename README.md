@@ -2,6 +2,8 @@
 
 Ce référentiel contient une proposition de modèle de document $\LaTeX{}$ pour la production d'un rapport de travail de bachelor [HEIG-VD](http://heig-vd.ch). Il peut être adapté au besoin.
 
+![Preview](/assets/preview.png)
+
 - [TL; DR;](#tl-dr)
 - [Overleaf ?](#overleaf-)
 - [Comment démarrer / Quick Start](#comment-démarrer--quick-start)
