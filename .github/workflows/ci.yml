@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@latest
+        uses: actions/checkout@4
         with:
           submodules: true
       - name: Build docker images
@@ -24,7 +24,7 @@ jobs:
       - name: Move
         run : cp build/report.pdf dist
       - name: Upload
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@v4
         with:
           name: pdf
           path: build/report.pdf
@@ -38,7 +38,7 @@ jobs:
       steps:
         - name: Create Release
           id: create_release
-          uses: actions/create-release@latest
+          uses: actions/create-release@v1
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
           with:
@@ -47,7 +47,7 @@ jobs:
             draft: false
             prerelease: false
         - name: Download artifacts
-          uses: actions/download-artifact@v2
+          uses: actions/download-artifact@v4
           with:
             name: pdf
             path: dist
